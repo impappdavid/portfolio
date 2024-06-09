@@ -23,6 +23,7 @@ import './styles.css';
 		flex: 1;
 		display: flex;
 		padding: 10px;
+		gap: 10px;
 		width: 100%;
 		margin: 0 auto;
 		box-sizing: border-box;
