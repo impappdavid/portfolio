@@ -127,8 +127,8 @@ hr{
     border-radius: 5px;
     color: white;
     transition: all .5s;
-    background-color: #ffffff2f;
-    border: 1px solid #ffffff2a;
+    background-color: #ffffff11;
+    border: 1px solid #5e5e5e2a;
 }
 .resources{
     font-size: 12px;

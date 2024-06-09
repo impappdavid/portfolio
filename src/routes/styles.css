@@ -19,7 +19,7 @@
 body {
 	min-height: 100vh;
 	margin: 0;
-	background: linear-gradient(328deg, rgba(0,0,0,1) 0%, rgba(72,84,97,1) 100%);
+	background: linear-gradient(328deg, rgb(41, 41, 41) 0%, rgb(29, 29, 29) 100%);
     background-size: 400% 400%;
 
     -webkit-animation: AnimationName 30s ease infinite;

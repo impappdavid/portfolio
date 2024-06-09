@@ -1,6 +1,6 @@
 <script>
-	import welcome from '$lib/images/svelte-welcome.webp';
-	import welcome_fallback from '$lib/images/svelte-welcome.png';
+	import welcome from "$lib/images/svelte-welcome.webp";
+	import welcome_fallback from "$lib/images/svelte-welcome.png";
 </script>
 
 <svelte:head>
@@ -12,124 +12,241 @@
 	<div class="content">
 		<div class="welcome">
 			<div class="title">Hey there</div>
-			<div class="altTitle">My name is Papp Dávid ~ Welcome to my portfolio website.</div>
+			<div class="altTitle">
+				My name is Papp Dávid ~ Welcome to my portfolio website.
+			</div>
 		</div>
 		<div class="latestNews">
 			<div class="bigTitle">Latest News</div>
 			<div class="boxContainer">
 				<div class="newsBox">
-					<div class="newsTitle">Title</div>
-					<div class="newsContent">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</div>
+					<div class="newsTexts">
+						<div class="tag"></div>
+						<div class="newsTitle">
+							Starting a new project for a car rental company
+						</div>
+					</div>
+					<div class="newsTexts">
+						<div class="space"></div>
+						<div class="newsContent">June 9,2024</div>
+					</div>
 				</div>
 				<div class="newsBox">
-					<div class="newsTitle">Title</div>
-					<div class="newsContent">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</div>
+					<div class="newsTexts">
+						<div class="tag"></div>
+						<div class="newsTitle">
+							Starting a new project for an online webshop
+						</div>
+					</div>
+					<div class="newsTexts">
+						<div class="space"></div>
+						<div class="newsContent">June 9,2024</div>
+					</div>
 				</div>
 				<div class="newsBox">
-					<div class="newsTitle">Title</div>
-					<div class="newsContent">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</div>
+					<div class="newsTexts">
+						<div class="tag"></div>
+						<div class="newsTitle">
+							Starting a new project for an AI website
+						</div>
+					</div>
+					<div class="newsTexts">
+						<div class="space"></div>
+						<div class="newsContent">June 9,2024</div>
+					</div>
 				</div>
 			</div>
 		</div>
 		<div class="learningNow">
 			<div class="bigTitle">Learning Now</div>
-			<div class="boxContainer">
+			<div class="learnboxContainer">
+				<div class="activelearnBox">
+					<div class="leftSide">
+					<div class="iconTitle">
+						<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><g fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" color="white"><path d="M16.769 3H8.23c-2.163 0-3.245 0-3.84.709s-.421 1.794-.077 3.965l1.375 8.661c.297 1.87.727 2.431 2.493 3.121l2.894 1.131c.704.275 1.056.413 1.424.413s.72-.138 1.424-.413l2.894-1.13c1.766-.69 2.196-1.251 2.493-3.122l1.375-8.661c.344-2.17.517-3.256-.078-3.965C20.015 3 18.933 3 16.769 3"/><path d="M15.5 8h-4.973c-.908 0-1.091.189-1.01 1.093l.181 2.007c.07.762.244.914 1.01.914h3.155c.925 0 1.109.194 1.008 1.112l-.17 1.536c-.068.618-.087.642-.681.842l-1.235.415c-.323.108-.328.108-.651 0l-1.374-.462c-.37-.124-.493-.275-.56-.645"/></g></svg>
+						<span>Title</span>
+					</div>
+					<div class="alttitle">
+						June 9,2024
+					</div>
+				</div>
+				<div class="openIcon">
+					<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 16 16"><path fill="white" fill-rule="evenodd" d="M14 2.5a.5.5 0 0 0-.5-.5h-6a.5.5 0 0 0 0 1h4.793L2.146 13.146a.5.5 0 0 0 .708.708L13 3.707V8.5a.5.5 0 0 0 1 0z"/></svg>
+				</div>
+				</div>
 				<div class="learnBox">
-					<div class="littleBox">
-						<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"><g fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" color="white"><path d="M16.769 3H8.23c-2.163 0-3.245 0-3.84.709s-.421 1.794-.077 3.965l1.375 8.661c.297 1.87.727 2.431 2.493 3.121l2.894 1.131c.704.275 1.056.413 1.424.413s.72-.138 1.424-.413l2.894-1.13c1.766-.69 2.196-1.251 2.493-3.122l1.375-8.661c.344-2.17.517-3.256-.078-3.965C20.015 3 18.933 3 16.769 3"/><path d="M15.5 8h-4.973c-.908 0-1.091.189-1.01 1.093l.181 2.007c.07.762.244.914 1.01.914h3.155c.925 0 1.109.194 1.008 1.112l-.17 1.536c-.068.618-.087.642-.681.842l-1.235.415c-.323.108-.328.108-.651 0l-1.374-.462c-.37-.124-.493-.275-.56-.645"/></g></svg>
+					<div class="iconTitle">
+						<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><g fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" color="white"><path d="M8 12C8 6.477 9.79 2 12 2s4 4.477 4 10s-1.79 10-4 10s-4-4.477-4-10"/><path d="M9.975 8.62c4.842-2.762 9.674-3.45 10.792-1.537s-1.9 5.703-6.742 8.464s-9.674 3.45-10.792 1.536c-1.118-1.913 1.9-5.702 6.742-8.464"/><path d="M14.025 8.62c4.842 2.76 7.86 6.55 6.742 8.463c-1.118 1.914-5.95 1.226-10.792-1.536s-7.86-6.55-6.742-8.464C4.35 5.17 9.183 5.858 14.025 8.62"/><path d="M13.5 12a1.5 1.5 0 1 1-3 0a1.5 1.5 0 0 1 3 0"/></g></svg>
+						<span>Title</span>
+					</div>
+					<div class="alttitle">
+						Starting soon
+					</div>
+				</div>
+				<div class="learnBox">
+					<div class="iconTitle">
+						<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><g fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" color="white"><path d="M2.5 12c0-4.478 0-6.718 1.391-8.109S7.521 2.5 12 2.5c4.478 0 6.718 0 8.109 1.391S21.5 7.521 21.5 12c0 4.478 0 6.718-1.391 8.109S16.479 21.5 12 21.5c-4.478 0-6.718 0-8.109-1.391S2.5 16.479 2.5 12"/><path d="M11.732 12v4A2 2 0 0 1 8 17m10.467-4a2 2 0 0 0-1.733-1h-.5a1.5 1.5 0 1 0 0 3h1a1.5 1.5 0 0 1 0 3h-.5a2 2 0 0 1-1.732-1"/></g></svg>
+						<span>Title</span>
+					</div>
+					<div class="alttitle">
+						Starting soon
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	
 </main>
 
-
 <style>
-	main{
+	main {
 		width: 100%;
 		min-height: 95vh;
 		background-color: #101111;
 		border-radius: 10px;
 		display: flex;
 		justify-content: center;
-		overflow-y:hidden;
+		overflow-y: hidden;
 	}
-	.content{
+	.content {
 		width: 1200px;
 		height: 200px;
 		margin-top: 70px;
 		display: flex;
 		flex-direction: column;
-		gap:70px;
+		gap: 70px;
 	}
-	.welcome{
+	.welcome {
 		display: flex;
 		flex-direction: column;
 		gap: 10px;
 	}
-	.title{
+	.title {
 		font-size: 90px;
 		color: white;
 	}
-	.altTitle{
+	.altTitle {
 		font-size: 15px;
 		color: rgb(82, 80, 80);
 	}
-	.latestNews{
+	.latestNews {
 		margin-top: 20px;
 	}
-	.bigTitle{
+	.bigTitle {
 		font-size: 20px;
 		color: white;
 	}
-	.boxContainer{
+	.boxContainer {
 		display: flex;
 		flex-wrap: wrap;
 		gap: 20px;
 		margin-top: 20px;
 	}
-	.newsBox{
+	.learnboxContainer {
+		display: flex;
+		flex-wrap: wrap;
+		margin-top: 20px;
+	}
+	.newsBox {
 		width: 350px;
-		height: 150px;
+		height: 100%;
 		background-color: rgb(32, 32, 32);
 		border-radius: 10px;
 		padding: 15px;
 		display: flex;
 		flex-direction: column;
 		gap: 10px;
-		
+		transition: all 0.5s;
 	}
-	.learnBox{
-		width: 200px;
-		height: 200px;
-		background-color: rgb(32, 32, 32);
-		border-radius: 10px;
+	.newsBox:hover {
+		cursor: pointer;
+		box-shadow: rgba(255, 255, 255, 0.3) 0px 0px 0px 3px;
+	}
+	.newsTexts {
 		display: flex;
 		align-items: center;
-		justify-content: center;
+		gap: 10px;
 	}
-	.newsTitle{
-		font-size: 25px;
+	.tag {
+		min-width: 10px;
+		min-height: 10px;
+		background-color: red;
+		border-radius: 50%;
+	}
+	.space {
+		min-width: 10px;
+		min-height: 10px;
+	}
+	.learnBox {
+		z-index: 0;
+		width: 300px;
+		height: 80px;
+		border-left: 1px solid rgb(80, 82, 80);
+		padding-left: 10px;
+		background-size: cover;
+		background-position: center;
+		gap: 3px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		transition: all .5s;
+	}
+	.learnBox:hover{
+		cursor: pointer;
+		background-color:rgba(82, 80, 80, 0.116);
+		border-left: 1px solid white;
+	}
+	.iconTitle{
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		color: white;
+		font-weight: bold;
+	}
+	.alttitle{
+		color: rgb(80, 82, 80);
+		font-size: 13px;
+	}
+	.newsTitle {
+		font-size: 20px;
 		color: white;
 	}
-	.newsContent{
-		font-size: 15px;
+	.newsContent {
+		font-size: 13px;
 		color: #979797;
 	}
-	.littleBox{
-		background-color: #f06529;
-		border-radius: 10px;
-		width: 100px;
-		height: 100px;
+	.activelearnBox {
+		z-index: 0;
+		width: 300px;
+		height: 80px;
+		border-left: 1px solid rgb(55, 87, 59);
+		gap: 3px;
+		padding-left: 10px;
+		background-size: cover;
+		background-position: center;
 		display: flex;
 		align-items: center;
-		justify-content: center;
-		transition: all 1s;
+		justify-content: space-between;
+		transition: all .5s;
 	}
-	.learnBox:hover .littleBox{
+	.activelearnBox:hover{
 		cursor: pointer;
-		transform: rotate(360deg);
+		background-color:rgba(82, 80, 80, 0.116);
+		border-left: 1px solid rgb(0, 255, 34);
+	}
+	.openIcon{
+		min-width: 30px;
+		min-height: 30px;
+		border-radius: 50%;
+		margin-right: 10px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-color: #2c2c2c;
+		transition: all .5s;
+	}
+	.activelearnBox:hover .openIcon{
+		
+		box-shadow: rgba(255, 255, 255, 0.753) 0px 0px 0px 3px;
+		opacity: 0.5;
 	}
 </style>
