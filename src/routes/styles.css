@@ -19,7 +19,7 @@
 body {
 	min-height: 100vh;
 	margin: 0;
-	background: white;
+	background: #101011;
     background-size: 400% 400%;
 
     -webkit-animation: AnimationName 30s ease infinite;
