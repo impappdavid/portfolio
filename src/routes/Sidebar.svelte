@@ -12,18 +12,18 @@
         <hr>
         <div class="pages">
             
-            <div class="activelink">
+            <a href="./" class="activelink">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="white" d="M12.71 2.29a1 1 0 0 0-1.42 0l-9 9a1 1 0 0 0 0 1.42A1 1 0 0 0 3 13h1v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7h1a1 1 0 0 0 1-1a1 1 0 0 0-.29-.71zM6 20v-9.59l6-6l6 6V20z"/></svg>
                 <div class="title">Home</div>
-            </div>
-            <div class="link">
+            </a>
+            <a href="/about" class="link">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="white" d="M12 2a5 5 0 1 0 5 5a5 5 0 0 0-5-5m0 8a3 3 0 1 1 3-3a3 3 0 0 1-3 3m9 11v-1a7 7 0 0 0-7-7h-4a7 7 0 0 0-7 7v1h2v-1a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5v1z"/></svg>
                 <div class="title">About</div>
-            </div>
-            <div class="link">
+            </a>
+            <a href="/projects" class="link">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="white" d="M8.293 6.293L2.586 12l5.707 5.707l1.414-1.414L5.414 12l4.293-4.293zm7.414 11.414L21.414 12l-5.707-5.707l-1.414 1.414L18.586 12l-4.293 4.293z"/></svg>
                 <div class="title">Projects</div>
-            </div>
+            </a>
             <div class="link">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="white" d="M19 13.586V10c0-3.217-2.185-5.927-5.145-6.742C13.562 2.52 12.846 2 12 2s-1.562.52-1.855 1.258C7.185 4.074 5 6.783 5 10v3.586l-1.707 1.707A.996.996 0 0 0 3 16v2a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-2a.996.996 0 0 0-.293-.707zM19 17H5v-.586l1.707-1.707A.996.996 0 0 0 7 14v-4c0-2.757 2.243-5 5-5s5 2.243 5 5v4c0 .266.105.52.293.707L19 16.414zm-7 5a2.98 2.98 0 0 0 2.818-2H9.182A2.98 2.98 0 0 0 12 22"/></svg>
                 <div class="title">News</div>
@@ -131,12 +131,21 @@ hr{
     background-color: #ffffff11;
     border: 1px solid #5e5e5e2a;
 }
+.activelink:hover{
+    cursor: pointer;
+}
 .resources{
     font-size: 12px;
     color: #979797;
     font-weight: bold;
     margin-top: 10px;
     padding-left: 10px;
+}
+a{
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: none;
 }
 @media only screen and (max-width: 1500px) {
     section{

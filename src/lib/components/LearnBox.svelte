@@ -16,7 +16,7 @@
 <style>
 .learnBox {
 		z-index: 0;
-		width: 280px;
+		width: 289px;
 		height: 80px;
 		border-left: 1px solid rgb(80, 82, 80);
 		padding-left: 10px;
