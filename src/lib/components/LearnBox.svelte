@@ -14,6 +14,9 @@
 </div>
 
 <style>
+	::selection {
+        background: rgba(75, 75, 75, 0.233);
+    }
 .learnBox {
 		z-index: 0;
 		width: 289px;

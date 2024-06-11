@@ -1,4 +1,6 @@
 <script>
+    import ProjectCard from "$lib/components/ProjectCard.svelte";
+
 </script>
 
 <svelte:head>
@@ -11,86 +13,12 @@
         <div class="projectsSection">
             <div class="title">Projects</div>
             <div class="projectContainer">
-                <div class="project">
-                    <div class="left">
-                        <img
-                            src="https://img.freepik.com/photos-premium/femme-visage-metal-tete-couverte-fils_900775-2333.jpg"
-                            alt=""
-                        />
-                        <div class="infos">
-                            <div class="protitle">AI</div>
-                            <div class="alttitle">
-                                This website gives a minimalist and modern look
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="icon">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="25"
-                            height="25"
-                            viewBox="0 0 24 24"
-                            ><path
-                                fill="white"
-                                d="M16.15 13H5q-.425 0-.712-.288T4 12t.288-.712T5 11h11.15L13.3 8.15q-.3-.3-.288-.7t.288-.7q.3-.3.713-.312t.712.287L19.3 11.3q.15.15.213.325t.062.375t-.062.375t-.213.325l-4.575 4.575q-.3.3-.712.288t-.713-.313q-.275-.3-.288-.7t.288-.7z"
-                            /></svg
-                        >
-                    </div>
-                </div>
-                <div class="project">
-                    <div class="left">
-                        <img
-                            src="https://images.ace.de/bilder/autoclub/polestar-2-heck-licht.jpg"
-                            alt=""
-                        />
-                        <div class="infos">
-                            <div class="protitle">Car Rental</div>
-                            <div class="alttitle">
-                                This website gives a minimalist and modern look
-                            </div>
-                        </div>
-                    </div>
-                    <div class="icon">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="25"
-                            height="25"
-                            viewBox="0 0 24 24"
-                            ><path
-                                fill="white"
-                                d="M16.15 13H5q-.425 0-.712-.288T4 12t.288-.712T5 11h11.15L13.3 8.15q-.3-.3-.288-.7t.288-.7q.3-.3.713-.312t.712.287L19.3 11.3q.15.15.213.325t.062.375t-.062.375t-.213.325l-4.575 4.575q-.3.3-.712.288t-.713-.313q-.275-.3-.288-.7t.288-.7z"
-                            /></svg
-                        >
-                    </div>
-                </div>
-
-                <div class="project">
-                    <div class="left">
-                        <img
-                            src="https://www.protagonist.nl/blog/wp-content/uploads/2016/03/webshop.jpg"
-                            alt=""
-                        />
-                        <div class="infos">
-                            <div class="protitle">E-commerce</div>
-                            <div class="alttitle">
-                                This website gives a minimalist and modern look
-                            </div>
-                        </div>
-                    </div>
-                    <div class="icon">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="25"
-                            height="25"
-                            viewBox="0 0 24 24"
-                            ><path
-                                fill="white"
-                                d="M16.15 13H5q-.425 0-.712-.288T4 12t.288-.712T5 11h11.15L13.3 8.15q-.3-.3-.288-.7t.288-.7q.3-.3.713-.312t.712.287L19.3 11.3q.15.15.213.325t.062.375t-.062.375t-.213.325l-4.575 4.575q-.3.3-.712.288t-.713-.313q-.275-.3-.288-.7t.288-.7z"
-                            /></svg
-                        >
-                    </div>
-                </div>
+                
+                
+                <ProjectCard projectThumbnailUrl="https://media.formula1.com/image/upload/t_16by9Centre/f_auto/q_auto/v1707905204/fom-website/2023/Mercedes/W15%20launch/Mercedes-AMG%20W15%20E%20PERFORMANCE%20-%20George%20Russell%20-%20Front%20Quarter.jpg.transform/9col/image.jpg" projectName="AI"  projectDescription="This website gives a minimalist and modern look"/>
+                <ProjectCard projectThumbnailUrl="https://images.ace.de/bilder/autoclub/polestar-2-heck-licht.jpg" projectName="Car Rental"  projectDescription="This website gives a minimalist and modern look"/>
+                <ProjectCard projectThumbnailUrl="https://www.protagonist.nl/blog/wp-content/uploads/2016/03/webshop.jpg" projectName="E-commerce"  projectDescription="This website gives a minimalist and modern look"/>
+                
             </div>
         </div>
     </div>
@@ -128,7 +56,7 @@
         border: 3px solid rgb(54, 54, 54); /* creates padding around scroll thumb */
     }
     .content {
-        width: 800px;
+        width: 700px;
         height: 200px;
         margin-top: 70px;
         display: flex;
@@ -155,6 +83,7 @@
     .projectContainer {
         display: flex;
         flex-direction: column;
+        gap: 20px;
         animation: loadfromdown 1.5s;
     }
     .project {
