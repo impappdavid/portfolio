@@ -56,7 +56,7 @@
         border: 3px solid rgb(54, 54, 54); /* creates padding around scroll thumb */
     }
     .content {
-        width: 700px;
+        max-width: 700px;
         height: 200px;
         margin-top: 70px;
         display: flex;
@@ -79,64 +79,15 @@
         gap: 20px;
         color: #989998;
         line-height: 1.7;
+        
     }
     .projectContainer {
         display: flex;
         flex-direction: column;
         gap: 20px;
         animation: loadfromdown 1.5s;
+        margin-bottom: 20px;
     }
-    .project {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        width: 100%;
-        height: auto;
-        border-top: 1px solid rgb(80, 82, 80);
-        padding: 10px;
-        transition: all 0.5s;
-    }
-    .project:hover {
-        cursor: pointer;
-        border-top: 1px solid rgb(255, 255, 255);
-        background-color: rgba(82, 80, 80, 0.116);
-    }
-    .left {
-        display: flex;
-        align-items: center;
-    }
-    .project:hover .icon svg {
-        transform: rotate(-50deg);
-    }
-    
-    img {
-        width: 80px;
-        height: 80px;
-        border-radius: 10px;
-    }
-    .infos {
-        padding-left: 20px;
-        display: flex;
-        flex-direction: column;
-    }
-    .protitle {
-        font-size: 25px;
-        color: white;
-        
-    }
-    .alttitle {
-        font-size: 13px;
-    }
-
-    .icon {
-        display: flex;
-        align-items: center;
-        padding-right: 10px;
-    }
-    svg {
-        transition: all 0.5s;
-    }
-   
 
     @keyframes loadfromright {
         0% {

@@ -21,7 +21,7 @@
         </div>
 
         <div class="socialLinkContainer">
-            <div class="learnBox">
+            <a href="https://github.com/impappdavid" target="_blank" class="learnBox">
                 <div class="leftSide">
                     <div class="iconTitle">
                         <svg
@@ -50,7 +50,7 @@
                         /></svg
                     >
                 </div>
-            </div>
+            </a>
             <div class="learnBox">
                 <div class="leftSide">
                     <div class="iconTitle">
@@ -251,6 +251,9 @@
         gap: 20px;
         color: #989998;
         line-height: 1.7;
+    }
+    a:hover{
+        text-decoration: none;
     }
     @keyframes loadfromright{
 		0%{

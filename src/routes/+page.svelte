@@ -339,7 +339,7 @@ main::-webkit-scrollbar-thumb {
 		margin-top: 20px;
 		display: flex;
 		flex-direction: column;
-	
+		margin-bottom: 20px;
 	}
 	.projectBox{
 		width: 100%;
