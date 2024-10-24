@@ -18,15 +18,15 @@ export default function Navbar() {
                 <div className="flex items-center gap-2">
 
                     <div className="flex gap-1 items-center">
-                        <Link href="" className="hover:bg-zinc-100 dark:hover:bg-zinc-800 p-2 rounded-xl transition-all">
+                        <Link href="https://github.com/impappdavid" className="hover:bg-zinc-100 dark:hover:bg-zinc-800 p-2 rounded-xl transition-all">
                             <AiFillGithub className="w-5 h-5" />
                         </Link>
 
-                        <Link href="" className="hover:bg-zinc-100 dark:hover:bg-zinc-800 p-2 rounded-xl transition-all">
+                        <Link href="https://www.linkedin.com/in/david-papp-726a09267/" className="hover:bg-zinc-100 dark:hover:bg-zinc-800 p-2 rounded-xl transition-all">
                             <AiFillLinkedin className="w-5 h-5" />
                         </Link>
 
-                        <Link href="" className="hover:bg-zinc-100 dark:hover:bg-zinc-800 p-2 rounded-xl transition-all">
+                        <Link href="https://x.com/Dvid50334776" className="hover:bg-zinc-100 dark:hover:bg-zinc-800 p-2 rounded-xl transition-all">
                             <BsTwitterX />
                         </Link>
                     </div>
