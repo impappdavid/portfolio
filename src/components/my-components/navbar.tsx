@@ -4,14 +4,20 @@ import { AiFillGithub } from "react-icons/ai";
 import { AiFillLinkedin } from "react-icons/ai";
 import { BsTwitterX } from "react-icons/bs";
 import { ModeToggle } from "../mode-toggle";
+import { HiAtSymbol } from "react-icons/hi";
+
 
 
 export default function Navbar() {
     return (
-        <div className="w-full fixed top-0 p-2">
-            <div className="mx-auto w-full max-w-2xl h-[50px] flex items-center justify-between px-2">
+        <div className="w-full fixed top-0 ">
+            <div className="mx-auto w-full max-w-7xl h-[50px] flex items-center justify-between px-2 pt-1 border-b">
 
-                <div className="text-xl font-semibold flex items-center font-mono">
+                <div className="text-xl font-semibold flex gap-2 items-center font-mono">
+                    <div className="w-6 h-6 bg-zinc-900 dark:bg-white rounded-lg flex items-center justify-center">
+                        <HiAtSymbol className="w-4 h-4 text-white dark:text-black"/>
+
+                    </div>
                     Papp David
                 </div>
 
