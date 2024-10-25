@@ -11,7 +11,7 @@ import { HiAtSymbol } from "react-icons/hi";
 export default function Navbar() {
     return (
         <div className="w-full fixed top-0 ">
-            <div className="mx-auto w-full max-w-7xl h-[50px] flex items-center justify-between px-2 pt-1 backdrop-blur-lg	 ">
+            <div className="mx-auto w-full max-w-7xl h-[50px] flex items-center justify-between px-2 pt-1 backdrop-blur-lg">
             
                 <div className="text-xl font-semibold flex gap-2 items-center font-mono">
                     <div className="w-6 h-6 bg-zinc-900 dark:bg-white rounded-lg flex items-center justify-center">
