@@ -25,7 +25,7 @@ export default function Home() {
   return (
     <div className=" flex justify-center mt-14">
 
-      <div className=" w-full max-w-7xl flex">
+      <div className=" w-full max-w-6xl flex">
         <div className=" w-full max-w-[250px] h-fit sticky top-14  flex flex-col gap-4 pt-2 ">
 
           <ul className="px-2 flex flex-col gap-1.5">
