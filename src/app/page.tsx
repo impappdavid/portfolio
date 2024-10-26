@@ -12,9 +12,12 @@ import { BiLogoTypescript } from "react-icons/bi";
 import { SiNestjs } from "react-icons/si";
 import { RiTailwindCssFill } from "react-icons/ri";
 import { DiMysql } from "react-icons/di";
-import { IoMdFolder } from "react-icons/io";
-import { IoIosArrowDown } from "react-icons/io";
-import { IoMdHome } from "react-icons/io";
+import { BsList } from "react-icons/bs";
+import { TbFolderFilled } from "react-icons/tb";
+
+
+
+
 
 
 
@@ -75,22 +78,32 @@ export default function Home() {
             </li>
           </ul>
 
-          <Collapsible >
-            <ul className="px-2 flex flex-col gap-1.5">
+          <ul className="px-2 flex flex-col gap-1.5">
 
-              <CollapsibleTrigger className="flex justify-between items-center">
-                <li className="font-semibold text-md font-sans">Projects</li>
-                <IoIosArrowDown className="w-3 h-3" />
-              </CollapsibleTrigger>
-              <CollapsibleContent>
-                <li className="font-sans text-sm text-zinc-700 dark:text-zinc-400 transition-all">
-                  Not yet
-                </li>
-              </CollapsibleContent>
+            <li className=" font-sans ">
+              <a href="" className="w-full flex items-center gap-1">
+                <div className="font-semibold text-md">
+                  Projects
+                </div>
+                <div className="text-xs text-zinc-600 dark:text-zinc-400">
+                  (All)
+                </div>
+              </a>
+            </li>
+
+            
+
+            <li className="font-sans text-sm text-zinc-700 dark:text-zinc-400 transition-all">
+              <a href="" className="text-zinc-700 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200 flex gap-1 items-center hover:cursor-pointer">
+                <TbFolderFilled className="w-4 h-4" />
+                DevFlow
+              </a>
+            </li>
 
 
-            </ul>
-          </Collapsible>
+
+
+          </ul>
         </div>
 
         <div className="w-full max-w-2xl min-h-[2000px] flex bg-red-500/20 mx-auto">
