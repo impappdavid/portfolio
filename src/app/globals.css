@@ -76,3 +76,16 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+@keyframes example {
+  from {
+    opacity: 0;
+    filter: blur(5px);
+    transform:translateY(-100px)
+  }
+  to {
+    filter: blur(0px);
+    opacity: 1;
+    transform:translateY(0px)
+  }
+}

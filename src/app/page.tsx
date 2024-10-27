@@ -14,8 +14,9 @@ import { RiTailwindCssFill } from "react-icons/ri";
 import { DiMysql } from "react-icons/di";
 import { BsList } from "react-icons/bs";
 import { TbFolderFilled } from "react-icons/tb";
+import BlurFade from "@/components/magicui/blur-fade";
 
-
+const BLUR_FADE_DELAY = 0.04;
 
 
 
@@ -30,7 +31,7 @@ export default function Home() {
 
       <div className=" w-full max-w-6xl flex">
         <div className=" w-full max-w-[250px] h-fit sticky top-14  flex flex-col gap-4 pt-2 ">
-
+        <BlurFade delay={0.5} inView>
           <ul className="px-2 flex flex-col gap-1.5">
 
             <li className="font-semibold text-md font-sans">Stack</li>
@@ -77,7 +78,8 @@ export default function Home() {
               TailwindCSS
             </li>
           </ul>
-
+          </BlurFade>
+          <BlurFade delay={0.5} inView>
           <ul className="px-2 flex flex-col gap-1.5">
 
             <li className=" font-sans ">
@@ -91,26 +93,22 @@ export default function Home() {
               </a>
             </li>
 
-            
-
             <li className="font-sans text-sm text-zinc-700 dark:text-zinc-400 transition-all">
               <a href="" className="text-zinc-700 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200 flex gap-1 items-center hover:cursor-pointer">
                 <TbFolderFilled className="w-4 h-4" />
                 DevFlow
               </a>
             </li>
-
-
-
-
           </ul>
+          </BlurFade>
         </div>
 
-        <div className="w-full max-w-2xl min-h-[2000px] flex bg-red-500/20 mx-auto">
+        <div className="w-full max-w-2xl min-h-[2000px] flex mx-auto">
 
         </div>
 
         <div className=" w-full max-w-[250px] h-fit sticky top-14  flex flex-col gap-6 pt-2 ">
+        <BlurFade delay={0.5} inView>
           <ul className="px-2 flex flex-col gap-1.5">
 
             <li className="font-semibold text-md font-sans">On This Page</li>
@@ -146,6 +144,7 @@ export default function Home() {
             </li>
 
           </ul>
+          </BlurFade>
         </div>
       </div>
     </div>
