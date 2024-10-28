@@ -34,9 +34,9 @@ export default function Home() {
   return (
     <div className=" flex justify-center mt-14">
 
-      <div className=" w-full max-w-6xl flex">
+      <div className=" w-full max-w-2xl flex justify-center">
         
-        <div className="w-full max-w-2xl min-h-[2000px] flex mx-auto">
+        <div className="w-full max-w-2xl min-h-[2000px] ">
           <section className="w-full px-4 pt-4 animate-[downblur_2s_ease-in-out] flex flex-col gap-4">
             <div className="grid grid-cols-4">
               <div className="flex flex-col gap-2 col-span-3">
@@ -69,46 +69,59 @@ export default function Home() {
 
         </div>
 
-        <div className=" w-full max-w-[250px] h-screen sticky top-14  flex flex-col gap-6 pt-2 ">
-          <BlurFade delay={0.5} inView>
-            <ul className="px-2 flex flex-col gap-1.5">
-
-              <li className="font-semibold text-md font-sans">On This Page</li>
-
-              <li className="font-sans text-md text-zinc-700 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200 flex gap-1 items-center hover:cursor-pointer">
-                <a href="">
-                  Introduction
-                </a>
-              </li>
-
-              <li className="font-sans text-md text-zinc-700 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200 flex gap-1 items-center hover:cursor-pointer">
-                <a href="">
-                  About
-                </a>
-              </li>
-
-              <li className="font-sans text-md text-zinc-700 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200 flex gap-1 items-center hover:cursor-pointer">
-                <a href="">
-                  Education
-                </a>
-              </li>
-
-              <li className="font-sans text-md text-zinc-700 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200 flex gap-1 items-center hover:cursor-pointer">
-                <a href="">
-                  Experience
-                </a>
-              </li>
-
-              <li className="font-sans text-md text-zinc-700 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200 flex gap-1 items-center hover:cursor-pointer">
-                <a href="">
-                  Contact
-                </a>
-              </li>
-
-            </ul>
-          </BlurFade>
-        </div>
+        
       </div>
+      <div className=" w-full w-fit h-screen sticky justify-center top-14  flex flex-col gap-6 pt-2 ">
+        <BlurFade delay={0.5} inView>
+            
+              <ul className="px-2 flex flex-col gap-3 ">
+  
+  
+                <li className="font-sans text-sm text-zinc-700 dark:text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-400 flex gap-1 items-center hover:cursor-pointer transition-all">
+                  <a href="">
+                    Introduction
+                  </a>
+                </li>
+  
+                <li className="font-sans text-sm text-zinc-700 dark:text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-400 flex gap-1 items-center hover:cursor-pointer transition-all">
+                  <a href="">
+                    About
+                  </a>
+                </li>
+
+                <li className="font-sans text-sm text-zinc-700 dark:text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-400 flex gap-1 items-center hover:cursor-pointer transition-all">
+                  <a href="">
+                    Stack
+                  </a>
+                </li>
+
+                <li className="font-sans text-sm text-zinc-700 dark:text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-400 flex gap-1 items-center hover:cursor-pointer transition-all">
+                  <a href="">
+                    Projects
+                  </a>
+                </li>
+  
+                <li className="font-sans text-sm text-zinc-700 dark:text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-400 flex gap-1 items-center hover:cursor-pointer transition-all">
+                  <a href="">
+                    Education
+                  </a>
+                </li>
+  
+                <li className="font-sans text-sm text-zinc-700 dark:text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-400 flex gap-1 items-center hover:cursor-pointer transition-all">
+                  <a href="">
+                    Experience
+                  </a>
+                </li>
+  
+                <li className="font-sans text-sm text-zinc-700 dark:text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-400 flex gap-1 items-center hover:cursor-pointer transition-all">
+                  <a href="">
+                    Contact
+                  </a>
+                </li>
+  
+              </ul>
+            </BlurFade>
+        </div>
     </div>
   );
 }
