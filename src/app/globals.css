@@ -77,6 +77,18 @@ body {
   }
 }
 
+@font-face {
+  font-family: 'regularFont';
+  src: url('/fonts/Satoshi-Regular.otf') format('otf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Apply the font globally */
+body {
+  font-family: 'regularFont', sans-serif;
+}
+
 @keyframes example {
   from {
     opacity: 0;
@@ -104,4 +116,8 @@ body {
     opacity: 1;
     transform:translateX(0px)
   }
+}
+
+html {
+  scroll-behavior: smooth;
 }

@@ -9,6 +9,9 @@ const config: Config = {
   ],
   theme: {
   	extend: {
+		fontFamily: {
+			regularFont: ['"regularFont"', 'sans-serif'],
+		},
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
@@ -58,6 +61,7 @@ const config: Config = {
   		}
   	}
   },
+  
   plugins: [require("tailwindcss-animate")],
 };
 export default config;
