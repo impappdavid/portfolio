@@ -14,7 +14,7 @@ export default function Navbar() {
         
             <div className="w-full fixed top-0 animate-[example_1s_ease-in-out]">
                 
-                <div className="mx-auto w-full max-w-6xl h-[50px] flex items-center justify-between px-2 pt-1 backdrop-blur-lg">
+                <div className="mx-auto px-4 sm:px-0 w-full max-w-6xl h-[50px] flex items-center justify-between px-2 pt-1 backdrop-blur-lg">
 
                     <div className="text-xl font-semibold flex gap-2 items-center font-mono">
                         <div className="w-6 h-6 bg-zinc-900 dark:bg-white rounded-lg flex items-center justify-center">
