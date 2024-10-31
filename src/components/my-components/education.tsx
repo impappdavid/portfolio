@@ -50,7 +50,7 @@ export default function Education() {
                                     <div className="relative col-span-12 px-4 space-y-6 sm:col-span-12">
                                         <div className="col-span-12 space-y-12 relative px-4 col-span-8 space-y-8 before:absolute before:top-2 before:bottom-0 before:w-0.5 before:-left-3 before:dark:bg-zinc-700 before:bg-zinc-400">
                                             <div className="flex flex-col relative before:absolute before:top-2 before:w-3 before:h-3 before:rounded-full before:left-[-33px] before:z-[1] before:dark:bg-white before:bg-zinc-600">
-                                                <h3 className="text-xl font-semibold tracking-wide">Graduated from middle school</h3>
+                                                <h3 className="text-xl font-semibold tracking-wide">Professional exam</h3>
                                                 <time className="text-xs tracking-wide text-zinc-600 dark:text-zinc-400 font-sans">Jun 2023</time>
                                                 <p className="mt-3 flex gap-1 items-center">
                                                     <GiGraduateCap className="w-4 h-4" />
