@@ -34,6 +34,8 @@ import { Button } from "@/components/ui/button";
 
 import { AiFillGithub } from "react-icons/ai";
 import Education from "@/components/my-components/education";
+import Experience from "@/components/my-components/experience";
+import Contact from "@/components/my-components/contact";
 const BLUR_FADE_DELAY = 0.04;
 
 
@@ -134,9 +136,9 @@ export default function Home() {
                 <TooltipProvider>
                   <Tooltip>
                     <TooltipTrigger asChild>
-                      <div className="w-16 h-16 border bg-zinc-100 dark:bg-zinc-900 rounded-xl flex justify-center items-center hover:cursor-pointer">
-                        <div className="w-12 h-12 bg-blue-700/20 rounded-lg flex justify-center items-center">
-                          <BiLogoTypescript className="w-8 h-8 text-blue-700 rounded-md" />
+                      <div className="w-16 h-16 border bg-zinc-100 dark:bg-zinc-900 rounded-xl flex justify-center items-center hover:cursor-pointer hover:border-zinc-300 dark:hover:border-zinc-700 transition-all">
+                        <div className="w-12 h-12 bg-blue-700/20 dark:bg-blue-500/20 rounded-lg flex justify-center items-center">
+                          <BiLogoTypescript className="w-8 h-8 text-blue-700 dark:text-blue-500 rounded-md" />
 
                         </div>
                       </div>
@@ -150,7 +152,7 @@ export default function Home() {
                 <TooltipProvider>
                   <Tooltip>
                     <TooltipTrigger asChild>
-                      <div className="w-16 h-16 border bg-zinc-100 dark:bg-zinc-900 rounded-xl flex justify-center items-center hover:cursor-pointer">
+                      <div className="w-16 h-16 border bg-zinc-100 dark:bg-zinc-900 rounded-xl flex justify-center items-center hover:cursor-pointer hover:border-zinc-300 dark:hover:border-zinc-700 transition-all">
                         <div className="w-12 h-12 bg-sky-600/20 rounded-lg flex justify-center items-center">
                           <FaReact className="w-8 h-8 text-sky-400 rounded-md" />
 
@@ -166,7 +168,7 @@ export default function Home() {
                 <TooltipProvider>
                   <Tooltip>
                     <TooltipTrigger asChild>
-                      <div className="w-16 h-16 border bg-zinc-100 dark:bg-zinc-900 rounded-xl flex justify-center items-center hover:cursor-pointer">
+                      <div className="w-16 h-16 border bg-zinc-100 dark:bg-zinc-900 rounded-xl flex justify-center items-center hover:cursor-pointer hover:border-zinc-300 dark:hover:border-zinc-700 transition-all">
                         <div className="w-12 h-12 bg-orange-700/20 rounded-lg flex justify-center items-center">
                           <FaGitAlt className="w-8 h-8 text-orange-600 rounded-md" />
 
@@ -182,7 +184,7 @@ export default function Home() {
                 <TooltipProvider>
                   <Tooltip>
                     <TooltipTrigger asChild>
-                      <div className="w-16 h-16 border bg-zinc-100 dark:bg-zinc-900 rounded-xl flex justify-center items-center hover:cursor-pointer">
+                      <div className="w-16 h-16 border bg-zinc-100 dark:bg-zinc-900 rounded-xl flex justify-center items-center hover:cursor-pointer hover:border-zinc-300 dark:hover:border-zinc-700 transition-all">
                         <div className="w-12 h-12 bg-sky-500/20 rounded-lg flex justify-center items-center">
                           <RiTailwindCssFill className="w-8 h-8 text-sky-500 rounded-md" />
 
@@ -198,7 +200,7 @@ export default function Home() {
                 <TooltipProvider>
                   <Tooltip>
                     <TooltipTrigger asChild>
-                      <div className="w-16 h-16 border bg-zinc-100 dark:bg-zinc-900 rounded-xl flex justify-center items-center hover:cursor-pointer">
+                      <div className="w-16 h-16 border bg-zinc-100 dark:bg-zinc-900 rounded-xl flex justify-center items-center hover:cursor-pointer hover:border-zinc-300 dark:hover:border-zinc-700 transition-all">
                         <div className="w-12 h-12 bg-sky-500/20 rounded-lg flex justify-center items-center">
                           <DiMysql className="w-8 h-8 text-sky-500 rounded-md" />
 
@@ -214,7 +216,7 @@ export default function Home() {
                 <TooltipProvider>
                   <Tooltip>
                     <TooltipTrigger asChild>
-                      <div className="w-16 h-16 border bg-zinc-100 dark:bg-zinc-900 rounded-xl flex justify-center items-center hover:cursor-pointer">
+                      <div className="w-16 h-16 border bg-zinc-100 dark:bg-zinc-900 rounded-xl flex justify-center items-center hover:cursor-pointer hover:border-zinc-300 dark:hover:border-zinc-700 transition-all">
                         <div className="w-12 h-12 bg-green-500/20 rounded-lg flex justify-center items-center">
                           <FaNodeJs className="w-8 h-8 text-green-500 rounded-md" />
 
@@ -230,7 +232,7 @@ export default function Home() {
                 <TooltipProvider>
                   <Tooltip>
                     <TooltipTrigger asChild>
-                      <div className="w-16 h-16 border bg-zinc-100 dark:bg-zinc-900 rounded-xl flex justify-center items-center hover:cursor-pointer">
+                      <div className="w-16 h-16 border bg-zinc-100 dark:bg-zinc-900 rounded-xl flex justify-center items-center hover:cursor-pointer hover:border-zinc-300 dark:hover:border-zinc-700 transition-all">
                         <div className="w-12 h-12 bg-zinc-400/30 dark:bg-black/20 rounded-lg flex justify-center items-center">
                           <IoLogoVercel className="w-8 h-8 text-white-500 rounded-md" />
 
@@ -246,7 +248,7 @@ export default function Home() {
                 <TooltipProvider>
                   <Tooltip>
                     <TooltipTrigger asChild>
-                      <div className="w-16 h-16 border bg-zinc-100 dark:bg-zinc-900 rounded-xl flex justify-center items-center hover:cursor-pointer">
+                      <div className="w-16 h-16 border bg-zinc-100 dark:bg-zinc-900 rounded-xl flex justify-center items-center hover:cursor-pointer hover:border-zinc-300 dark:hover:border-zinc-700 transition-all">
                         <div className="w-12 h-12 bg-zinc-400/30 dark:bg-black/20 rounded-lg flex justify-center items-center">
                           <SiRender className="w-8 h-8 text-white-500 rounded-md" />
 
@@ -262,7 +264,7 @@ export default function Home() {
                 <TooltipProvider>
                   <Tooltip>
                     <TooltipTrigger asChild>
-                      <div className="w-16 h-16 bg-zinc-100 border dark:bg-zinc-900 rounded-xl flex justify-center items-center hover:cursor-pointer">
+                      <div className="w-16 h-16 bg-zinc-100 border dark:bg-zinc-900 rounded-xl flex justify-center items-center hover:cursor-pointer hover:border-zinc-300 dark:hover:border-zinc-700 transition-all">
                         <div className="w-12 h-12 bg-zinc-400/30 dark:bg-black/20 rounded-lg flex justify-center items-center">
                           <SiShadcnui className="w-8 h-8 text-white-500 rounded-md" />
 
@@ -333,19 +335,9 @@ export default function Home() {
           <Education/>
 
 
-          <section className="w-full flex flex-col gap-4 animate-[downblur_4s_ease-in-out]" id="aboutme">
-            <div className=" flex flex-col gap-4 px-4 sm:px-0">
-              <h3 className="text-3xl font-medium font-regularFont ">Experience</h3>
+          <Experience/>
 
-            </div>
-          </section>
-
-          <section className="w-full flex flex-col gap-4 animate-[downblur_4.5s_ease-in-out]" id="aboutme">
-            <div className=" flex flex-col gap-4 px-4 sm:px-0">
-              <h3 className="text-3xl font-medium font-regularFont ">Contact</h3>
-
-            </div>
-          </section>
+          <Contact />
 
 
 
