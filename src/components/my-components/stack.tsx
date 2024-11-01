@@ -19,7 +19,7 @@ export default function Stack() {
     return (
         <section className="w-full flex flex-col gap-4 animate-[downblur_2.5s_ease-in-out] px-4 sm:px-0" id="stack">
             <div className=" flex flex-col gap-4">
-                <h3 className="text-3xl font-medium font-regularFont ">Stack</h3>
+                <h3 className="text-3xl font-medium font-regularFont ">Stack <span className="text-xs text-zinc-600 dark:text-zinc-400">(hover the smaller icons)</span></h3>
 
                 <div className="grid sm:grid-cols-3 gap-2">
                     <div className="flex px-2 py-2 bg-zinc-100 dark:bg-zinc-900 w-full rounded-xl gap-3 items-center hover:cursor-pointer border hover:border-zinc-300 hover:bg-zinc-200 dark:hover:border-zinc-700 dark:hover:bg-zinc-800/60 transition-all">
