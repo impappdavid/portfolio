@@ -1,7 +1,6 @@
 import GridPattern from "@/components/magicui/grid-pattern";
 import { cn } from "@/lib/utils";
 import Education from "@/components/my-components/education";
-import Experience from "@/components/my-components/experience";
 import Contact from "@/components/my-components/contact";
 import Introduction from "@/components/my-components/introduction";
 import AboutMe from "@/components/my-components/aboutme";

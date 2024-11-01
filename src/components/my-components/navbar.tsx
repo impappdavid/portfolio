@@ -1,11 +1,9 @@
 import Link from "next/link";
-import { Button } from "../ui/button";
 import { AiFillGithub } from "react-icons/ai";
 import { AiFillLinkedin } from "react-icons/ai";
 import { BsTwitterX } from "react-icons/bs";
 import { ModeToggle } from "../mode-toggle";
 import { HiAtSymbol } from "react-icons/hi";
-import BlurFade from "../magicui/blur-fade";
 
 
 

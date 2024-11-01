@@ -1,4 +1,4 @@
-import BlurFade from "../magicui/blur-fade";
+
 import {
     Accordion,
     AccordionContent,

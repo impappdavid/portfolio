@@ -3,7 +3,6 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import Navbar from "@/components/my-components/navbar";
-import BlurFade from "@/components/magicui/blur-fade";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",

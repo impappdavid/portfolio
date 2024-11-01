@@ -1,5 +1,3 @@
-import BlurFade from "../magicui/blur-fade";
-
 
 
 export default function Experience() {
