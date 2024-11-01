@@ -5,7 +5,7 @@ export default function AboutMe() {
             <div className=" flex flex-col gap-4 px-4 sm:px-0">
                 <h3 className="text-3xl font-medium font-regularFont ">About</h3>
                 <div className=" text-zinc-600 text-sm dark:text-zinc-300 tracking-wide leading-relaxed font-regularFont">
-                    I’m a <span className="text-zinc-700 dark:text-zinc-100 text-md font-semibold">software developer</span> focused on <span className="text-zinc-700 dark:text-zinc-100 text-md font-semibold">frontend development</span> with skills in both <span className="text-zinc-700 dark:text-zinc-100 text-md font-semibold">frontend</span> and <span className="text-zinc-700 dark:text-zinc-100 text-md font-semibold">backend</span> technologies.
+                    I’m a <span className="text-zinc-700 dark:text-zinc-100 text-md font-semibold">software developer</span> focused on <span className="text-zinc-700 dark:text-zinc-100 text-md font-semibold">frontend development</span> with skills in <span className="text-zinc-700 dark:text-zinc-100 text-md font-semibold">backend</span> technologies as well.
                     
                 </div>
             </div>
