@@ -21,7 +21,7 @@ export default function Navbar() {
                             <HiAtSymbol className="w-4 h-4 text-white dark:text-black" />
 
                         </div>
-                        Papp David
+                        Papp Dávid
                     </div>
 
                     <div className="flex items-center gap-2">
