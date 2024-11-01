@@ -84,7 +84,6 @@ body {
   font-style: normal;
 }
 
-/* Apply the font globally */
 body {
   font-family: 'regularFont', sans-serif;
 }
@@ -93,12 +92,12 @@ body {
   from {
     opacity: 0;
     filter: blur(5px);
-    transform:translateY(-100px)
+    transform:translateY(-100px);
   }
   to {
     filter: blur(0px);
     opacity: 1;
-    transform:translateY(0px)
+    transform:translateY(0px);
   }
 }
 
@@ -106,7 +105,7 @@ body {
   0% {
     opacity: 0;
     filter: blur(5px);
-    transform:translateX(50px)
+    transform:translateX(50px);
   }
   50%{
     opacity: 0;
@@ -114,7 +113,7 @@ body {
   100% {
     filter: blur(0px);
     opacity: 1;
-    transform:translateX(0px)
+    transform:translateX(0px);
   }
 }
 
@@ -123,23 +122,23 @@ html {
 }
 
 body::-webkit-scrollbar {
-  width: 6px;             /* width of the entire scrollbar */
+  width: 6px;             
 }
 
 body::-webkit-scrollbar-track {
-  background: transparent;        /* color of the tracking area */
+  background: transparent;       
 }
 
 body::-webkit-scrollbar-thumb {
-  background-color: rgba(44, 44, 44, 0.466);    /* color of the scroll thumb */
-  border-radius: 20px;       /* roundness of the scroll thumb */
+  background-color: rgba(44, 44, 44, 0.466);    
+  border-radius: 20px;       
   transition: all .5s;
 }
 
 body::-webkit-scrollbar-thumb:hover {
   cursor: pointer;
-  background-color: rgba(59, 59, 59, 0.466);    /* color of the scroll thumb */
-  border-radius: 20px;       /* roundness of the scroll thumb */
+  background-color: rgba(59, 59, 59, 0.466);    
+  border-radius: 20px;       
   
 }
 
