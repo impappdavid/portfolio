@@ -12,7 +12,7 @@ import BlurFade from "../magicui/blur-fade";
 export default function Navbar() {
     return (
         
-            <div className="w-full fixed top-0 animate-[example_1s_ease-in-out]">
+            <div className="w-full fixed top-0 animate-[example_1s_ease-in-out] z-50">
                 
                 <div className="mx-auto px-4 sm:px-0 w-full max-w-6xl h-[50px] flex items-center justify-between px-2 pt-1 backdrop-blur-lg">
 

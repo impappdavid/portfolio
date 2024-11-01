@@ -43,7 +43,7 @@ const BLUR_FADE_DELAY = 0.04;
 export default function Home() {
   return (
     <>
-      <div className="w-full flex justify-center mt-16 " id="introduction">
+      <div className="w-full flex justify-center mt-16 pb-32" id="introduction">
         <GridPattern
           width={25}
           height={25}
@@ -53,7 +53,7 @@ export default function Home() {
             "[mask-image:linear-gradient(to_bottom,white,transparent,transparent)] opacity-20",
           )}
         />
-        <div className="w-full max-w-2xl min-h-[2000px] flex flex-col gap-12" >
+        <div className="w-full max-w-2xl h-fit  flex flex-col gap-12" >
 
           <section className="w-full pt-4 animate-[downblur_2s_ease-in-out] flex flex-col gap-4" >
 
@@ -286,7 +286,7 @@ export default function Home() {
               <div className="grid sm:grid-cols-2 gap-4">
 
                 <div className="w-full bg-zinc-100 dark:bg-zinc-900 border p-0.5 rounded-xl hover:cursor-pointer hover:border-zinc-300 dark:hover:border-zinc-700 transition-all">
-                  <img src="/portfolio.png" alt="portfolio.png" className="w-full max-h-44 rounded-xl	hidden dark:flex" />
+                  <img src="/portfolio.png" alt="portfolio.png" className="w-full aspect-video sm:h-22  rounded-xl	hidden dark:flex" />
                   <img src="/lightportfolio.png" alt="portfolio.png" className="w-full max-h-44 rounded-xl  flex dark:hidden	" />
                   <div className="p-1 flex flex-col gap-2">
                     <div className="flex justify-between items-center">

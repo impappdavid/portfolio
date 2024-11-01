@@ -121,3 +121,25 @@ body {
 html {
   scroll-behavior: smooth;
 }
+
+body::-webkit-scrollbar {
+  width: 6px;             /* width of the entire scrollbar */
+}
+
+body::-webkit-scrollbar-track {
+  background: transparent;        /* color of the tracking area */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: rgba(44, 44, 44, 0.466);    /* color of the scroll thumb */
+  border-radius: 20px;       /* roundness of the scroll thumb */
+  transition: all .5s;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  cursor: pointer;
+  background-color: rgba(59, 59, 59, 0.466);    /* color of the scroll thumb */
+  border-radius: 20px;       /* roundness of the scroll thumb */
+  
+}
+
