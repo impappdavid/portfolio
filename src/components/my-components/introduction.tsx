@@ -5,6 +5,8 @@ import { FaMapMarkerAlt } from "react-icons/fa";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
 export default function Introduction() {
+    const birthday = '2002-12-21'; // Replace with your birthday
+    const age = calculateAge(birthday);
     return (
         <section className="w-full pt-4 animate-[downblur_2s_ease-in-out] flex flex-col gap-4" >
 
@@ -16,7 +18,7 @@ export default function Introduction() {
                     <div className="flex gap-4 flex-wrap">
                         <div className="flex gap-1 items-center">
                             <FaUser className="w-3 h-3 text-zinc-600 dark:text-zinc-400" />
-                            <div className="text-xs font-regularFont text-zinc-600 dark:text-zinc-400">21 years old</div>
+                            <div className="text-xs font-regularFont text-zinc-600 dark:text-zinc-400">{age} years old</div>
                         </div>
                         <div className="flex gap-1 items-center">
                             <FaMapMarkerAlt className="w-3 h-3 text-zinc-600 dark:text-zinc-400" />
@@ -37,3 +39,19 @@ export default function Introduction() {
 
     )
 };
+
+function calculateAge(birthday) {
+    const today = new Date();
+    const birthDate = new Date(birthday);
+
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const monthDifference = today.getMonth() - birthDate.getMonth();
+
+    // If birthday hasn't occurred yet this year, subtract 1 from age
+    if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+    }
+
+    return age;
+}
+
