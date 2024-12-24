@@ -11,7 +11,7 @@ export default function Contact() {
                         Get in touch with me via Twitter DM for any questions or collaborations!
                     </div>
                     <div className="w-full flex justify-center">
-                        <a href="https://x.com/Dvid50334776" target="__blank"
+                        <a href="https://x.com/impappdavid" target="__blank"
                             className="bg-black dark:bg-white p-1 px-3 w-fit rounded-lg flex gap-1 items-center text-lg hover:text-white text-zinc-300 dark:hover:text-black transition-all dark:text-zinc-600">
                             <FaXTwitter className="w-4 h-4" />
                             Message</a>

@@ -33,7 +33,7 @@ export default function Navbar() {
                                 <AiFillLinkedin className="w-5 h-5" />
                             </Link>
 
-                            <Link href="https://x.com/Dvid50334776" className="hover:bg-zinc-100 dark:hover:bg-zinc-800 p-2 rounded-xl transition-all" target="_blank">
+                            <Link href="https://x.com/impappdavid" className="hover:bg-zinc-100 dark:hover:bg-zinc-800 p-2 rounded-xl transition-all" target="_blank">
                                 <BsTwitterX />
                             </Link>
                         </div>
