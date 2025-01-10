@@ -39,7 +39,7 @@ interface TweetListProps {
 }
 
 // Define the tweets array with unique code strings for each tweet
-const tweets = [
+const tweets: Tweet[] = [
     /*
     Example data structure
     {
@@ -64,8 +64,11 @@ console.log(add(2, 3)); // Output: 5
     */    
 ];
 
-// CodeSnippetCard component now accepts `codeString` as a prop
-const CodeSnippetCard = ({ codeString }) => {
+interface CodeSnippetCardProps {
+    codeString: string;
+}
+
+const CodeSnippetCard = ({ codeString }: CodeSnippetCardProps) => {
     const [copied, setCopied] = useState(false);
 
     const handleCopy = () => {
@@ -105,7 +108,7 @@ const CodeSnippetCard = ({ codeString }) => {
     );
 };
 
-const Insight = ({tweet})=>{
+const Insight = ({tweet}: {tweet: Tweet}) => {
     return(
         
         <div className={`grid h-full gap-2 ${tweet.tweetImg.length > 1 ? "grid-cols-2" : "grid-cols-1"}`}>
@@ -215,7 +218,7 @@ function TweetList({ data }: TweetListProps) {
                 ))
             ) : (
                 <div className="text-center text-zinc-500 text-xs p-4">
-                    No tasks found matching your criteria.
+                    No tasks found.
                 </div>
             )}
         </div>

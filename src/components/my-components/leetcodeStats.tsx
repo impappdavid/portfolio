@@ -18,7 +18,7 @@ const LeetCodeStats = () => {
     totalHard: 784,
   });
 
-  const fetchLeetCodeStats = async (username) => {
+  const fetchLeetCodeStats = async (username: string) => {
     try {
       const response = await fetch(`https://leetcode-stats-api.herokuapp.com/${username}`);
       if (!response.ok) throw new Error('Failed to fetch stats');
