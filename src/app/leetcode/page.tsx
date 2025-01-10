@@ -1,12 +1,7 @@
 "use client"
+import { Suspense } from 'react';
 import GridPattern from "@/components/magicui/grid-pattern";
 import { cn } from "@/lib/utils";
-import Education from "@/components/my-components/education";
-import Contact from "@/components/my-components/contact";
-import Introduction from "@/components/my-components/introduction";
-import AboutMe from "@/components/my-components/aboutme";
-import Stack from "@/components/my-components/stack";
-import Projects from "@/components/my-components/projects";
 import TweetCard from "@/components/my-components/tweetCard";
 import LeetCodeStats from "@/components/my-components/leetcodeStats";
 import LeetCodeSideBar from "@/components/my-components/leetCodeSideBar";
@@ -31,18 +26,24 @@ export default function LeetCode() {
                 />
                 <div className="flex w-full justify-center">
                     <div className="w-full max-w-64 h-fit flex flex-col gap-12 sticky top-14" >
-                        <LeetCodeSideBar />
+                        <Suspense fallback={<div>Loading sidebar...</div>}>
+                            <LeetCodeSideBar />
+                        </Suspense>
                     </div>
                     <div className="w-full max-w-xl h-fit flex flex-col gap-4 border-x backdrop-blur-sm animate-[upblur_2s_ease-in-out]" >
-                        <TweetCard 
-                            data={{
-                                searchQuery,
-                                typeFilter
-                            }}
-                        />
+                        <Suspense fallback={<div>Loading tweets...</div>}>
+                            <TweetCard 
+                                data={{
+                                    searchQuery,
+                                    typeFilter
+                                }}
+                            />
+                        </Suspense>
                     </div>
                     <div className="w-full max-w-64 h-fit flex flex-col gap-12 sticky top-14" >
-                        <LeetCodeStats />
+                        <Suspense fallback={<div>Loading stats...</div>}>
+                            <LeetCodeStats />
+                        </Suspense>
                     </div>
                 </div>
             </div>
