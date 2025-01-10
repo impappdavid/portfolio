@@ -35,7 +35,7 @@ const LeetCodeSideBar = () => {
     };
 
     return (
-        <div className="w-full flex flex-col justify-end gap-2 text-md px-2 hidden xl:flex animate-[upblur_3s_ease-in-out]">
+        <div className="w-full flex flex-col justify-end gap-2 text-md px-2 ">
             <Input 
                 type="text" 
                 className='dark:bg-zinc-900/70 bg-zinc-100' 

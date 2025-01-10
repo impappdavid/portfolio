@@ -40,8 +40,8 @@ interface TweetListProps {
 
 // Define the tweets array with unique code strings for each tweet
 const tweets: Tweet[] = [
-    /*
-    Example data structure
+   /*
+   Example data structure
     {
         tweetDate: "2024.12.21",
         taskName: "1.Two sum",
@@ -60,8 +60,8 @@ const add = (a, b) => {
         
 console.log(add(2, 3)); // Output: 5
         `,
-    },
-    */    
+    }, 
+    */
 ];
 
 interface CodeSnippetCardProps {
@@ -144,7 +144,7 @@ function TweetList({ data }: TweetListProps) {
     });
 
     return (
-        <div className="flex flex-col ">
+        <div className="flex flex-col w-full">
             {filteredTweets.length > 0 ? (
                 filteredTweets.map((tweet, index) => (
                     <div
@@ -217,7 +217,7 @@ function TweetList({ data }: TweetListProps) {
                     </div>
                 ))
             ) : (
-                <div className="text-center text-zinc-500 text-xs p-4">
+                <div className="text-center text-zinc-500 text-xs p-12">
                     No tasks found.
                 </div>
             )}

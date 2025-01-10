@@ -46,7 +46,7 @@ const LeetCodeStats = () => {
 
 
   return (
-    <div className="flex flex-col items-center  text-white px-2 rounded-lg w-72 hidden xl:flex  animate-[upblur_3s_ease-in-out]">
+    <div className="flex flex-col items-center  text-white px-2 rounded-lg w-72 ">
       <div className=" w-full grid gap-2 grid-cols-3">
         <div className="text-xs text-cyan-500 p-2 bg-zinc-100 dark:bg-zinc-900/70 backdrop-blur-xl border rounded-md flex flex-col text-center">Easy <span className='text-zinc-400'>{stats.easySolved}/{stats.totalEasy}</span></div>
         <div className="text-xs text-orange-500 p-2 bg-zinc-100 dark:bg-zinc-900/70 backdrop-blur-xl border rounded-md flex flex-col text-center">Med. <span className='text-zinc-400'>{stats.mediumSolved}/{stats.totalMedium}</span></div>

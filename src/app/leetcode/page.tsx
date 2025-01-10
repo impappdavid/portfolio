@@ -24,7 +24,7 @@ function LeetCodeContent() {
                 )}
             />
             <div className="flex w-full justify-center">
-                <div className="w-full max-w-64 h-fit flex flex-col gap-12 sticky top-14" >
+                <div className="w-full max-w-64 h-fit flex flex-col gap-12 sticky top-14 hidden xl:flex animate-[upblur_3s_ease-in-out]" >
                     <LeetCodeSideBar />
                 </div>
                 <div className="w-full max-w-xl h-fit flex flex-col gap-4 border-x backdrop-blur-sm animate-[upblur_2s_ease-in-out]" >
@@ -35,7 +35,7 @@ function LeetCodeContent() {
                         }}
                     />
                 </div>
-                <div className="w-full max-w-64 h-fit flex flex-col gap-12 sticky top-14" >
+                <div className="w-full max-w-64 h-fit flex flex-col gap-12 sticky top-14 hidden xl:flex animate-[upblur_3s_ease-in-out]" >
                     <LeetCodeStats />
                 </div>
             </div>
