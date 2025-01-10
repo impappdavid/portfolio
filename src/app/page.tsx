@@ -6,6 +6,7 @@ import Introduction from "@/components/my-components/introduction";
 import AboutMe from "@/components/my-components/aboutme";
 import Stack from "@/components/my-components/stack";
 import Projects from "@/components/my-components/projects";
+import LeetcodeCard from "@/components/my-components/leetcodeCard";
 
 
 
@@ -33,6 +34,7 @@ export default function Home() {
 
           <Education />
 
+          <LeetcodeCard />
 
           <Contact />
         </div>

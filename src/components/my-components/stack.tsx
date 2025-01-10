@@ -22,6 +22,15 @@ export default function Stack() {
                 <h3 className="text-3xl font-medium font-regularFont ">Stack <span className="text-xs text-zinc-600 dark:text-zinc-400">(hover the smaller icons)</span></h3>
 
                 <div className="grid sm:grid-cols-3 gap-2">
+                <div className="flex px-2 py-2 bg-zinc-100 dark:bg-zinc-900 w-full rounded-xl gap-3 items-center hover:cursor-pointer border hover:border-zinc-300 hover:bg-zinc-200 dark:hover:border-zinc-700 dark:hover:bg-zinc-800/60 transition-all">
+                        <div className="w-12 h-12 bg-orange-500/20 rounded-lg flex justify-center items-center">
+                            <RiSvelteFill className="w-8 h-8 text-orange-500 rounded-md" />
+                        </div>
+                        <div className="flex flex-col pr-3">
+                            <div className="text-md font-regularFont tracking-wide">Svelte</div>
+                            <div className="text-xs text-zinc-400 tracking-wide	">JavaScript framework</div>
+                        </div>
+                    </div>
                     <div className="flex px-2 py-2 bg-zinc-100 dark:bg-zinc-900 w-full rounded-xl gap-3 items-center hover:cursor-pointer border hover:border-zinc-300 hover:bg-zinc-200 dark:hover:border-zinc-700 dark:hover:bg-zinc-800/60 transition-all">
                         <div className="w-12 h-12 bg-zinc-400/30 dark:bg-black/20 rounded-lg flex justify-center items-center">
                             <RiNextjsFill className="w-8 h-8 text-black dark:text-white rounded-md" />
@@ -31,15 +40,7 @@ export default function Stack() {
                             <div className="text-xs text-zinc-400 tracking-wide	">React framework</div>
                         </div>
                     </div>
-                    <div className="flex px-2 py-2 bg-zinc-100 dark:bg-zinc-900 w-full rounded-xl gap-3 items-center hover:cursor-pointer border hover:border-zinc-300 hover:bg-zinc-200 dark:hover:border-zinc-700 dark:hover:bg-zinc-800/60 transition-all">
-                        <div className="w-12 h-12 bg-orange-500/20 rounded-lg flex justify-center items-center">
-                            <RiSvelteFill className="w-8 h-8 text-orange-500 rounded-md" />
-                        </div>
-                        <div className="flex flex-col pr-3">
-                            <div className="text-md font-regularFont tracking-wide">Svelte</div>
-                            <div className="text-xs text-zinc-400 tracking-wide	">JavaScript framework</div>
-                        </div>
-                    </div>
+                    
 
                     <div className="flex px-2 py-2 bg-zinc-100 dark:bg-zinc-900 w-full rounded-xl gap-3 items-center hover:cursor-pointer border hover:border-zinc-300 hover:bg-zinc-200 dark:hover:border-zinc-700 dark:hover:bg-zinc-800/60 transition-all">
                         <div className="w-12 h-12 bg-red-500/20 rounded-lg flex justify-center items-center">
