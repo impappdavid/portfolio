@@ -40,28 +40,31 @@ interface TweetListProps {
 
 // Define the tweets array with unique code strings for each tweet
 const tweets: Tweet[] = [
-   /*
-   Example data structure
+   
     {
         tweetDate: "2024.12.21",
         taskName: "1.Two sum",
         taskType: "easy",
         tweetDescription:
-            "it took an insane amount of effort to go from nothing to this in 2 weeks lmao i hope yall like it 🫶 What components do you want to see next?",
+            "Solved my first LeetCode problem, Two Sum! 🚀 Used a nested loop approach and working to reduce my runtime. Excited for more challenges ahead! 💪",
         tweetImg: [
             {
                 url: "./twosum.png",
             },
         ],
         codeString: `
-const add = (a, b) => {
-    return a + b;
-};
-        
-console.log(add(2, 3)); // Output: 5
-        `,
+var twoSum = function(nums, target) {
+    for(let i = 0; i<nums.length;i++){
+        let weNeed = target - nums[i];
+        for(let x = i + 1; x<nums.length;x++){
+            if(nums[x] === weNeed){
+                return [i,x]
+            }
+        }
+    }
+    return null
+};`,
     }, 
-    */
 ];
 
 interface CodeSnippetCardProps {
@@ -122,11 +125,11 @@ const Insight = ({tweet}: {tweet: Tweet}) => {
                                     />
 
                                 </DialogTrigger>
-                                <DialogContent className="w-full h-full aspect-video">
+                                <DialogContent className="sm:w-fit sm:h-contain ">
                                     <img
                                         src={img.url}
                                         alt={tweet.taskName}
-                                        className="max-w-[1200px] h-fit aspect-auto"
+                                        className="max-w-full h-fit aspect-auto"
                                     />
                                 </DialogContent>
                             </Dialog>

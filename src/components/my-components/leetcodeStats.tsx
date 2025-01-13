@@ -36,7 +36,7 @@ const LeetCodeStats = () => {
   };
 
   useEffect(() => {
-    const username = 'impappdavid'; // Replace with your LeetCode username
+    const username = 'impappdavid'; 
     fetchLeetCodeStats(username);
   }, []);
 
