@@ -14,7 +14,7 @@ export default function Navbar() {
                 
                 <div className="mx-auto px-4 sm:px-0 w-full max-w-6xl h-[50px] flex items-center justify-between px-2 pt-1 backdrop-blur-lg">
 
-                    <a href="../" className="text-xl font-semibold flex gap-2 items-center font-mono">
+                    <a href="../../" className="text-xl font-semibold flex gap-2 items-center font-mono">
                         <div className="w-6 h-6 bg-zinc-900 dark:bg-white rounded-lg flex items-center justify-center">
                             <HiAtSymbol className="w-4 h-4 text-white dark:text-black" />
 
