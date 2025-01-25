@@ -14,26 +14,14 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import Link from "next/link"
 
 export default function CV() {
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="outline" className="fixed bottom-4 right-4 rounded-full w-12 h-12 bg-zinc-300 dark:bg-zinc-900">CV</Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-full bg-transparent">
-        <DropdownMenuSeparator />
-        <DropdownMenuGroup className="flex flex-col gap-2">
-          <DropdownMenuItem className="flex justify-center items-center" onClick={() => {
-            window.open('/Papp_Dávid_CV.pdf', '_blank');
-          }}>
-            EN
-          </DropdownMenuItem>
-          <DropdownMenuItem className="flex justify-center items-center">
-            HU
-          </DropdownMenuItem>
-        </DropdownMenuGroup>
-      </DropdownMenuContent>
-    </DropdownMenu>
+    <div className="fixed bottom-4 right-4 animate-[downblur_2s_ease-in-out]">
+      <Link href="/Papp_Dávid_CV.pdf" className="hover:bg-zinc-900/90 dark:hover:bg-zinc-100/80 transition-all p-2 rounded-full  transition-all w-12 h-12 flex items-center justify-center text-sm font-semibold bg-zinc-900 dark:bg-zinc-100 text-white dark:text-black" target="_blank">
+        CV
+      </Link>
+    </div>
   )
 }
