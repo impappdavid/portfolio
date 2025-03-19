@@ -226,7 +226,7 @@ const projectData: Record<ProjectSlug, {
                 title: "Rarity Based",
                 icon: Gauge,
                 iconColor: "group-hover:text-violet-500",
-                image: "/projects/azura/fullgenerate.png",
+                image: "/projects/azura/fullGenerate.png",
                 content: (
                     <>
                         You can choose what rarity you want to mint. There are 5 rarity each rarity has its own price and each rarity has its own supply.
