@@ -55,7 +55,7 @@ const ProjectsSidebar: React.FC<ProjectsSidebarProps> = ({ slug }) => {
 
     return (
         <div className="w-full flex flex-col justify-end gap-2 text-md px-2">
-            <div className="text-bold text-sm">Side</div>
+            <div className="text-bold text-sm">Menu</div>
             {projectContent.links.map((link, index) => (
                 link.disabled ? (
                     <span

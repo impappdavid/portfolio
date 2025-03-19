@@ -23,6 +23,7 @@ function Projects({ params }: ProjectsProps) {
     console.log("Slug on server:", params.slug);
 
     return (
+        
         <div className="w-full flex justify-center mt-12" id="introduction">
             <GridPattern
                 width={25}
