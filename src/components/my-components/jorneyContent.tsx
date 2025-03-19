@@ -1,15 +1,24 @@
-import { BadgePlus, BookDown, ImagePlus, KeyRound, MousePointer2, RectangleEllipsis, ShieldCheck, Ticket, Users, Brain, SunSnow, Type, Gauge, Store, Hammer, ChartLine, CircleFadingArrowUp, Merge, Receipt } from "lucide-react";
+import { BadgePlus, BookDown, ImagePlus, KeyRound, MousePointer2, RectangleEllipsis, ShieldCheck, Ticket, Users, Brain, SunSnow, Type, Gauge, Store, Hammer, ChartLine, CircleFadingArrowUp, Merge, Receipt, Maximize2, Expand } from "lucide-react";
 import Link from "next/link";
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogFooter,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from "@/components/ui/dialog"
 
 // Define a type for the valid slugs
 type ProjectSlug = 'cinemaview' | 'azura';
 
-const projectData: Record<ProjectSlug, { 
-    title: string; 
-    mainImage: string; 
-    about: { title: string; content: JSX.Element }; 
-    features: { id: string; title: string; icon: React.ElementType; iconColor: string; image: string; content: JSX.Element }[]; 
-    problems: { title: string; content: { id: string; content: JSX.Element }[] }; 
+const projectData: Record<ProjectSlug, {
+    title: string;
+    mainImage: string;
+    about: { title: string; content: JSX.Element };
+    features: { id: string; title: string; icon: React.ElementType; iconColor: string; image: string; content: JSX.Element }[];
+    problems: { title: string; content: { id: string; content: JSX.Element }[] };
 }> = {
     cinemaview: {
         title: "Cinema View",
@@ -277,7 +286,7 @@ const projectData: Record<ProjectSlug, {
                 image: "/projects/azura/auction1.png",
                 content: (
                     <>
-                        
+
                     </>
                 )
             },
@@ -435,11 +444,29 @@ const JourneyContent: React.FC<JourneyContentProps> = ({ slug }) => {
                     {projectContent.features.map((feature) => (
                         <div key={feature.id} className="flex flex-col gap-2" id={feature.id}>
                             <h3 className="text-xl font-semibold mt-12">{feature.title}</h3>
-                            <img
-                                src={feature.image}
-                                alt={feature.title}
-                                className="w-full aspect-auto sm:h-22 rounded-xl bg-gradient-to-br from-zinc-800 to-zinc-900"
-                            />
+                            <Dialog>
+                                <DialogTrigger asChild>
+                                    <div className="hover:cursor-pointer relative group">
+                                        <img
+                                            src={feature.image}
+                                            alt={feature.title}
+                                            className="w-full aspect-auto sm:h-22 rounded-xl bg-gradient-to-br from-zinc-800 to-zinc-900 transition-all duration-300 "
+                                        />
+                                        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                            <div className="bg-white/70 backdrop-blur-sm rounded-full p-4 shadow-lg">
+                                                <Expand className="w-10 h-10 text-zinc-800" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </DialogTrigger>
+                                <DialogContent className="sm:max-w-[1200px] sm:max-h-[600px] aspect-square">
+                                    <img
+                                        src={feature.image}
+                                        alt={feature.title}
+                                        className="w-full aspect-auto sm:h-22 rounded-xl bg-gradient-to-br from-zinc-800 to-zinc-900"
+                                    />
+                                </DialogContent>
+                            </Dialog>
                             <p className="text-sm dark:text-zinc-400 text-zinc-600">
                                 {feature.content}
                             </p>
