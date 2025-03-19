@@ -8,7 +8,18 @@ import { useRouter } from 'next/navigation'; // Use 'next/navigation' instead of
 import { useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 
-function Projects({ params }: { params: { slug: string } }) {
+// Define a type for the valid slugs
+type ProjectSlug = 'cinemaview' | 'azura';
+
+interface Params {
+    slug: ProjectSlug; // Use the defined type for slug
+}
+
+interface ProjectsProps {
+    params: Params; // Define the structure of params
+}
+
+function Projects({ params }: ProjectsProps) {
     console.log("Slug on server:", params.slug);
 
     return (

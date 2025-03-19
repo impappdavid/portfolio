@@ -2,7 +2,10 @@
 import React from 'react';
 import Link from 'next/link';
 
-const projectData = {
+// Define a type for the valid slugs
+type ProjectSlug = 'cinemaview' | 'azura';
+
+const projectData: Record<ProjectSlug, { links: { title: string; href: string; target: string; disabled: boolean; }[] }> = {
     cinemaview: {
         links: [
             {
@@ -37,13 +40,17 @@ const projectData = {
                 title: "Live demo (soon)",
                 href: "https://your-live-demo-link.com", // Custom href for Live demo
                 target: "_blank", // Opens in a new tab
-                disabled: true // Link is enabled
+                disabled: true // Link is disabled
             }
         ],
     }
 };
 
-const ProjectsSidebar = ({ slug }) => {
+interface ProjectsSidebarProps {
+    slug: ProjectSlug; // Use the defined type for slug
+}
+
+const ProjectsSidebar: React.FC<ProjectsSidebarProps> = ({ slug }) => {
     const projectContent = projectData[slug] || projectData.cinemaview; // Default to Cinema View if slug is not found
 
     return (

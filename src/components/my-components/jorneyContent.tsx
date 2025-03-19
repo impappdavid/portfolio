@@ -1,7 +1,16 @@
 import { BadgePlus, BookDown, ImagePlus, KeyRound, MousePointer2, RectangleEllipsis, ShieldCheck, Ticket, Users, Brain, SunSnow, Type, Gauge, Store, Hammer, ChartLine, CircleFadingArrowUp, Merge, Receipt } from "lucide-react";
 import Link from "next/link";
 
-const projectData = {
+// Define a type for the valid slugs
+type ProjectSlug = 'cinemaview' | 'azura';
+
+const projectData: Record<ProjectSlug, { 
+    title: string; 
+    mainImage: string; 
+    about: { title: string; content: JSX.Element }; 
+    features: { id: string; title: string; icon: React.ElementType; iconColor: string; image: string; content: JSX.Element }[]; 
+    problems: { title: string; content: { id: string; content: JSX.Element }[] }; 
+}> = {
     cinemaview: {
         title: "Cinema View",
         mainImage: "/projects/CinemaView/mockup1.png",
@@ -239,7 +248,7 @@ const projectData = {
             {
                 id: "feature5",
                 title: "",
-                icon: "",
+                icon: ImagePlus,
                 iconColor: "group-hover:text-red-500",
                 image: "/projects/azura/marketbuy.png",
                 content: (
@@ -263,7 +272,7 @@ const projectData = {
             {
                 id: "feature6",
                 title: "",
-                icon: "",
+                icon: ImagePlus,
                 iconColor: "group-hover:text-red-500",
                 image: "/projects/azura/auction1.png",
                 content: (
@@ -380,8 +389,11 @@ const projectData = {
     }
 };
 
+interface JourneyContentProps {
+    slug: ProjectSlug; // Use the defined type for slug
+}
 
-export default function JourneyContent({ slug }) {
+const JourneyContent: React.FC<JourneyContentProps> = ({ slug }) => {
     const projectContent = projectData[slug] || projectData.cinemaview; // Default to Cinema View if slug is not found
 
     return (
@@ -448,4 +460,6 @@ export default function JourneyContent({ slug }) {
             </section>
         </div>
     );
-}
+};
+
+export default JourneyContent;
