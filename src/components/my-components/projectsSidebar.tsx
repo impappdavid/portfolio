@@ -37,10 +37,10 @@ const projectData: Record<ProjectSlug, { links: { title: string; href: string; t
                 disabled: false // Link is enabled
             },
             {
-                title: "Live demo (soon)",
-                href: "https://your-live-demo-link.com", // Custom href for Live demo
+                title: "Live demo",
+                href: "https://azura-neon.vercel.app/", // Custom href for Live demo
                 target: "_blank", // Opens in a new tab
-                disabled: true // Link is disabled
+                disabled: false // Link is disabled
             }
         ],
     }
