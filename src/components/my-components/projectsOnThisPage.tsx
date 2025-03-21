@@ -12,6 +12,7 @@ const ProjectsOnThisPage = () => {
                 <div className="text-bold text-sm">On this page</div>
                 <Link href="#about" className="text-sm px-1 dark:text-zinc-400 text-zinc-600 hover:text-black  dark:hover:text-white transition-all">About</Link>
                 <Link href="#features" className="text-sm px-1 dark:text-zinc-400 text-zinc-600 hover:text-black  dark:hover:text-white transition-all">Features</Link>
+                <Link href="#problems" className="text-sm px-1 dark:text-zinc-400 text-zinc-600 hover:text-black dark:hover:text-white transition-all">Stack</Link>
                 <Link href="#problems" className="text-sm px-1 dark:text-zinc-400 text-zinc-600 hover:text-black dark:hover:text-white transition-all">Problems</Link>
             </div>
             
