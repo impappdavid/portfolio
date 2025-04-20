@@ -13,17 +13,10 @@ import LeetcodeCard from "@/components/my-components/leetcodeCard";
 export default function Home() {
   return (
     <>
-      <div className="w-full flex justify-center mt-16 pb-32" id="introduction">
-        <GridPattern
-          width={25}
-          height={25}
-          x={-1}
-          y={-1}
-          className={cn(
-            "[mask-image:linear-gradient(to_bottom,white,transparent,transparent)] opacity-20",
-          )}
-        />
-        <div className="w-full max-w-2xl h-fit  flex flex-col gap-12" >
+      <div className="flex flex-col items-center bg-zinc-900/70">
+        <div className="w-56"></div>
+        <div className="ml-56 w-full max-w-4xl h-fit flex flex-col items-center gap-12" >
+          
           <Introduction />
 
           <AboutMe />

@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import Navbar from "@/components/my-components/navbar";
 import { Analytics } from "@vercel/analytics/react"
 import CV from "@/components/my-components/cv";
+import Sidebar from "@/components/my-components/sidebar";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -39,7 +40,7 @@ export default function RootLayout({
           attribute="class"
           defaultTheme="system"
         >
-            <Navbar></Navbar>
+            <Sidebar />
           {children}
           <Analytics />
           <CV />

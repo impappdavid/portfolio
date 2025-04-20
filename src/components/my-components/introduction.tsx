@@ -7,7 +7,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 export default function Introduction() {
     
     return (
-        <section className="w-full pt-4 animate-[downblur_2s_ease-in-out] flex flex-col gap-4" >
+        <section className="w-full pt-4  animate-[downblur_2s_ease-in-out] flex flex-col gap-4 " >
 
             <div className="flex justify-between px-4 sm:px-0">
                 <div className="flex flex-col gap-2 ">
