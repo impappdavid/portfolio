@@ -1,10 +1,26 @@
 'use client';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import Link from "next/link";
+import { usePathname } from 'next/navigation';
 import { BookImage, Bookmark, BriefcaseBusiness, ChevronLeft, CodeXml, Compass, Layers2, Pen, Send, User } from "lucide-react";
-
+import { cn } from "@/lib/utils"; // You might need to create this utility
 
 export default function Sidebar() {
+    const pathname = usePathname();
+
+    const isActive = (path: string) => {
+        return pathname === path;
+    };
+
+    const linkStyle = (path: string) => {
+        return cn(
+            "flex gap-2 items-center py-1.5 px-2 rounded-lg transition-all duration-500",
+            isActive(path)
+                ? "bg-zinc-800/90 border border-zinc-700 text-white"
+                : "text-zinc-400 hover:text-white"
+        );
+    };
+    
     return (
         <>
             <div className={` bg-zinc-900 h-screen fixed top-0 flex flex-col gap-4 w-56`}>
@@ -19,30 +35,30 @@ export default function Sidebar() {
                     </div>
                 </div>
                 <div className="flex flex-col px-4 gap-1">
-                    <Link href="" className="flex gap-2 items-center bg-zinc-800/90 py-1.5 px-2 rounded-lg border border-zinc-700 transition-all duration-500">
+                    <Link href="/" className={linkStyle('/')}>
                         <Compass className="w-4 h-4" />
                         <div className="text-sm font-body">Explore</div>
                     </Link>
-                    <Link href="" className="flex gap-2 items-center  py-1.5 px-2 rounded-lg text-zinc-400 hover:text-white transition-all duration-500">
+                    <Link href="/experience" className={linkStyle('/experience')}>
                         <BriefcaseBusiness className="w-4 h-4" />
                         <div className="text-sm font-body">Experience</div>
                     </Link>
-                    <Link href="" className="flex gap-2 items-center  py-1.5 px-2 rounded-lg text-zinc-400 hover:text-white transition-all duration-500">
+                    <Link href="/projects" className={linkStyle('/projects')}>
                         <Pen className="w-4 h-4" />
                         <div className="text-sm font-body">Projects</div>
                     </Link>
-                    <Link href="" className="flex gap-2 items-center  py-1.5 px-2 rounded-lg text-zinc-400 hover:text-white transition-all duration-500">
+                    <Link href="/about" className={linkStyle('/about')}>
                         <User className="w-4 h-4" />
                         <div className="text-sm font-body">About</div>
                     </Link>
                 </div>
                 <div className="flex flex-col px-4 gap-1">
                     <div className="px-2 text-zinc-400 text-xs mb-1 font-body">Resources</div>
-                    <Link href="" className="flex gap-2 items-center  py-1.5 px-2 rounded-lg text-zinc-400 hover:text-white transition-all duration-500">
+                    <Link href="/leetcode" className={linkStyle('/leetcode')}>
                         <CodeXml className="w-4 h-4" />
                         <div className="text-sm font-body">Leetcode</div>
                     </Link>
-                    <Link href="" className="flex gap-2 items-center  py-1.5 px-2 rounded-lg text-zinc-400 hover:text-white transition-all duration-500">
+                    <Link href="/stack" className={linkStyle('/stack')}>
                         <Layers2 className="w-4 h-4" />
                         <div className="text-sm font-body">Stack</div>
                     </Link>
@@ -50,11 +66,11 @@ export default function Sidebar() {
                 </div>
                 <div className="flex flex-col px-4 gap-1">
                     <div className="px-2 text-zinc-400 text-xs mb-1 font-body">Extras</div>
-                    <Link href="" className="flex gap-2 items-center  py-1.5 px-2 rounded-lg text-zinc-400 hover:text-white transition-all duration-500">
+                    <Link href="/gallery" className={linkStyle('/gallery')}>
                         <BookImage className="w-4 h-4" />
                         <div className="text-sm font-body">Guest Gallery</div>
                     </Link>
-                    <Link href="" className="flex gap-2 items-center  py-1.5 px-2 rounded-lg text-zinc-400 hover:text-white transition-all duration-500">
+                    <Link href="/bookmarks" className={linkStyle('/bookmarks')}>
                         <Bookmark className="w-4 h-4" />
                         <div className="text-sm font-body">Bookmarks</div>
                     </Link>
@@ -62,12 +78,16 @@ export default function Sidebar() {
                 </div>
                 <div className="flex flex-col px-4 gap-1">
                     <div className="px-2 text-zinc-400 text-xs mb-1 font-body">Connect</div>
-                    <Link href="" className="flex gap-2 items-center  py-1.5 px-2 rounded-lg text-zinc-400 hover:text-white transition-all duration-500">
+                    <Link href="/contact" className={linkStyle('/contact')}>
                         <Send className="w-4 h-4" />
                         <div className="text-sm font-body">Contact</div>
                     </Link>
-                    <Link href="" className="flex gap-2 items-center  py-1.5 px-2 rounded-lg text-zinc-400 hover:text-white transition-all duration-500">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="icon icon-tabler icons-tabler-outline icon-tabler-brand-x"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M4 4l11.733 16h4.267l-11.733 -16z" /><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" /></svg>
+                    <Link 
+                        href="https://twitter.com/yourusername" 
+                        target="_blank"
+                        className="flex gap-2 items-center py-1.5 px-2 rounded-lg text-zinc-400 hover:text-white transition-all duration-500"
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="icon icon-tabler icons-tabler-outline icon-tabler-brand-x"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M4 4l11.733 16h4.267l-11.733 -16z" /><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" /></svg>
                         <div className="text-sm font-body">Twitter</div>
                     </Link>
                     <Link href="" className="flex gap-2 items-center  py-1.5 px-2 rounded-lg text-zinc-400 hover:text-white transition-all duration-500">
