@@ -1,5 +1,4 @@
-import { Button } from "@/components/ui/button"
-import { CodeXml, Copy, Layers2, Pen } from "lucide-react"
+import { Layers2, Pen } from "lucide-react"
 import Link from "next/link"
 
 function Content() {

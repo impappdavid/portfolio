@@ -1,8 +1,8 @@
-import { Button } from "@/components/ui/button"
-import { CodeXml, Copy, Layers2, MapPin, Pen } from "lucide-react"
+import { CodeXml, MapPin, Pen } from "lucide-react"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import Education from "./education"
 import Link from "next/link"
+
 function AboutContent() {
     return (
         <>

@@ -2,7 +2,7 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import Link from "next/link";
 import { usePathname } from 'next/navigation';
-import { BookImage, Bookmark, BriefcaseBusiness, ChevronLeft, CodeXml, Compass, Layers2, Pen, Send, User } from "lucide-react";
+import { BookImage, Bookmark, BriefcaseBusiness, CodeXml, Compass, Layers2, Pen, Send, User } from "lucide-react";
 import { cn } from "@/lib/utils"; // You might need to create this utility
 
 export default function Sidebar() {
@@ -88,7 +88,7 @@ export default function Sidebar() {
                             target="_blank"
                             className="flex gap-2 items-center py-1.5 px-2 rounded-lg text-zinc-400 hover:text-white transition-all duration-500"
                         >
-                            <svg xmlns="http://www.w3.org/2000/svg"  width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="icon icon-tabler icons-tabler-outline icon-tabler-brand-x"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M4 4l11.733 16h4.267l-11.733 -16z" /><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" /></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="icon icon-tabler icons-tabler-outline icon-tabler-brand-x"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M4 4l11.733 16h4.267l-11.733 -16z" /><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" /></svg>
                             <div className="text-sm font-body">Twitter</div>
                         </Link>
                         <Link href="https://www.linkedin.com/in/david-papp-726a09267/" target="_blank" className="flex gap-2 items-center  py-1.5 px-2 rounded-lg text-zinc-400 hover:text-white transition-all duration-500">
@@ -102,7 +102,7 @@ export default function Sidebar() {
 
                     </div>
                 </div>
-                
+
             </div>
         </>
     );

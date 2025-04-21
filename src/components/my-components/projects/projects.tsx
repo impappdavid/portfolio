@@ -1,10 +1,8 @@
-import { Button } from "@/components/ui/button"
-import { CodeXml, Copy, Layers2, Pen, Tag } from "lucide-react"
 import AllCards from "./cards"
 
 function ProjectContent() {
 
-    
+
 
     return (
         <>

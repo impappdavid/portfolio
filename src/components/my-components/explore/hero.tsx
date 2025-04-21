@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button"
-import { CodeXml, Copy, Download, Pen } from "lucide-react"
+import { CodeXml, Copy, Pen } from "lucide-react"
 import LatestCard from "./cards"
 import Learning from "./learning"
 import Link from "next/link"

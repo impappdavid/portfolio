@@ -1,7 +1,6 @@
 "use client"
 
 import { useState } from "react"
-import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { ExternalLink, Search } from "lucide-react"
 import Link from "next/link"
@@ -79,7 +78,7 @@ const stackData = {
             description: "Lerning...",
             link: "https://www.docker.com/",
         },
-        
+
     ],
     development: [
         {
@@ -131,29 +130,29 @@ const stackData = {
 
 function StackContent() {
     const [searchTerm, setSearchTerm] = useState("")
-    
+
     // Filter the stack data based on the search term
     const filteredStack = {
-        frontend: stackData.frontend.filter(item => 
+        frontend: stackData.frontend.filter(item =>
             item.name.toLowerCase().includes(searchTerm.toLowerCase())
         ),
-        backend: stackData.backend.filter(item => 
+        backend: stackData.backend.filter(item =>
             item.name.toLowerCase().includes(searchTerm.toLowerCase())
         ),
-        devops: stackData.devops.filter(item => 
+        devops: stackData.devops.filter(item =>
             item.name.toLowerCase().includes(searchTerm.toLowerCase())
         ),
-        development: stackData.development.filter(item => 
+        development: stackData.development.filter(item =>
             item.name.toLowerCase().includes(searchTerm.toLowerCase())
         ),
-        inspiration: stackData.inspiration.filter(item => 
+        inspiration: stackData.inspiration.filter(item =>
             item.name.toLowerCase().includes(searchTerm.toLowerCase())
         )
     }
-    
+
     // Check if any category has items after filtering
     const hasItems = Object.values(filteredStack).some(category => category.length > 0)
-    
+
     return (
         <div className="w-full flex flex-col gap-8 py-24">
             <div className="w-full rounded-2xl flex flex-col gap-4">
@@ -161,19 +160,19 @@ function StackContent() {
                     <div className="animate-[downblur_2s_ease-in-out]">
                         <div className="text-5xl font-body font-bold">My Tech Stack</div>
                     </div>
-                    
+
                     {/* Search input */}
                     <div className="relative animate-[downblur_2.5s_ease-in-out]">
-                        <Input 
-                            type="text" 
-                            placeholder="Search technologies..." 
+                        <Input
+                            type="text"
+                            placeholder="Search technologies..."
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
                             className="pl-10 bg-zinc-800/50 border-zinc-800 text-white font-body h-8 text-lg placeholder:text-md rounded-lg"
                         />
                         <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-zinc-400" />
                     </div>
-                    
+
                     {/* Stack categories */}
                     {hasItems ? (
                         <div className="flex flex-col gap-6">
@@ -205,7 +204,7 @@ function StackContent() {
                                     </div>
                                 </div>
                             )}
-                            
+
                             {/* Backend */}
                             {filteredStack.backend.length > 0 && (
                                 <div className="border rounded-xl overflow-hidden animate-[downblur_3.5s_ease-in-out]">
@@ -215,7 +214,7 @@ function StackContent() {
                                     <div className="p-4">
                                         <div className="grid grid-cols-2 gap-4">
                                             {filteredStack.backend.map((stack, index) => (
-                                                <Link href={stack.link} target="_blank"  key={index} className="p-2 flex gap-2 hover:bg-zinc-800/20 border border-transparent hover:border-zinc-800 rounded-lg transition-all duration-500 cursor-pointer group">
+                                                <Link href={stack.link} target="_blank" key={index} className="p-2 flex gap-2 hover:bg-zinc-800/20 border border-transparent hover:border-zinc-800 rounded-lg transition-all duration-500 cursor-pointer group">
                                                     <div className="w-12 h-12 bg-zinc-800/50 rounded-md flex justify-center items-center">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" dangerouslySetInnerHTML={{ __html: stack.svg }} />
                                                     </div>
@@ -234,7 +233,7 @@ function StackContent() {
                                     </div>
                                 </div>
                             )}
-                            
+
                             {/* DevOps & Cloud */}
                             {filteredStack.devops.length > 0 && (
                                 <div className="border rounded-xl overflow-hidden animate-[downblur_4s_ease-in-out]">
@@ -244,7 +243,7 @@ function StackContent() {
                                     <div className="p-4">
                                         <div className="grid grid-cols-2 gap-4">
                                             {filteredStack.devops.map((stack, index) => (
-                                                <Link href={stack.link} target="_blank"  key={index} className="group p-2 flex gap-2 hover:bg-zinc-800/20 border border-transparent hover:border-zinc-800 rounded-lg transition-all duration-500 cursor-pointer group">
+                                                <Link href={stack.link} target="_blank" key={index} className="group p-2 flex gap-2 hover:bg-zinc-800/20 border border-transparent hover:border-zinc-800 rounded-lg transition-all duration-500 cursor-pointer group">
                                                     <div className="w-12 h-12 bg-zinc-800/50 rounded-md flex justify-center items-center">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" dangerouslySetInnerHTML={{ __html: stack.svg }} />
                                                     </div>
@@ -263,7 +262,7 @@ function StackContent() {
                                     </div>
                                 </div>
                             )}
-                            
+
                             {/* Design */}
                             {filteredStack.development.length > 0 && (
                                 <div className="border rounded-xl overflow-hidden animate-[downblur_4.5s_ease-in-out]">
@@ -273,7 +272,7 @@ function StackContent() {
                                     <div className="p-4">
                                         <div className="grid grid-cols-2 gap-4">
                                             {filteredStack.development.map((stack, index) => (
-                                                <Link href={stack.link} target="_blank"  key={index} className="group p-2 flex gap-2 hover:bg-zinc-800/20 border border-transparent hover:border-zinc-800 rounded-lg transition-all duration-500 cursor-pointer group">
+                                                <Link href={stack.link} target="_blank" key={index} className="group p-2 flex gap-2 hover:bg-zinc-800/20 border border-transparent hover:border-zinc-800 rounded-lg transition-all duration-500 cursor-pointer group">
                                                     <div className="w-12 h-12 bg-zinc-800/50 rounded-md flex justify-center items-center">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" dangerouslySetInnerHTML={{ __html: stack.svg }} />
                                                     </div>
@@ -292,7 +291,7 @@ function StackContent() {
                                     </div>
                                 </div>
                             )}
-                            
+
                             {/* Inspiration */}
                             {filteredStack.inspiration.length > 0 && (
                                 <div className="border rounded-xl overflow-hidden animate-[downblur_5s_ease-in-out]">
@@ -328,7 +327,7 @@ function StackContent() {
                         </div>
                     )}
                 </div>
-                
+
             </div>
         </div>
     )

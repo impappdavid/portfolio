@@ -1,52 +1,18 @@
-"use client"
-import { Suspense } from 'react';
-import GridPattern from "@/components/magicui/grid-pattern";
-import { cn } from "@/lib/utils";
-import TweetCard from "@/components/my-components/tweetCard";
-import LeetCodeStats from "@/components/my-components/leetcodeStats";
-import LeetCodeSideBar from "@/components/my-components/leetCodeSideBar";
-import { useSearchParams } from 'next/navigation';
+import Head from 'next/head';
+import LeetcodeContent from "@/components/my-components/leetcode/content"
 
-function LeetCodeContent() {
-    const searchParams = useSearchParams();
-    const searchQuery = searchParams.get('search') || '';
-    const typeFilter = searchParams.get('type') || null;
+function LeetCode() {
+    return (<>
+        <Head>
+            <title>Papp Dávid - Leetcode</title>
+        </Head>
+        <main className="flex flex-col items-center bg-zinc-900/70 min-h-screen">
+            <div className="w-56"></div>
+            <div className="ml-56 w-full max-w-3xl h-fit flex flex-col items-center justify-center gap-12" >
+                <LeetcodeContent />
 
-    return (
-        <div className="w-full flex justify-center mt-12" id="introduction">
-            <GridPattern
-                width={25}
-                height={25}
-                x={-1}
-                y={-1}
-                className={cn(
-                    "[mask-image:linear-gradient(to_bottom,white,transparent,transparent)] opacity-20",
-                )}
-            />
-            <div className="flex w-full justify-center">
-                <div className="w-full max-w-64 h-fit flex flex-col gap-12 sticky top-14 hidden xl:flex animate-[upblur_3s_ease-in-out]" >
-                    <LeetCodeSideBar />
-                </div>
-                <div className="w-full max-w-xl h-fit flex flex-col gap-4 border-x backdrop-blur-sm animate-[upblur_2s_ease-in-out]" >
-                    <TweetCard 
-                        data={{
-                            searchQuery,
-                            typeFilter
-                        }}
-                    />
-                </div>
-                <div className="w-full max-w-64 h-fit flex flex-col gap-12 sticky top-14 hidden xl:flex animate-[upblur_3s_ease-in-out]" >
-                    <LeetCodeStats />
-                </div>
             </div>
-        </div>
-    );
+        </main>
+    </>)
 }
-
-export default function LeetCode() {
-    return (
-        <Suspense fallback={<div>Loading...</div>}>
-            <LeetCodeContent />
-        </Suspense>
-    );
-}
+export default LeetCode

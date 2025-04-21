@@ -1,6 +1,3 @@
-import Content from "@/components/my-components/experience/content"
-import Hero from "@/components/my-components/explore/hero"
-import AllCards from "@/components/my-components/projects/cards"
 import ProjectContent from "@/components/my-components/projects/projects"
 
 function Experience() {
