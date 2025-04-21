@@ -168,7 +168,7 @@ function StackContent() {
                             placeholder="Search technologies..."
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
-                            className="pl-10 bg-zinc-800/50 border-zinc-800 text-white font-body h-8 text-lg placeholder:text-md rounded-lg"
+                            className="pl-10 bg-zinc-800/50 border-zinc-800 text-white font-body h-8 text-sm md:text-md placeholder:text-sm md:placeholder:text-md rounded-lg"
                         />
                         <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-zinc-400" />
                     </div>
@@ -183,7 +183,7 @@ function StackContent() {
                                         <div className="text-lg font-body font-bold text-zinc-300">Frontend Development</div>
                                     </div>
                                     <div className="p-4">
-                                        <div className="grid grid-cols-2 gap-4">
+                                        <div className="grid md:grid-cols-2 gap-4">
                                             {filteredStack.frontend.map((stack, index) => (
                                                 <Link href={stack.link} target="_blank" key={index} className="group p-2 flex gap-2 hover:bg-zinc-800/20 border border-transparent hover:border-zinc-800 rounded-lg transition-all duration-500 cursor-pointer group">
                                                     <div className="w-12 h-12 bg-zinc-800/50 rounded-md flex justify-center items-center">
@@ -212,7 +212,7 @@ function StackContent() {
                                         <div className="text-lg font-body font-bold text-zinc-300">Backend Development</div>
                                     </div>
                                     <div className="p-4">
-                                        <div className="grid grid-cols-2 gap-4">
+                                        <div className="grid md:grid-cols-2 gap-4">
                                             {filteredStack.backend.map((stack, index) => (
                                                 <Link href={stack.link} target="_blank" key={index} className="p-2 flex gap-2 hover:bg-zinc-800/20 border border-transparent hover:border-zinc-800 rounded-lg transition-all duration-500 cursor-pointer group">
                                                     <div className="w-12 h-12 bg-zinc-800/50 rounded-md flex justify-center items-center">
@@ -241,7 +241,7 @@ function StackContent() {
                                         <div className="text-lg font-body font-bold text-zinc-300">DevOps & Cloud</div>
                                     </div>
                                     <div className="p-4">
-                                        <div className="grid grid-cols-2 gap-4">
+                                        <div className="grid md:grid-cols-2 gap-4">
                                             {filteredStack.devops.map((stack, index) => (
                                                 <Link href={stack.link} target="_blank" key={index} className="group p-2 flex gap-2 hover:bg-zinc-800/20 border border-transparent hover:border-zinc-800 rounded-lg transition-all duration-500 cursor-pointer group">
                                                     <div className="w-12 h-12 bg-zinc-800/50 rounded-md flex justify-center items-center">
@@ -270,7 +270,7 @@ function StackContent() {
                                         <div className="text-lg font-body font-bold text-zinc-300">Development Tools</div>
                                     </div>
                                     <div className="p-4">
-                                        <div className="grid grid-cols-2 gap-4">
+                                        <div className="grid md:grid-cols-2 gap-4">
                                             {filteredStack.development.map((stack, index) => (
                                                 <Link href={stack.link} target="_blank" key={index} className="group p-2 flex gap-2 hover:bg-zinc-800/20 border border-transparent hover:border-zinc-800 rounded-lg transition-all duration-500 cursor-pointer group">
                                                     <div className="w-12 h-12 bg-zinc-800/50 rounded-md flex justify-center items-center">
@@ -299,7 +299,7 @@ function StackContent() {
                                         <div className="text-lg font-body font-bold text-zinc-300">Design</div>
                                     </div>
                                     <div className="p-4">
-                                        <div className="grid grid-cols-2 gap-4">
+                                        <div className="grid md:grid-cols-2 gap-4">
                                             {filteredStack.inspiration.map((stack, index) => (
                                                 <Link href={stack.link} target="_blank" key={index} className="group p-2 flex gap-2 hover:bg-zinc-800/20 border border-transparent hover:border-zinc-800 rounded-lg transition-all duration-500 cursor-pointer group">
                                                     <div className="w-12 h-12 bg-zinc-800/50 rounded-md flex justify-center items-center">

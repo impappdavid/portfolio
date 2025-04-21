@@ -7,7 +7,7 @@ function AboutContent() {
     return (
         <>
             <div className="flex flex-col items-start w-full py-24 gap-12 min-h-screen">
-                <div className="grid grid-cols-2 gap-2 ">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-2 ">
                     <div className="flex flex-col gap-2 animate-[downblur_2s_ease-in-out]">
                         <div className="w-fit border rounded-full flex gap-1 py-1 px-2">
                             <MapPin className="w-4 h-4 text-zinc-400" />
@@ -20,7 +20,7 @@ function AboutContent() {
                             Outside of coding, I enjoy music, spending time with friends, and coming up with new project ideas.
                         </div>
                     </div>
-                    <div className="flex justify-end animate-[downblur_2.5s_ease-in-out]">
+                    <div className="flex justify-center md:justify-end animate-[downblur_2.5s_ease-in-out]">
                         <Avatar className="h-80 w-80">
                             <AvatarImage src="./me.png" />
                             <AvatarFallback >PD</AvatarFallback>
@@ -34,7 +34,7 @@ function AboutContent() {
 
 
                 <div className="flex flex-col gap-6 w-full animate-[downblur_3.5s_ease-in-out]">
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="h-56 w-full p-8 bg-zinc-800/30 border border-zinc-700/50 rounded-2xl flex flex-col gap-4">
                             <div className="w-10 h-10 bg-zinc-800 rounded-full flex items-center justify-center"><CodeXml className="w-5 h-5" /></div>
                             <div className="flex flex-col ">

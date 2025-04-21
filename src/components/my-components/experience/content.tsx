@@ -42,7 +42,7 @@ function Content() {
                 </div>
 
                 <div className="flex flex-col gap-6 w-full animate-[downblur_3.5s_ease-in-out]">
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="h-56 w-full p-8 bg-zinc-800/30 border border-zinc-700/50 rounded-2xl flex flex-col gap-4">
                             <div className="w-10 h-10 bg-zinc-800 rounded-full flex items-center justify-center"><Layers2 className="w-5 h-5" /></div>
                             <div className="flex flex-col ">

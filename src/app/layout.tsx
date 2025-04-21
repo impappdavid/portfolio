@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Analytics } from "@vercel/analytics/react"
 import Sidebar from "@/components/my-components/sidebar";
+import Navbar from "@/components/my-components/navbar";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -38,6 +39,9 @@ export default function RootLayout({
           attribute="class"
           defaultTheme="system"
         >
+            <div className="flex md:hidden">
+              <Navbar />
+            </div>
             <Sidebar />
           {children}
           <Analytics />

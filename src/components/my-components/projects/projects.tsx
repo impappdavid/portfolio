@@ -14,7 +14,7 @@ function ProjectContent() {
                     </div>
 
                 </div>
-                <div className="grid grid-cols-2 gap-4 animate-[downblur_2.5s_ease-in-out]">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 animate-[downblur_2.5s_ease-in-out] w-full">
                     <AllCards />
                 </div>
 

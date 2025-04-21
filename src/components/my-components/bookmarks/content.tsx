@@ -65,7 +65,7 @@ function BookmarksContent() {
                     </div>
 
                 </div>
-                <div className="grid grid-cols-4 gap-2 w-full animate-[downblur_2.5s_ease-in-out]">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-2 w-full animate-[downblur_2.5s_ease-in-out]">
 
                     {bookmarks.map((bookmark, index) => (
                         <Link href={bookmark.link} target="_blank" key={index} className="p-2 flex gap-2 hover:bg-zinc-800/20 border border-transparent hover:border-zinc-800 rounded-lg transition-all duration-500 cursor-pointer group">
