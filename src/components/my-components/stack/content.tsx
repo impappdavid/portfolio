@@ -157,7 +157,7 @@ function StackContent() {
     return (
         <div className="w-full flex flex-col gap-8 py-24">
             <div className="w-full rounded-2xl flex flex-col gap-4">
-                <div className="p-8 flex flex-col gap-8">
+                <div className=" flex flex-col gap-8">
                     <div className="animate-[downblur_2s_ease-in-out]">
                         <div className="text-5xl font-body font-bold">My Tech Stack</div>
                     </div>
@@ -186,7 +186,7 @@ function StackContent() {
                                     <div className="p-4">
                                         <div className="grid grid-cols-2 gap-4">
                                             {filteredStack.frontend.map((stack, index) => (
-                                                <Link href={stack.link} target="__blank" key={index} className="group p-2 flex gap-2 hover:bg-zinc-800/20 border border-transparent hover:border-zinc-800 rounded-lg transition-all duration-500 cursor-pointer group">
+                                                <Link href={stack.link} target="_blank" key={index} className="group p-2 flex gap-2 hover:bg-zinc-800/20 border border-transparent hover:border-zinc-800 rounded-lg transition-all duration-500 cursor-pointer group">
                                                     <div className="w-12 h-12 bg-zinc-800/50 rounded-md flex justify-center items-center">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" dangerouslySetInnerHTML={{ __html: stack.svg }} />
                                                     </div>
@@ -215,7 +215,7 @@ function StackContent() {
                                     <div className="p-4">
                                         <div className="grid grid-cols-2 gap-4">
                                             {filteredStack.backend.map((stack, index) => (
-                                                <Link href={stack.link} key={index} className="p-2 flex gap-2 hover:bg-zinc-800/20 border border-transparent hover:border-zinc-800 rounded-lg transition-all duration-500 cursor-pointer group">
+                                                <Link href={stack.link} target="_blank"  key={index} className="p-2 flex gap-2 hover:bg-zinc-800/20 border border-transparent hover:border-zinc-800 rounded-lg transition-all duration-500 cursor-pointer group">
                                                     <div className="w-12 h-12 bg-zinc-800/50 rounded-md flex justify-center items-center">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" dangerouslySetInnerHTML={{ __html: stack.svg }} />
                                                     </div>
@@ -244,7 +244,7 @@ function StackContent() {
                                     <div className="p-4">
                                         <div className="grid grid-cols-2 gap-4">
                                             {filteredStack.devops.map((stack, index) => (
-                                                <Link href={stack.link} key={index} className="group p-2 flex gap-2 hover:bg-zinc-800/20 border border-transparent hover:border-zinc-800 rounded-lg transition-all duration-500 cursor-pointer group">
+                                                <Link href={stack.link} target="_blank"  key={index} className="group p-2 flex gap-2 hover:bg-zinc-800/20 border border-transparent hover:border-zinc-800 rounded-lg transition-all duration-500 cursor-pointer group">
                                                     <div className="w-12 h-12 bg-zinc-800/50 rounded-md flex justify-center items-center">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" dangerouslySetInnerHTML={{ __html: stack.svg }} />
                                                     </div>
@@ -273,7 +273,7 @@ function StackContent() {
                                     <div className="p-4">
                                         <div className="grid grid-cols-2 gap-4">
                                             {filteredStack.development.map((stack, index) => (
-                                                <Link href={stack.link} key={index} className="group p-2 flex gap-2 hover:bg-zinc-800/20 border border-transparent hover:border-zinc-800 rounded-lg transition-all duration-500 cursor-pointer group">
+                                                <Link href={stack.link} target="_blank"  key={index} className="group p-2 flex gap-2 hover:bg-zinc-800/20 border border-transparent hover:border-zinc-800 rounded-lg transition-all duration-500 cursor-pointer group">
                                                     <div className="w-12 h-12 bg-zinc-800/50 rounded-md flex justify-center items-center">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" dangerouslySetInnerHTML={{ __html: stack.svg }} />
                                                     </div>
@@ -302,7 +302,7 @@ function StackContent() {
                                     <div className="p-4">
                                         <div className="grid grid-cols-2 gap-4">
                                             {filteredStack.inspiration.map((stack, index) => (
-                                                <Link href={stack.link} key={index} className="group p-2 flex gap-2 hover:bg-zinc-800/20 border border-transparent hover:border-zinc-800 rounded-lg transition-all duration-500 cursor-pointer group">
+                                                <Link href={stack.link} target="_blank" key={index} className="group p-2 flex gap-2 hover:bg-zinc-800/20 border border-transparent hover:border-zinc-800 rounded-lg transition-all duration-500 cursor-pointer group">
                                                     <div className="w-12 h-12 bg-zinc-800/50 rounded-md flex justify-center items-center">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" dangerouslySetInnerHTML={{ __html: stack.svg }} />
                                                     </div>
