@@ -14,7 +14,7 @@ export default function Sidebar() {
 
     const linkStyle = (path: string) => {
         return cn(
-            "flex gap-2 items-center py-1.5 px-2 rounded-lg transition-all duration-500",
+            "flex gap-2 items-center py-1.5 px-2 rounded-lg transition-all duration-500 border border-transparent",
             isActive(path)
                 ? "bg-zinc-800/90 border border-zinc-700 text-white"
                 : "text-zinc-400 hover:text-white"

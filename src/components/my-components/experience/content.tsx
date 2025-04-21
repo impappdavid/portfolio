@@ -5,14 +5,14 @@ function Content() {
     return (
         <>
             <div className="flex flex-col items-start w-full py-24 gap-12 min-h-screen">
-                <div className="flex flex-col gap-4">
+                <div className="flex flex-col gap-4 animate-[downblur_2s_ease-in-out]">
                     <div className="font-body text-5xl font-bold text-start">Experience</div>
                     <div className="text-zinc-400 font-body">
                         A summary of my professional work history, technologies I've used, and key achievements.
                     </div>
 
                 </div>
-                <div className="flex flex-col gap-4">
+                <div className="flex flex-col gap-4 animate-[downblur_2.5s_ease-in-out]">
                     <div className="font-body text-2xl font-bold text-start">Freelance</div>
                     <div className="text-zinc-400 font-body">
                         Frontend Developer, 2025 - Present
@@ -26,7 +26,7 @@ function Content() {
                         <li>Actively learning and applying new frontend technologies to improve development workflows and code quality.</li>
                     </ul>
                 </div>
-                <div className="flex flex-col gap-2">
+                <div className="flex flex-col gap-2 animate-[downblur_3s_ease-in-out]">
                     <div className="font-body text-2xl font-bold text-start">Webváltó.kft</div>
                     <div className="text-zinc-400 font-body">
                         Intern - Frontend Developer, Jan 2023 - Apr 2023
@@ -41,7 +41,7 @@ function Content() {
                     </ul>
                 </div>
 
-                <div className="flex flex-col gap-6 w-full">
+                <div className="flex flex-col gap-6 w-full animate-[downblur_3.5s_ease-in-out]">
                     <div className="grid grid-cols-2 gap-4">
                         <div className="h-56 w-full p-8 bg-zinc-800/30 border border-zinc-700/50 rounded-2xl flex flex-col gap-4">
                             <div className="w-10 h-10 bg-zinc-800 rounded-full flex items-center justify-center"><Layers2 className="w-5 h-5" /></div>
