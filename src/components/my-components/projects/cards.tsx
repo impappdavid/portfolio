@@ -2,7 +2,7 @@ import Link from "next/link"
 import azura from "./cover.png"
 import cinemaview from "./mockup1.png"
 
-function LatestCard() {
+function AllCards() {
     const projectsData = [
         {
             name: "Azura",
@@ -45,4 +45,4 @@ function LatestCard() {
         </>
     )
 }
-export default LatestCard
+export default AllCards

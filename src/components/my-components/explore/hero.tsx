@@ -23,7 +23,6 @@ function Hero() {
                 <div className="font-body text-lg font-semibold text-start">Latest Projects</div>
                 <div className="grid grid-cols-2 gap-4">
                     <LatestCard />
-                    <LatestCard />
                 </div>
                 
             </div>
