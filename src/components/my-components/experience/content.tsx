@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button"
 import { CodeXml, Copy, Layers2, Pen } from "lucide-react"
+import Link from "next/link"
 
 function Content() {
     return (
@@ -49,9 +50,9 @@ function Content() {
                                 <div className="text-lg font-body font-semibold">Stack</div>
                                 <div className="text-xs text-zinc-400 font-body">Dive into my skills</div>
                             </div>
-                            <Button className="w-fit bg-zinc-800 text-sm text-white font-body hover:opacity-70 hover:bg-zinc-800 border flex gap-1  border-zinc-700 transition-all duration-500">
+                            <Link href="../stack" className="w-fit py-1.5 px-4 text-sm rounded-lg bg-zinc-800 text-white font-body hover:opacity-70 hover:bg-zinc-800 border flex items-center gap-1  border-zinc-700 transition-all duration-500">
                                 View Stack
-                            </Button>
+                            </Link>
                         </div>
                         <div className="h-56 w-full p-8 bg-zinc-800/30 border border-zinc-700/50 rounded-2xl flex flex-col gap-4">
                             <div className="w-10 h-10 bg-zinc-800 rounded-full flex items-center justify-center"><Pen className="w-4 h-4" /></div>
@@ -59,9 +60,9 @@ function Content() {
                                 <div className="text-lg font-body font-semibold">Projects</div>
                                 <div className="text-xs text-zinc-400 font-body">Explore my projects in web development.</div>
                             </div>
-                            <Button className="w-fit bg-zinc-800 text-sm text-white font-body hover:opacity-70 hover:bg-zinc-800 border flex gap-1  border-zinc-700 transition-all duration-500">
+                            <Link href="../projects" className="w-fit py-1.5 px-4 text-sm rounded-lg bg-zinc-800 text-white font-body hover:opacity-70 hover:bg-zinc-800 border flex items-center gap-1  border-zinc-700 transition-all duration-500">
                                 View Projects
-                            </Button>
+                            </Link>
                         </div>
                     </div>
                 </div>
