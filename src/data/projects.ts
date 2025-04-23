@@ -22,7 +22,7 @@ export const projects: Project[] = [
     description: "Azura is an AI-powered NFT platform where users can create, customize, and trade unique digital collectibles. Featuring a sleek marketplace and advanced rarity optimization, Azura blends creativity and technology for a next-gen Web3 experience.",
     date: "15 Feb, 2025 • Crypto",
     isVideo: true,
-    image: "/projects/azura/azura.mp4",
+    image: "/projects/azura/azuraCover.mp4",
     technologies: ["Svelte", "TypeScript", "Tailwind CSS", "Git", "GitHub", "D3 Chart", "shadcn/ui"],
     demoOrSource: true,
     githubUrl: "https://github.com/impappdavid/Azura",
