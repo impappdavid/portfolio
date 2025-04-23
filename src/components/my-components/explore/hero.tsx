@@ -5,6 +5,7 @@ import Learning from "./learning"
 import Link from "next/link"
 
 function Hero() {
+   
     return (<>
         <div className="flex flex-col items-start w-full py-24 gap-8">
             <div className="flex flex-col gap-6 animate-[downblur_2s_ease-in-out]">
@@ -17,10 +18,10 @@ function Hero() {
                         About
                     </Link>
 
-                    <Button className="bg-zinc-900 border border-zinc-800 text-white hover:opacity-70 hover:bg-zinc-900 transition-all duration-500">
+                    <Link href="../contact"  className="bg-zinc-900 border border-zinc-800 text-white hover:opacity-70 hover:bg-zinc-900 transition-all duration-500">
                         <Copy className="w-3 h-3 text-zinc-400" />
-                        Email
-                    </Button>
+                        Contact
+                    </Link>
                     <Link href="../Papp_Dávid_CV.pdf" target="_blank" className="w-fit py-1.5 px-4 text-sm rounded-lg bg-zinc-900 text-white font-body hover:opacity-70 hover:bg-zinc-900 border flex items-center gap-1  border-zinc-800 transition-all duration-500">
                         Resumé
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="icon icon-tabler icons-tabler-outline icon-tabler-arrow-up-right"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M17 7l-10 10" /><path d="M8 7l9 0l0 9" /></svg>
