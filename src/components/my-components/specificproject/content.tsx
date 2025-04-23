@@ -59,7 +59,7 @@ function SpecificContent({ project }: SpecificContentProps) {
   return (
     <>
       <div className="flex flex-col items-start w-full py-24 gap-8">
-        <div className="flex flex-col gap-6 animate-[downblur_2s_ease-in-out] w-full">
+        <div className="flex flex-col gap-6 animate-[downblur_1.5s_ease-in-out] w-full">
           <Link href="../projects" className="text-sm text-zinc-400 font-body flex gap-2 items-center hover:text-white transition-all duration-500">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24">
               <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5" d="m10 16l-4-4m0 0l4-4m-4 4h12" />
@@ -120,7 +120,7 @@ function SpecificContent({ project }: SpecificContentProps) {
           )}
         </div>
 
-        <div className="flex flex-col gap-2 mt-2">
+        <div className="flex flex-col gap-2 mt-2 animate-[downblur_2s_ease-in-out]">
           <h2 className="text-2xl font-semibold font-body mb-4 flex items-center gap-2">
             <span>Stack</span>
           </h2>
@@ -135,7 +135,7 @@ function SpecificContent({ project }: SpecificContentProps) {
 
 
         {/* Features Section */}
-        <div className="w-full mt-8">
+        <div className="w-full mt-8 animate-[downblur_2.5s_ease-in-out]">
           <h2 className="text-2xl font-semibold font-body mb-4 flex items-center gap-2">
             <span>Features</span>
           </h2>
@@ -168,7 +168,7 @@ function SpecificContent({ project }: SpecificContentProps) {
 
 
 
-        <div className="whitespace-pre-wrap font-body text-zinc-300 flex flex-col gap-2 text-sm">
+        <div className="whitespace-pre-wrap font-body text-zinc-300 flex flex-col gap-2 text-sm animate-[downblur_3s_ease-in-out]">
           <h2 className="text-2xl font-semibold font-body mb-2 flex items-center gap-2">
             <span>Challanges</span>
           </h2>

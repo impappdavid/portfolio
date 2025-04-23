@@ -7,8 +7,8 @@ function Content() {
             <div className="flex flex-col items-start w-full py-24 gap-12 min-h-screen">
                 <div className="flex flex-col gap-4 animate-[downblur_2s_ease-in-out]">
                     <div className="font-body text-5xl font-bold text-start">Experience</div>
-                    <div className="text-zinc-400 font-body">
-                        A summary of my professional work history, technologies I've used, and key achievements.
+                    <div className="text-zinc-400 font-body ">
+                        A summary of my work history.
                     </div>
 
                 </div>
@@ -34,7 +34,7 @@ function Content() {
 
                     <ul className="text-zinc-400 font-body list-disc pl-6">
                         <li>Selected for a project-based internship at Webvalto, where I worked in a 3-person team to develop a full-stack application as part of our final exam.</li>
-                        <li>Took full responsibility for the frontend, building a responsive user interface using React, CSS, and JavaScript.</li>
+                        <li>Took full responsibility for the frontend, building a responsive user interface using React, TailwindCSS, and JavaScript.</li>
                         <li>Collaborated closely with teammates and participated in regular meetings with our mentor a professional developer from Webvalto who guided us through real-world development practices.</li>
                         <li>Learned how to plan, build, and present a complete application from scratch while following agile-style workflows and version control with Git.</li>
                         <li>Gained valuable experience working in a team, problem-solving, and turning ideas into a functional UI.</li>

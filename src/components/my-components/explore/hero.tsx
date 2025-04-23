@@ -9,7 +9,7 @@ function Hero() {
         <div className="flex flex-col items-start w-full py-24 gap-8">
             <div className="flex flex-col gap-6 animate-[downblur_2s_ease-in-out]">
                 <div className="font-body text-5xl font-semibold text-start">Hey, I'm David, <br /> A Full-Stack <span className="bg-gradient-to-br from-zinc-400 to-zinc-600 bg-clip-text text-transparent">Developer.</span></div>
-                <div className="text-zinc-400 font-body text-sm md:text-md">
+                <div className="text-zinc-400 font-body text-[16px] md:text-md">
                     I'm a developer who builds practical tools to solve real problems. I focus on creating simple, <br /> effective solutions that meet user needs and deliver results.
                 </div>
                 <div className="flex gap-4 font-body">
