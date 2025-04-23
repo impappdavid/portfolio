@@ -32,13 +32,13 @@ function ContactContent() {
                     <div className="text-zinc-400 font-body">
                         I'm always looking to collaborate on interesting projects with great people. Need a supportive hand? I have two!
                     </div>
-                    <div className="w-full p-6 border bg-zinc-800/50 flex flex-col gap-6 rounded-2xl">
+                    <div className="w-full p-6 border bg-zinc-800/30 flex flex-col gap-6 rounded-2xl">
                         <div className="flex flex-col">
                             <div className="font-body text-lg font-semibold">Send a message</div>
                             <div className="font-body text-sm text-zinc-400">Fill out the form below and we'll get back to you as soon as possible.</div>
                         </div>
                         <form onSubmit={handleSubmit} className='flex flex-col gap-2 w-full'>
-                            <div className="grid grid-cols-2 gap-4">
+                            <div className="grid md:grid-cols-2 gap-4">
                                 <div className="flex flex-col gap-1">
                                     <label htmlFor="username" className='font-body text-sm'>
                                         Username
@@ -75,7 +75,7 @@ function ContactContent() {
                                 </div>
                             </div>
 
-                            <div className="flex flex-col">
+                            <div className="flex flex-col gap-1">
                                 <label htmlFor="message" className='font-body text-sm'>
                                     Message
                                 </label>

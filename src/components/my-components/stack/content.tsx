@@ -168,7 +168,7 @@ function StackContent() {
                             placeholder="Search technologies..."
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
-                            className="pl-10 bg-zinc-800/50 border-zinc-800 text-white font-body h-8 text-sm md:text-md placeholder:text-sm md:placeholder:text-md rounded-lg"
+                            className="pl-10 bg-zinc-800/30 border-zinc-800 text-white font-body h-8 text-sm md:text-md placeholder:text-sm md:placeholder:text-md rounded-lg"
                         />
                         <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-zinc-400" />
                     </div>
@@ -179,7 +179,7 @@ function StackContent() {
                             {/* Frontend */}
                             {filteredStack.frontend.length > 0 && (
                                 <div className="border rounded-xl overflow-hidden animate-[downblur_3s_ease-in-out]">
-                                    <div className="bg-zinc-800/50 p-4 px-6 border-b">
+                                    <div className="bg-zinc-800/30 p-4 px-6 border-b">
                                         <div className="text-lg font-body font-bold text-zinc-300">Frontend Development</div>
                                     </div>
                                     <div className="p-4">
@@ -208,7 +208,7 @@ function StackContent() {
                             {/* Backend */}
                             {filteredStack.backend.length > 0 && (
                                 <div className="border rounded-xl overflow-hidden animate-[downblur_3.5s_ease-in-out]">
-                                    <div className="bg-zinc-800/50 p-4 px-6 border-b">
+                                    <div className="bg-zinc-800/30 p-4 px-6 border-b">
                                         <div className="text-lg font-body font-bold text-zinc-300">Backend Development</div>
                                     </div>
                                     <div className="p-4">
@@ -237,7 +237,7 @@ function StackContent() {
                             {/* DevOps & Cloud */}
                             {filteredStack.devops.length > 0 && (
                                 <div className="border rounded-xl overflow-hidden animate-[downblur_4s_ease-in-out]">
-                                    <div className="bg-zinc-800/50 p-4 px-6 border-b">
+                                    <div className="bg-zinc-800/30 p-4 px-6 border-b">
                                         <div className="text-lg font-body font-bold text-zinc-300">DevOps & Cloud</div>
                                     </div>
                                     <div className="p-4">
@@ -266,7 +266,7 @@ function StackContent() {
                             {/* Design */}
                             {filteredStack.development.length > 0 && (
                                 <div className="border rounded-xl overflow-hidden animate-[downblur_4.5s_ease-in-out]">
-                                    <div className="bg-zinc-800/50 p-4 px-6 border-b">
+                                    <div className="bg-zinc-800/30 p-4 px-6 border-b">
                                         <div className="text-lg font-body font-bold text-zinc-300">Development Tools</div>
                                     </div>
                                     <div className="p-4">
@@ -295,7 +295,7 @@ function StackContent() {
                             {/* Inspiration */}
                             {filteredStack.inspiration.length > 0 && (
                                 <div className="border rounded-xl overflow-hidden animate-[downblur_5s_ease-in-out]">
-                                    <div className="bg-zinc-800/50 p-4 px-6 border-b">
+                                    <div className="bg-zinc-800/30 p-4 px-6 border-b">
                                         <div className="text-lg font-body font-bold text-zinc-300">Design</div>
                                     </div>
                                     <div className="p-4">

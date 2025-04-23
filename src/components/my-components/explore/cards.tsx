@@ -33,7 +33,7 @@ function LatestCard() {
     return (
         <>
             {projectsData.map((card, index) => (
-                <Link key={index} href={card.link} className="w-full bg-zinc-800/50 border border-zinc-800/40 rounded-2xl overflow-hidden hover:cursor-pointer">
+                <Link key={index} href={card.link} className="w-full bg-zinc-800/30 border border-zinc-800/40 rounded-2xl overflow-hidden hover:cursor-pointer">
                     <div className="overflow-hidden relative">
                         <img
                             src={card.image.src}

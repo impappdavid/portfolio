@@ -111,7 +111,7 @@ function Education() {
                         ))}
                     </div>
                 </div>
-                <div className="bg-zinc-800/50 p-6 rounded-b-2xl border-t flex justify-between items-center">
+                <div className="bg-zinc-800/30 p-6 rounded-b-2xl border-t flex justify-between items-center">
                     <div className="flex flex-col ">
                         <div className="text-lg font-body font-semibold">Stack</div>
                         <div className="text-xs font-body text-zinc-400">This stack shows the tools and technologies I use to build and run apps.</div>

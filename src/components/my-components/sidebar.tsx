@@ -27,7 +27,7 @@ export default function Sidebar() {
                 <div className="flex flex-col gap-4">
                     <div className="flex gap-2 py-6 px-4 items-center">
                         <Avatar className="h-9 w-9">
-                            <AvatarImage src="./me.png" className="rounded-full" />
+                            <AvatarImage src="/me.png" className="rounded-full" />
                             <AvatarFallback >PD</AvatarFallback>
                         </Avatar>
                         <div className="flex flex-col justify-center">
