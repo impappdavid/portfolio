@@ -31,14 +31,20 @@ function Navbar() {
     return (
         <>
             <div className="w-full fixed z-50 top-0 py-3 px-4 flex items-center justify-between bg-zinc-950/50 backdrop-blur-md">
-                <Avatar className="h-8 w-8 rounded-full">
-                    <AvatarImage src="./me.png" />
-                    <AvatarFallback >PD</AvatarFallback>
-                </Avatar>
+                <div className="flex gap-2 items-center">
+                    <Avatar className="h-9 w-9">
+                        <AvatarImage src="/me.png" className="rounded-full" />
+                        <AvatarFallback >PD</AvatarFallback>
+                    </Avatar>
+                    <div className="flex flex-col justify-center">
+                        <div className="font-semibold font-body text-sm">Papp David</div>
+                        <div className="text-xs text-zinc-400 font-body">Software engineer</div>
+                    </div>
+                </div>
                 <div className="">
                     <Drawer>
-                        <DrawerTrigger asChild className="hover:cursor-pointer">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="-5 -7 24 24">
+                        <DrawerTrigger asChild className="hover:cursor-pointer bg-zinc-800/30 p-2 rounded-lg border">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="-5 -7 24 24">
                                 <path fill="currentColor" d="M1 0h5a1 1 0 1 1 0 2H1a1 1 0 1 1 0-2m7 8h5a1 1 0 0 1 0 2H8a1 1 0 1 1 0-2M1 4h12a1 1 0 0 1 0 2H1a1 1 0 1 1 0-2" />
                             </svg>
                         </DrawerTrigger>
