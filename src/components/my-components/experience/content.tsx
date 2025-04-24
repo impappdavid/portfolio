@@ -27,7 +27,7 @@ function Content() {
                     </ul>
                 </div>
                 <div className="flex flex-col gap-2 animate-[downblur_3s_ease-in-out]">
-                    <div className="font-body text-2xl font-bold text-start">Webváltó.kft</div>
+                    <div className="font-body text-2xl font-bold text-start">Webváltó Kft</div>
                     <div className="text-zinc-400 font-body">
                         Intern - Frontend Developer, Jan 2023 - Apr 2023
                     </div>
