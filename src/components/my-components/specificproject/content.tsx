@@ -80,10 +80,9 @@ function SpecificContent({ project }: SpecificContentProps) {
                   <source src={project.image} type="video/mp4" />
                 </video>
               ) : (
-                <Image
+                <img
                   src={project.image}
                   alt={project.title}
-                  fill
                   className="object-contain aspect-video"
                 />
               )}
