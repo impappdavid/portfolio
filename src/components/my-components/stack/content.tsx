@@ -157,28 +157,28 @@ function StackContent() {
         <div className="w-full flex flex-col gap-8 py-24">
             <div className="w-full rounded-2xl flex flex-col gap-4">
                 <div className=" flex flex-col gap-8">
-                    <div className="animate-[downblur_2s_ease-in-out]">
+                    <div className="animate-[downblur_1s_ease-in-out]">
                         <div className="text-5xl font-body font-bold">My Tech Stack</div>
                     </div>
 
                     {/* Search input */}
-                    <div className="relative animate-[downblur_2.5s_ease-in-out]">
+                    <div className="relative animate-[downblur_1s_ease-in-out]">
                         <Input
                             type="text"
                             placeholder="Search technologies..."
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
-                            className="pl-10 bg-zinc-800/30 border-zinc-800 text-white font-body h-8 text-sm md:text-md placeholder:text-sm md:placeholder:text-md rounded-lg"
+                            className="pl-10 h-12 font-body rounded-xl bg-zinc-800/20 border-zinc-800/20 hover:border-zinc-800 hover:bg-zinc-800/60 transition-all duration-500"
                         />
                         <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-zinc-400" />
                     </div>
 
                     {/* Stack categories */}
                     {hasItems ? (
-                        <div className="flex flex-col gap-6">
+                        <div className="flex flex-col gap-6 animate-[downblur_1s_ease-in-out]">
                             {/* Frontend */}
                             {filteredStack.frontend.length > 0 && (
-                                <div className="border rounded-xl overflow-hidden animate-[downblur_3s_ease-in-out]">
+                                <div className="border rounded-xl overflow-hidden ">
                                     <div className="bg-zinc-800/30 p-4 px-6 border-b">
                                         <div className="text-lg font-body font-bold text-zinc-300">Frontend Development</div>
                                     </div>
@@ -207,7 +207,7 @@ function StackContent() {
 
                             {/* Backend */}
                             {filteredStack.backend.length > 0 && (
-                                <div className="border rounded-xl overflow-hidden animate-[downblur_3.5s_ease-in-out]">
+                                <div className="border rounded-xl overflow-hidden">
                                     <div className="bg-zinc-800/30 p-4 px-6 border-b">
                                         <div className="text-lg font-body font-bold text-zinc-300">Backend Development</div>
                                     </div>
@@ -236,7 +236,7 @@ function StackContent() {
 
                             {/* DevOps & Cloud */}
                             {filteredStack.devops.length > 0 && (
-                                <div className="border rounded-xl overflow-hidden animate-[downblur_4s_ease-in-out]">
+                                <div className="border rounded-xl overflow-hidden ">
                                     <div className="bg-zinc-800/30 p-4 px-6 border-b">
                                         <div className="text-lg font-body font-bold text-zinc-300">DevOps & Cloud</div>
                                     </div>
@@ -265,7 +265,7 @@ function StackContent() {
 
                             {/* Design */}
                             {filteredStack.development.length > 0 && (
-                                <div className="border rounded-xl overflow-hidden animate-[downblur_4.5s_ease-in-out]">
+                                <div className="border rounded-xl overflow-hidden ">
                                     <div className="bg-zinc-800/30 p-4 px-6 border-b">
                                         <div className="text-lg font-body font-bold text-zinc-300">Development Tools</div>
                                     </div>

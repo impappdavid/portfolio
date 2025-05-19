@@ -30,6 +30,7 @@
     "lucide-react": "^0.453.0",
     "next": "14.2.16",
     "next-themes": "^0.3.0",
+    "portfolio": "link:",
     "prismjs": "^1.30.0",
     "react": "^18.3.1",
     "react-chartjs-2": "^5.2.0",

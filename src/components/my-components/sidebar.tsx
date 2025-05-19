@@ -2,7 +2,7 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import Link from "next/link";
 import { usePathname } from 'next/navigation';
-import { BookImage, Bookmark, BriefcaseBusiness, CodeXml, Compass, Layers2, Pen, Send, User } from "lucide-react";
+import { BookImage, Bookmark, BriefcaseBusiness, CodeXml, Compass, Component, Layers2, Pen, Send, User } from "lucide-react";
 import { cn } from "@/lib/utils"; // You might need to create this utility
 import {
     Tooltip,
@@ -73,9 +73,9 @@ export default function Sidebar() {
                     </div>
                     <div className="flex flex-col px-4 gap-1">
                         <div className="px-2 text-zinc-400 text-xs mb-1 font-body">Extras</div>
-                        <Link href="/gallery" className={linkStyle('/gallery')}>
-                            <BookImage className="w-4 h-4" />
-                            <div className="text-sm font-body">Guest Gallery</div>
+                        <Link href="/components" className={linkStyle('/gallery')}>
+                            <Component className="w-4 h-4" />
+                            <div className="text-sm font-body">Components</div>
                         </Link>
                         <Link href="/bookmarks" className={linkStyle('/bookmarks')}>
                             <Bookmark className="w-4 h-4" />

@@ -1,6 +1,6 @@
 
 
-function Experience() {
+function Components() {
     return (<>
         <div className="flex flex-col items-center bg-zinc-900/70 min-h-screen">
             <div className="w-56"></div>
@@ -13,4 +13,4 @@ function Experience() {
         </div>
     </>)
 }
-export default Experience
+export default Components
