@@ -73,7 +73,7 @@ export default function Sidebar() {
                     </div>
                     <div className="flex flex-col px-4 gap-1">
                         <div className="px-2 text-zinc-400 text-xs mb-1 font-body">Extras</div>
-                        <Link href="/components" className={linkStyle('/gallery')}>
+                        <Link href="/components" className={linkStyle('/components')}>
                             <Component className="w-4 h-4" />
                             <div className="text-sm font-body">Components</div>
                         </Link>
