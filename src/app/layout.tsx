@@ -36,18 +36,8 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-        >
-            <div className="flex md:hidden">
-              <Navbar />
-            </div>
-            <Sidebar />
-          {children}
-          <Analytics />
-          <Toaster />
-        </ThemeProvider>
+        {children}
+        <Analytics />
       </body>
     </html>
   );
