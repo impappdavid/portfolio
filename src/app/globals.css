@@ -186,3 +186,7 @@ body::-webkit-scrollbar-thumb:hover {
   
 }
 
+::selection {
+  background-color: #3f3f46; /* zinc-600 */
+  color: #ffffff;            /* white */
+}
