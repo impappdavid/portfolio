@@ -23,7 +23,7 @@ function About() {
                 <div className="flex flex-col gap-2 items-center">
                     <div className="flex flex-col items-center">
                         <div className={`text-xl tracking-wide ${kodemonoFont.className}`}>ABOUT ME</div>
-                        <span className={`${barlowFont.className} text-xl text-zinc-600 max-w-2xl text-center`}>
+                        <span className={`${barlowFont.className} text-xl text-zinc-600 max-w-2xl px-4 text-center`}>
                             I'm a developer <span className="font-semibold">focused on frontend</span> work, using
                             {/* --- JavaScript Icon Tooltip --- */}
                             <TooltipProvider>
@@ -129,7 +129,7 @@ function About() {
                                 <path d="M2.5 20.504h-1v2h1zm1-2h-1v2h1zm1-2.001h-1v2h1zm1-1h-1v1h1zm1.001-1h-1v1h1zm1-1h-1v1h1zm1.001-1.001h-1v1h1zm7.001 0h-1v1h1zm1 1.001h-1v1h1zm1.001 1h-1v1h1zm1 1h-1v1h1zm1 1h-1v2h1zm1 2.001h-1v2h1zm1.001 2h-1v2h1zm-1.001 2.001H2.5v1h18.004z" />
                                 <path d="M18.504 20.505v-2h-1v-2.001h-1v-1h-1v-1h-1.001v-1.001h-3v1h-1v1H6.5v1h-1v2.001h-1v2h-1v1h16.003v-1zM7.5 17.504h2v2h-2zm4.001-1h1v1h-1zM14.503 3.5h-1v9.002h1zm-5.001 0h-1v9.002h1zm6.001-1h-1v1h1zm-7.001 0h-1v1h1zm6.001-1H8.502v1h6.001z" />
                             </svg>
-                        </span>. I’ve never studied it in depth, but I think it’s mind-blowing how it explains the world and how things work
+                        </span>. I’ve never studied it in depth, but I think it’s mind blowing how it explains the world and how things work
                         <span className="inline-flex items-center mx-1 align-middle" title="Atom">
                             {/* Atom Icon */}
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" className="inline-block align-middle rotate-12 hover:scale-125 hover:-rotate-12 transition-all duration-300 cursor-pointer">
@@ -221,9 +221,26 @@ function About() {
                                 </TooltipContent>
                             </Tooltip>
                         </TooltipProvider>
-                        . Together with a friend, we build full-stack web applications—he handles the backend, and I take care of the frontend. If you need a custom web app, a sleek user interface, or a complete project from start to finish, feel free to reach out!
+                        . Together with a friend, we build full-stack web applications he handles the backend, and I take care of the frontend. If you need a custom web app, a sleek user interface, or a complete project from start to finish, feel free to reach out!
                     </span>
 
+                    <div className="max-w-2xl border hover:scale-105 cursor-pointer transition-all duration-300 mt-8 border-[#e2404e] p-6 mx-auto my-6 font-sans">
+                        <div className="flex items-center ">
+                            <img className="w-14 h-14 rounded-full mr-4 shadow-md" src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client Avatar" />
+                            <div>
+                                <div className="w-full flex justify-between">
+                                    <span className="block font-semibold text-lg">davidtimko1986</span>
+                                    <span className="block text-[#e2404e] text-base">★★★★★</span>
+                                </div>
+                                <div className=" text-base text-gray-800 leading-snug">
+                                    They did a good job. Quick response and solutions. Creative ideas. I recommend to everyone
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
 
                 </div>
             </div>
