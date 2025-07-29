@@ -26,8 +26,9 @@ function About() {
                     </div>
                     <div className={`${barlowFont.className} max-w-2xl text-xl text-zinc-600 text-center`}>
                         Outside of programming, I’ve always found science fascinating. I’ve never studied it in depth, but I think it’s mind-blowing how it explains the world and how things work. The way everything connects from the tiniest particles to the universe itself is something I find endlessly interesting. Even if I don’t always understand the details, I love reading or watching things about physics, space, and how nature works. It reminds me how much there is to explore and how little we still know.
-
-
+                    </div>
+                    <div className={`${barlowFont.className} max-w-2xl text-xl text-zinc-600 text-center`}>
+                    I'm available for freelance work on <a href="" className="text-green-600 font-medium underline">Fiverr</a>. Together with a friend, we build full-stack web applications he handles the backend, and I take care of the frontend. If you need a custom web app, a sleek user interface, or a complete project from start to finish, feel free to reach out!
                     </div>
                 </div>
             </div>
