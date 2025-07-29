@@ -1,10 +1,11 @@
+import About from "@/components/my-components/about";
 
 
 export default function Home() {
   return (
     <>
       <div className="flex flex-col h-screen w-full items-center bg-[#ebe7e1]">
-        
+        <About />
       </div>
     </>
   );
