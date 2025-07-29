@@ -226,13 +226,18 @@ function About() {
 
                     <div className="max-w-2xl border hover:scale-105 cursor-pointer transition-all duration-300 mt-8 border-[#e2404e] p-6 mx-auto my-6 font-sans">
                         <div className="flex items-center ">
-                            <img className="w-14 h-14 rounded-full mr-4 shadow-md" src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client Avatar" />
+                            <div className="w-14 h-14 bg-[#e2404e]  mr-4 shadow-md flex items-center justify-center"  >
+                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="6" r="4" fill="#fff" />
+                                    <path fill="#fff" d="M20 17.5c0 2.485 0 4.5-8 4.5s-8-2.015-8-4.5S7.582 13 12 13s8 2.015 8 4.5" />
+                                </svg>
+                            </div>
                             <div>
                                 <div className="w-full flex justify-between">
-                                    <span className="block font-semibold text-lg">davidtimko1986</span>
-                                    <span className="block text-[#e2404e] text-base">★★★★★</span>
+                                    <span className={`${kodemonoFont.className} block font-semibold text-2xl`}>davidtimko1986</span>
+                                    <span className="block text-[#e2404e] text-lg">★★★★★ 5</span>
                                 </div>
-                                <div className=" text-base text-gray-800 leading-snug">
+                                <div className={`${barlowFont.className} text-base text-gray-800 leading-snug`}>
                                     They did a good job. Quick response and solutions. Creative ideas. I recommend to everyone
                                 </div>
 
