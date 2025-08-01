@@ -1,3 +1,4 @@
+"use client"
 import { Bebas_Neue, Barlow_Condensed } from "next/font/google"
 import {
     Tooltip,
@@ -5,6 +6,8 @@ import {
     TooltipProvider,
     TooltipTrigger,
 } from "@/components/ui/tooltip"
+import gsap from "gsap"
+import { useEffect, useRef } from "react"
 
 const kodemonoFont = Bebas_Neue({
     subsets: ["latin"],
@@ -16,14 +19,259 @@ const barlowFont = Barlow_Condensed({
 })
 
 function About() {
+    const nameRef = useRef<HTMLDivElement>(null);
+    const aboutTitleRef = useRef<HTMLDivElement>(null);
+    const aboutTextRef = useRef<HTMLSpanElement>(null);
+    const scienceTextRef = useRef<HTMLSpanElement>(null);
+    const freelanceTextRef = useRef<HTMLSpanElement>(null);
+    const reviewRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const sections = [
+            { ref: nameRef, animation: 'luxuryEntry' },
+            { ref: aboutTitleRef, animation: 'goldReveal' },
+            { ref: aboutTextRef, animation: 'silkSlide' },
+            { ref: scienceTextRef, animation: 'crystalRise' },
+            { ref: freelanceTextRef, animation: 'diamondShimmer' },
+            { ref: reviewRef, animation: 'premiumFloat' }
+        ];
+
+        sections.forEach(({ ref, animation }, index) => {
+            if (ref.current) {
+                const delay = index * 0.4; // Slower, more deliberate timing
+
+                switch (animation) {
+                    case 'luxuryEntry':
+                        // Premium entrance with multiple layers
+                        const luxuryTl = gsap.timeline({ delay });
+                        luxuryTl.fromTo(ref.current,
+                            {
+                                opacity: 0,
+                                scale: 0.8,
+                                rotationY: -45,
+                                z: -200,
+                                filter: "blur(15px) brightness(0.3)",
+                            },
+                            {
+                                opacity: 0.3,
+                                scale: 0.95,
+                                rotationY: 0,
+                                z: 0,
+                                filter: "blur(8px) brightness(0.6)",
+                                duration: 0.8,
+                                ease: "power2.out"
+                            }
+                        )
+                            .to(ref.current, {
+                                opacity: 1,
+                                scale: 1,
+                                filter: "blur(0px) brightness(1)",
+                                duration: 1.2,
+                                ease: "power3.out"
+                            })
+                            .to(ref.current, {
+                                duration: 0.5,
+                                ease: "power2.inOut"
+                            });
+                        break;
+
+                    case 'goldReveal':
+                        // Elegant gold-like reveal
+                        gsap.fromTo(ref.current,
+                            {
+                                opacity: 0,
+                                scaleX: 0,
+                                transformOrigin: "center center",
+                            },
+                            {
+                                opacity: 1,
+                                scaleX: 1,
+                                duration: 1.4,
+                                delay,
+                                ease: "power2.inOut"
+                            }
+                        );
+                        break;
+
+                    case 'silkSlide':
+                        // Smooth silk-like motion
+                        const silkTl = gsap.timeline({ delay });
+                        silkTl.fromTo(ref.current,
+                            {
+                                opacity: 0,
+                                x: -150,
+                                skewX: 20,
+                                scaleY: 0.8,
+                                filter: "blur(8px) saturate(0.5)",
+                            },
+                            {
+                                opacity: 0.7,
+                                x: 20,
+                                skewX: -5,
+                                scaleY: 0.95,
+                                filter: "blur(3px) saturate(0.8)",
+                                duration: 0.8,
+                                ease: "power2.out"
+                            }
+                        )
+                            .to(ref.current, {
+                                opacity: 1,
+                                x: 0,
+                                skewX: 0,
+                                scaleY: 1,
+                                filter: "blur(0px) saturate(1)",
+                                duration: 1,
+                                ease: "power3.out"
+                            });
+                        break;
+
+                    case 'crystalRise':
+                        // Crystal-like emergence
+                        const crystalTl = gsap.timeline({ delay });
+                        crystalTl.fromTo(ref.current,
+                            {
+                                opacity: 0,
+                                y: 100,
+                                scaleY: 0.3,
+                                scaleX: 1.2,
+                                rotationX: 45,
+                                filter: "blur(10px) brightness(1.5) contrast(1.3)",
+                            },
+                            {
+                                opacity: 0.6,
+                                y: -10,
+                                scaleY: 0.9,
+                                scaleX: 1.05,
+                                rotationX: 5,
+                                filter: "blur(4px) brightness(1.2) contrast(1.1)",
+                                duration: 0.9,
+                                ease: "power2.out"
+                            }
+                        )
+                            .to(ref.current, {
+                                opacity: 1,
+                                y: 0,
+                                scaleY: 1,
+                                scaleX: 1,
+                                rotationX: 0,
+                                filter: "blur(0px) brightness(1) contrast(1)",
+                                duration: 1.1,
+                                ease: "elastic.out(1, 0.4)"
+                            });
+                        break;
+
+                    case 'diamondShimmer':
+                        // Diamond-like shimmer effect
+                        const diamondTl = gsap.timeline({ delay });
+                        diamondTl.fromTo(ref.current,
+                            {
+                                opacity: 0,
+                                x: 120,
+                                skewY: 15,
+                                scale: 0.7,
+                                filter: "blur(12px) brightness(2) saturate(0)",
+                            },
+                            {
+                                opacity: 0.4,
+                                x: -15,
+                                skewY: -8,
+                                scale: 0.95,
+                                filter: "blur(6px) brightness(1.5) saturate(0.5)",
+                                duration: 0.3,
+                                ease: "power1.out"
+                            }
+                        )
+                            .to(ref.current, {
+                                opacity: 0.8,
+                                x: 8,
+                                skewY: 3,
+                                scale: 1.02,
+                                filter: "blur(2px) brightness(1.2) saturate(0.8)",
+                                duration: 0.2,
+                                ease: "power2.inOut"
+                            })
+                            .to(ref.current, {
+                                opacity: 1,
+                                x: 0,
+                                skewY: 0,
+                                scale: 1,
+                                filter: "blur(0px) brightness(1) saturate(1)",
+                                duration: 0.7,
+                                ease: "power3.out"
+                            });
+                        break;
+
+                    case 'premiumFloat':
+                        // Luxury floating entrance
+                        const floatTl = gsap.timeline({ delay });
+                        floatTl.fromTo(ref.current,
+                            {
+                                opacity: 0,
+                                scale: 0.6,
+                                rotationX: -60,
+                                rotationY: 30,
+                                z: -300,
+                                filter: "blur(20px) brightness(0.4)",
+                                transformOrigin: "center center",
+                                transformStyle: "preserve-3d"
+                            },
+                            {
+                                opacity: 0.5,
+                                scale: 0.9,
+                                rotationX: -10,
+                                rotationY: 5,
+                                z: -50,
+                                filter: "blur(8px) brightness(0.7)",
+                                duration: 1,
+                                ease: "power2.out"
+                            }
+                        )
+                            .to(ref.current, {
+                                opacity: 1,
+                                scale: 1,
+                                rotationX: 0,
+                                rotationY: 0,
+                                z: 0,
+                                filter: "blur(0px) brightness(1)",
+                                duration: 1.4,
+                                ease: "back.out(1.2)"
+                            })
+                            .to(ref.current, {
+                                duration: 0.6,
+                                ease: "power2.inOut"
+                            });
+                        break;
+                }
+            }
+        });
+
+        // Add subtle continuous animations for luxury feel
+        if (nameRef.current) {
+            gsap.to(nameRef.current, {
+                duration: 3,
+                repeat: -1,
+                yoyo: true,
+                ease: "sine.inOut",
+                delay: 2
+            });
+        }
+
+    }, []);
+
     return (
         <>
             <div className="flex flex-col gap-6 pt-24">
-                <div className={`text-7xl flex justify-center tracking-wider ${kodemonoFont.className} text-center`}>PAPP DÁVID</div>
+                <div className={`text-7xl flex justify-center tracking-wider ${kodemonoFont.className} text-center`} ref={nameRef}>
+                    PAPP DÁVID
+                </div>
+
                 <div className="flex flex-col gap-2 items-center">
                     <div className="flex flex-col items-center">
-                        <div className={`text-xl tracking-wide ${kodemonoFont.className}`}>ABOUT ME</div>
-                        <span className={`${barlowFont.className} text-xl text-zinc-600 max-w-2xl px-4 text-center`}>
+                        <div className={`text-xl tracking-wide ${kodemonoFont.className}`} ref={aboutTitleRef}>
+                            ABOUT ME
+                        </div>
+
+                        <span className={`${barlowFont.className} text-xl text-zinc-600 max-w-2xl px-4 text-center`} ref={aboutTextRef}>
                             I'm a developer <span className="font-semibold">focused on frontend</span> work, using
                             {/* --- JavaScript Icon Tooltip --- */}
                             <TooltipProvider>
@@ -36,7 +284,7 @@ function About() {
                                             </svg>
                                         </span>
                                     </TooltipTrigger>
-                                    <TooltipContent className={`${barlowFont.className} bg-yellow-300 backdrop-blur-2xl text-black text-md`}>
+                                    <TooltipContent className={`${barlowFont.className} tooltip-popup bg-yellow-300 backdrop-blur-2xl text-black text-md`}>
                                         <span className="flex items-center gap-2 font-semibold">
                                             JavaScript
                                         </span>
@@ -57,15 +305,13 @@ function About() {
                                             </svg>
                                         </span>
                                     </TooltipTrigger>
-                                    <TooltipContent className={`${barlowFont.className} bg-blue-500 backdrop-blur-2xl text-white text-md`}>
+                                    <TooltipContent className={`${barlowFont.className} tooltip-popup bg-blue-500 backdrop-blur-2xl text-white text-md`}>
                                         <span className="flex items-center gap-2 font-semibold">
-
                                             TypeScript
                                         </span>
                                     </TooltipContent>
                                 </Tooltip>
                             </TooltipProvider>
-                            {/* --- ...repeat with similar structure for React, Tailwind, and so on... --- */}
 
                             for building dynamic, interactive functionality. TypeScript also helps me write safer, more scalable code.
 
@@ -81,9 +327,8 @@ function About() {
                                             </svg>
                                         </span>
                                     </TooltipTrigger>
-                                    <TooltipContent className={`${barlowFont.className} bg-cyan-500 backdrop-blur-2xl text-white text-md`}>
+                                    <TooltipContent className={`${barlowFont.className} tooltip-popup bg-cyan-500 backdrop-blur-2xl text-white text-md`}>
                                         <span className="flex items-center gap-2 font-semibold">
-
                                             React
                                         </span>
                                     </TooltipContent>
@@ -102,9 +347,8 @@ function About() {
                                             </svg>
                                         </span>
                                     </TooltipTrigger>
-                                    <TooltipContent className={`${barlowFont.className} bg-sky-400 backdrop-blur-2xl text-white text-md`}>
+                                    <TooltipContent className={`${barlowFont.className} tooltip-popup bg-sky-400 backdrop-blur-2xl text-white text-md`}>
                                         <span className="flex items-center gap-2 font-semibold">
-
                                             Tailwind CSS
                                         </span>
                                     </TooltipContent>
@@ -112,26 +356,19 @@ function About() {
                             </TooltipProvider>
 
                             to style components quickly with a utility-first approach.
-
-                            I like turning designs into <span className="font-semibold">functional interfaces</span> that are clean and responsive.
-                            I care about writing <span className="font-semibold">clear code</span> and making things that
-                            <span className="font-semibold">work well</span> for real people.
                             Most of my time goes into <span className="font-semibold">learning</span> and building projects that reflect what I value in good software.
                         </span>
-
-
                     </div>
-                    <span className={`${barlowFont.className} text-xl text-zinc-600 max-w-2xl text-center`}>
-                        Outside of programming, I’ve always found science fascinating
+
+                    <span className={`${barlowFont.className} text-xl text-zinc-600 max-w-2xl text-center`} ref={scienceTextRef}>
+                        Outside of programming, I've always found science fascinating
                         <span className="inline-flex items-center mx-1 align-middle" title="Science">
-                            {/* Flask/Science Icon */}
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" className="fill-orange-500 inline-block align-middle -rotate-12 hover:scale-125 hover:rotate-12 transition-all duration-300 cursor-pointer">
                                 <path d="M2.5 20.504h-1v2h1zm1-2h-1v2h1zm1-2.001h-1v2h1zm1-1h-1v1h1zm1.001-1h-1v1h1zm1-1h-1v1h1zm1.001-1.001h-1v1h1zm7.001 0h-1v1h1zm1 1.001h-1v1h1zm1.001 1h-1v1h1zm1 1h-1v1h1zm1 1h-1v2h1zm1 2.001h-1v2h1zm1.001 2h-1v2h1zm-1.001 2.001H2.5v1h18.004z" />
                                 <path d="M18.504 20.505v-2h-1v-2.001h-1v-1h-1v-1h-1.001v-1.001h-3v1h-1v1H6.5v1h-1v2.001h-1v2h-1v1h16.003v-1zM7.5 17.504h2v2h-2zm4.001-1h1v1h-1zM14.503 3.5h-1v9.002h1zm-5.001 0h-1v9.002h1zm6.001-1h-1v1h1zm-7.001 0h-1v1h1zm6.001-1H8.502v1h6.001z" />
                             </svg>
-                        </span>. I’ve never studied it in depth, but I think it’s mind blowing how it explains the world and how things work
+                        </span>. I've never studied it in depth, but I think it's mind blowing how it explains the world and how things work
                         <span className="inline-flex items-center mx-1 align-middle" title="Atom">
-                            {/* Atom Icon */}
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" className="inline-block align-middle rotate-12 hover:scale-125 hover:-rotate-12 transition-all duration-300 cursor-pointer">
                                 <path fill="#3b82f6" d="M16.471 16.471c4.939-4.939 6.94-10.944 4.471-13.413c-2.469-2.47-8.474-.468-13.413 4.47c-4.939 4.94-6.94 10.945-4.471 13.414c2.47 2.47 8.475.468 13.413-4.47" opacity="0.3" />
                                 <path fill="#3b82f6" d="M7.529 16.471C2.59 11.533.589 5.527 3.058 3.058c2.469-2.47 8.474-.468 13.413 4.47c4.939 4.94 6.94 10.945 4.471 13.414c-2.47 2.47-8.475.468-13.413-4.47" opacity="0.3" />
@@ -139,7 +376,6 @@ function About() {
                             </svg>
                         </span>. The way everything connects from the tiniest particles
                         <span className="inline-flex items-center mx-1 align-middle" title="Molecule">
-                            {/* Molecule Icon */}
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" className="inline-block align-middle -rotate-12 hover:scale-125 hover:rotate-12 transition-all duration-300 cursor-pointer">
                                 <g fill="none" stroke="#f43f5e" stroke-width="1">
                                     <circle cx="12" cy="12" r="2.5" />
@@ -155,16 +391,12 @@ function About() {
                             </svg>
                         </span> to the universe itself
                         <span className="inline-flex items-center mx-1 align-middle" title="Universe/Planet">
-                            {/* Planet Icon */}
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 36 36" className="inline-block align-middle rotate-45 hover:scale-125 hover:-rotate-45 transition-all duration-300 cursor-pointer">
                                 <circle cx="18" cy="18" r="10.694" fill="#ffcc4d" />
-                                <path fill="#f4900c" d="M10.229 22.751c-.985.067-1.689-.308-2.203-.917c.214.557.487 1.081.788 1.588c.771.289 1.591.41 2.54-.272c-.463-.227-.88-.415-1.125-.399M23.086 8.608c.045.328-.187.5-.75.363c-.955-.232-1.793.776-2.274 1.619c-.947 1.657-4.854 3.524-4.857 2.087c-.001-.679-3.452.843-3.893.161c-.417-.644-1.663-.396-1.921-1.168a10.66 10.66 0 0 0-2.04 5.422c.377.718.864 1.282 1.352 1.526c.66.33 3.726 1.528 4.174.763c.747-1.276 5.229-.373 5.122-1.044c-.205-1.285 2.427-.23 3.373-1.886c.482-.843 1.533-1.49 2.489-1.258c1.116.271 2.493-1.643 2.389-3.996a10.7 10.7 0 0 0-3.164-2.589m3.181 16.175c-.338.166-.671.293-.975.326c-2.248.243-2.734 2.005-4.242 1.703c-.777-.156-1.837 1.214-3.05 1.297a22 22 0 0 0-2.386.308a10.7 10.7 0 0 0 2.386.277c3.331 0 6.305-1.523 8.267-3.911" />
-                                <path fill="#e85e00" d="M23.225 8.674a10.7 10.7 0 0 1 2.554 2.003c2.491-.157 4.01.429 3.883 1.777c-.066.705-.585 1.542-1.431 2.435c-2.108 2.221-6.309 4.796-11.07 6.602c-3.309 1.255-6.258 1.9-8.366 1.934c-2.145.035-3.418-.563-3.302-1.803c.076-.815.752-1.806 1.852-2.857c-.019-.255-.039-.507-.039-.765c0-.848.109-1.669.296-2.461C3.3 18.522.5 21.807.5 24.369c0 3.487 5.162 4.558 12.275 2.957A43 43 0 0 0 18 25.777c3.9-1.419 7.489-3.3 10.399-5.317c4.301-2.983 7.101-6.268 7.101-8.83c0-3.486-5.162-4.558-12.275-2.956" />
-                                <path fill="#f4900c" d="M6.356 18.051a11.3 11.3 0 0 0-1.88 2.382c-.49.852-.907 1.811-.844 2.671c.035.856.682 1.366 1.558 1.602c.874.227 1.845.287 2.834.229a25.3 25.3 0 0 0 5.841-.965c1.924-.505 3.791-1.225 5.615-2.036a42.6 42.6 0 0 0 10.132-6.382c.368-.333.771-.649 1.124-.986c.333-.337.647-.713.91-1.097c.522-.768.826-1.667.335-2.352c-.49-.696-1.495-1.075-2.453-1.271c-.981-.187-2.01-.23-3.03-.111c.992-.265 2.037-.395 3.088-.316c1.03.092 2.172.3 3.008 1.221c.41.457.599 1.145.524 1.746c-.057.611-.293 1.15-.563 1.635c-.278.485-.59.925-.945 1.348c-.352.404-.709.777-1.072 1.163c-2.932 2.994-6.44 5.414-10.261 7.159c-3.816 1.72-7.974 2.911-12.261 2.754c-1.056-.04-2.157-.133-3.236-.548c-.534-.209-1.082-.517-1.5-1.016a2.5 2.5 0 0 1-.589-1.774c.098-1.213.704-2.152 1.349-2.976a9.8 9.8 0 0 1 2.316-2.08" />
+                                <path fill="#f4900c" d="M10.229 22.751c-.985.067-1.689-.308-2.203-.917c.214.557.487 1.081.788 1.588c.771.289 1.591.41 2.54-.272c-.463-.227-.88-.415-1.125-.399M23.086 8.608c.045.328-.187.5-.75.363c-.955-.232-1.793.776-2.274 1.619c-.947 1.657-4.854 3.524-4.857 2.087c-.001-.679-3.452.843-3.893.161c-.417-.644-1.663-.396-1.921-1.168a10.66 10.66 0 0 0-2.04 5.422c.377.718.864 1.282 1.352 1.526c.66.33 3.726 1.528 4.174.763c.747-1.276 5.229-.373 5.122-1.044c-.205-1.285 2.427-.23 3.373-1.886c.482-.843 1.533-1.49 2.489-1.258c1.116.271 2.493-1.643 2.389-3.996a10.7 10.7 0 0 0-3.164-2.589" />
                             </svg>
-                        </span> is something I find endlessly interesting. Even if I don’t always understand the details, I love reading or watching things about physics
+                        </span> is something I find endlessly interesting. Even if I don't always understand the details, I love reading or watching things about physics
                         <span className="inline-flex items-center mx-1 align-middle" title="Physics">
-                            {/* Physics/Relativity Icon */}
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" className="inline-block align-middle rotate-0 hover:scale-125 hover:rotate-180 transition-all duration-300 cursor-pointer">
                                 <g fill="none" stroke="#f43f5e" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
                                     <path d="M12 5.793a28 28 0 0 1 3.342 2.865A28 28 0 0 1 18.207 12M12 5.793a28 28 0 0 0-3.342 2.865A28 28 0 0 0 5.793 12M12 5.793c3.57-2.584 6.947-3.554 8.354-2.147S20.791 8.43 18.207 12m0 0c2.584 3.57 3.554 6.947 2.147 8.354c-1.043 1.043-3.17.78-5.654-.48M18.207 12a28 28 0 0 1-2.865 3.342A28 28 0 0 1 12 18.207m0 0a28 28 0 0 1-3.342-2.865A28 28 0 0 1 5.793 12M12 18.207c-3.57 2.584-6.947 3.554-8.354 2.147S3.209 15.57 5.793 12m0 0C3.21 8.43 2.24 5.053 3.646 3.646c1.043-1.043 3.17-.78 5.654.48" />
@@ -173,7 +405,7 @@ function About() {
                             </svg>
                         </span>, space
                         <span className="inline-flex items-center mx-1 align-middle" title="Space">
-                            {/* Saturn Icon */}
+
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512" className="inline-block align-middle -rotate-12 hover:scale-125 hover:rotate-45 transition-all duration-300 cursor-pointer">
                                 <path fill="#5f65b2" d="M488.951 10.383H21.716c-6.6 0-12 5.4-12 12v467.234c0 6.6 5.4 12 12 12H488.95c6.6 0 12-5.4 12-12V22.383c.001-6.6-5.399-12-11.999-12" />
                                 <path fill="#8280d8" d="M488.951 10.383H257.513a202 202 0 0 1-12.238 10.88c-23.164 18.991-37.945 47.829-37.945 80.12q0 1.321.033 2.635a15.253 15.253 0 0 1-15.767 15.697a95 95 0 0 0-2.974-.046c-25.083 0-47.876 9.796-64.766 25.771c-11.403 10.784-28.374 13.309-42.341 6.149c-21.533-11.039-45.938-17.265-71.799-17.265v315.258c74.614 0 137.11-51.844 153.452-121.474c2.752-11.727 13.182-19.897 25.228-19.868h.226c37.339 0 69.605-21.706 84.874-53.189c6.18-12.742 22.812-15.95 33.346-6.484c35.03 31.479 81.354 50.635 132.158 50.635c21.639 0 42.462-3.483 61.951-9.904V22.383c0-6.6-5.4-12-12-12" />
@@ -185,14 +417,13 @@ function About() {
                             </svg>
                         </span>, and how nature works
                         <span className="inline-flex items-center mx-1 align-middle" title="Nature">
-                            {/* Leaf */}
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512" className="inline-block align-middle rotate-12 hover:scale-125 hover:-rotate-12 transition-all duration-300 cursor-pointer">
-                                <path fill="#22c55e" d="M169.92 15.654c-10.512 16.697-22.392 34.058-41.688 50.473c.46.447.934.89 1.405 1.336l23.55-.406l-3.527 10.7a71 71 0 0 1-1.678 4.552a184 184 0 0 0 8.872 5.788l25.052 15.33l-45.99-.793c-1.954 2.474-4.06 4.9-6.305 7.275c8.8 11.517 22.045 22.713 38.675 32.766l-12.404-.365l-.015 5.678c8.53 6.358 17.792 12.448 27.162 18.48c18.11-11.568 31.79-24.5 39.51-37.616l-57.353.99l25.052-15.33c8.97-5.488 16.525-11.115 23.082-16.867c-5.098-5.475-9-10.962-11.257-16.69l-4.04-10.246l29.742-1.823C205.14 54.41 182.44 38.31 169.92 15.654m234.605 13.223c-6.537 12.962-13.88 29.016-23.638 44.63c10.927 18.367 24.428 35.997 46.773 52.382l20.42 14.97l-52.51-1.085c6.956 12.136 19.936 26.858 34.58 40.047c19.157 17.254 40.928 32.572 53.907 39.914l11.34 6.418c.005-4.163.005-7.382.015-13.972c-17.176-11.938-29.767-25.795-36.322-42.2l-4.115-10.298l43.605-2.58c-9.91-4.358-19.747-8.263-28.723-12.06c-8.498-3.594-16.23-7.107-22.724-11.23c-6.495-4.122-12.102-8.954-14.858-15.943l-3.93-9.962l36.077-3.178c-24.245-20.226-47.223-48.756-59.897-75.853M84.027 34.62c-12.52 22.656-35.22 38.757-57.843 53.234l29.738 1.822l-4.037 10.244c-4.78 12.125-16.815 24.123-33.182 36.873c-.295 11.21-.392 17.66-.385 17.732c.005.044.19 1.1.29 3.127c.038.742.04 3.177.066 4.358l13.828.797l-.004.55l-3.906 9.778c-1.18 2.955-2.498 6.07-4.16 9.232l11.525-7.05c37.376-22.87 50.42-48.163 67.395-74.833l-.233 6.366l4.474-1.875a72 72 0 0 1-3.305-8.25l-3.528-10.7l26.582.46C107.068 69.66 94.836 51.787 84.027 34.618zM263.06 61.036c-10.808 17.168-23.04 35.04-43.314 51.86l26.582-.458l-3.527 10.7c-6.657 20.188-22.772 37.89-44.874 52.91l17.916 11.573l18.273.688l-4.127 10.5c-2.305 5.863-5.355 11.4-9.01 16.65l8.737-6.19c17.913-12.69 36.773-27.495 51.8-41.534c10.026-9.365 17.978-18.52 23.083-25.914l-50.537-3.715l16.5-12.773c10.37-8.027 20.973-15.94 30.924-24.178c-15.49-11.246-29.53-24.024-38.423-40.12zm93.07.68c-12.76 26.805-36.227 46.04-59.107 63.506l31.39 2.306l-3.194 9.726c-4.503 13.7-16.983 27.412-32.783 42.172c-10.794 10.083-23.245 20.29-35.896 29.926l49.278 3.494l-3.26 9.78c-11.273 33.806-46.845 56.924-75.816 75.597c13.487 8.056 27.67 15.44 39.813 22.318c68.34 18.82 147.594 6.972 200.924-16c-13.19-7.554-23.844-14.547-32.748-23.006c-11.805-11.216-20.072-24.96-26.377-44.183l-3.017-9.208l51.97-6.61c-11.874-8.21-25.17-18.39-37.867-29.825c-20.11-18.113-38.394-38.003-43.915-58.067L372.68 123.3l27.867.577c-21.174-20.07-33.542-41.485-44.416-62.16zM108.78 121.84c-10.807 17.168-23.038 35.04-43.313 51.86l26.582-.456l-3.53 10.697c-8.24 24.998-30.974 46.186-61.625 63.185l52.94 1.99l-4.126 10.496c-11.05 28.11-29.76 52.974-61.038 71.585c73.885 22.566 156.574 31.568 231.582-3.572c-12.908-7.055-26.9-14.653-40.33-23.56c-18.07-11.983-34.525-25.736-41.71-43.713l-4.116-10.3l48.4-2.864c-11.828-7.625-23.415-15.48-33.557-23.383c-16.245-12.663-29.06-24.086-34.02-36.664l-4.04-10.247l29.74-1.823c-22.62-14.476-45.318-30.576-57.84-53.23zm-40.52 67.816l-49.016.844c-.168.218-.32.44-.492.656c-.276 21.495-.448 33.384-.502 42.38c23.342-13.057 40.863-28.338 50.01-43.88m105.674 12.403a190 190 0 0 0 10.845 9.124a360 360 0 0 0 11.14 8.308c5.44-5.177 10.084-10.545 13.692-16.092zm41.658 20.428a113 113 0 0 1-5.947 6.504a619 619 0 0 0 28.38 17.815l17.645 10.427c11.34-9.42 21.135-19.423 27.215-29.972zm279.803 10.334l-68.383 8.698c4.666 11.45 10.047 19.75 17.28 26.992l-.21-9.6c17.455-.996 34.705-3.352 51.4-7.363c-.065-7.174-.084-12.42-.087-18.728zm-243.96 27.852l-66.394 3.928c3.903 5.187 9.085 10.326 15.097 15.314a496 496 0 0 0 19.455 3.504c10.638-7.12 21.72-14.713 31.842-22.746m-219.744 2.64l-.29 35.618c10.746-10.37 18.692-21.97 24.83-34.694zm413.947 66.534c-14.262 4.577-29.517 8.396-45.38 11.222l5.55 132.18h42.978zm-181.83 7.002a257 257 0 0 1-8.018 4.046l-.927 114.274h52.682l-2.426-110.496c-13.946-1.552-27.788-4.123-41.313-7.824zm120.54 6.693c-15.085 1.992-30.582 3.05-46.18 2.994l-.386 139.742h52.56zm-353.38 9.146l-.924 114.04H74.31l1.975-104.398c-15.362-2.464-30.51-5.75-45.318-9.643zm174.72 6.27c-11.576 2.87-23.226 4.935-34.898 6.284l3.915 66.195h33.065l-2.084-72.48zm-113.443 5.628l-2.508 132.56l72.692-2.287l-7.584-128.21c-20.97 1.29-41.936.424-62.6-2.062z" />
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512" className="fill-green-500 inline-block align-middle rotate-0 hover:scale-125 hover:rotate-45 transition-all duration-300 cursor-pointer">
+                                <path d="M256 16C123.6 16 16 123.6 16 256s107.6 240 240 240s240-107.6 240-240S388.4 16 256 16m0 18c122.7 0 222 99.3 222 222c0 46.7-14.4 89.9-38.9 125.7c-16.6-19.3-26.2-36.8-38.8-60.2l48.4 8.7c-23.2-22-44.2-50.3-57.3-74.6l33.1 1.5c-28.3-19.2-44.2-36.7-58.7-60.4c-2.6 4.8-4.9 9.2-7.1 13.6c-12.3-13.8-23.5-28.4-31.7-43.6c7.6 1.5 19.3 9 34.6 3.6c-16.8-15.9-33.4-37-42.9-54.7c5.3 3.1 17.5 4.3 26.3 1.6c-20.6-13.9-28-27.77-38.6-44.97c-9.3 17.2-22.6 34.77-38.6 49.27c6.5.8 18.2-3.5 25.3-8.6c-3.9 21.3-19.6 44-38.2 58.6c10.5-1.7 19.8.4 31.9-5.8c-13.9 21.4-30.4 39.2-50.7 57.9c18.1 2.3 42 4.3 65 5.1l-.3 27.6c9.3 2.1 19.7 3.1 28.3 1.4l27-2.2c-10.1 28.6-32.6 53.6-58.2 73.7l50.2-8c-16.4 25.3-36 49.3-58.8 71.9c-9.1-11.4-17.3-23.1-23.7-35c14.1 3.8 27.1 4 39.5 1.9c-23.2-22-42.9-45.6-56-69.9l44.4 5.1c-28.3-19.2-45.5-46.9-60-70.6c-10 18.6-24.1 40.6-40.3 58.9c-19.3-19.5-36.1-40.5-47.4-61.5l33.1 1.5c-28.3-19.2-42.9-38.2-57.4-61.9c-12.8 23.7-23.99 43.4-46.02 63.3c14.6 2.1 24.62-2.5 35.02-6.6c-10 28.6-34.29 56.1-59.89 76.2c20.12 2.9 37.33-4.1 53.49-11.1c-12.33 25.4-27.24 47.7-47.98 69.4C41.95 323.5 34 290.7 34 256c0-122.7 99.3-222 222-222m-55.3 37.67c-8.4 13.54-16.8 18.84-33 29.83l19-.9c-7.5 14-19.6 30.3-32.8 42.8l27.7-5c-8.7 16.2-15 27.5-28.7 41.6c7 2.9 20.4 5.2 36.1 6.5l-1.1 27.9l17.4-1.9l-.7-25.1c16.2.7 33.2.3 47.3-1.5c-16-14.8-29.4-30.7-40.4-47.6l28.8 4.6c-14.7-11.6-27.6-28-33.4-44.37l18.1 3.57c-12.6-11.39-17-16.89-24.3-30.43M348.9 228.4c-5.5 9.2-11.9 17.9-21.4 27l-5.4-26.2c9.7.1 18.9-.2 26.8-.8M154 283.8l33.3 6c-2.6 2.7-5.3 5.3-8 7.8l38.3-5c-6 16.9-16.3 32.3-29.1 46.2c-14-17.3-23-33.7-34.5-55m55.6 73.7c-19.1 29.5-34.2 56.4-62.1 82.2c23.2 2.9 52.5 5.1 81.1 6l-.3 30.6c-70.1-8.7-130.05-50.1-164.13-108.4c16.54 1.2 33.75 1.5 50.43 1l-1.1 39.5l34.9 2.1l-7.1-42.9c22-3.5 51.8.1 68.3-10.1m214.9 43.1c-7.9 9.2-16.6 17.8-25.9 25.6l-4.3-21.6c11-1.1 21.3-2.4 30.2-4m-124.3 5.7c21.4 1.4 44.8 1.4 67 .3l-.5 41.9c-30.5 17.6-65.6 28.1-103 29.4l-6.6-31.8c31.9-.1 59.8-2.3 72.9-7.7c-10-10.2-20.2-21-29.8-32.1" />
                             </svg>
                         </span>. It reminds me how much there is to explore and how little we still know.
                     </span>
 
-                    <span className={`${barlowFont.className} text-xl text-zinc-600 max-w-2xl text-center`}>
+                    <span className={`${barlowFont.className} text-xl text-zinc-600 max-w-2xl text-center`} ref={freelanceTextRef}>
                         I'm available for freelance work on{' '}
                         <TooltipProvider>
                             <Tooltip delayDuration={120}>
@@ -211,10 +442,9 @@ function About() {
                                                 <circle cx="14.375" cy="1.875" r="1.875" />
                                             </g>
                                         </svg>
-                                        {/* Optionally, add descriptive text here */}
                                     </a>
                                 </TooltipTrigger>
-                                <TooltipContent className={` ${barlowFont.className} bg-green-500/80  backdrop-blur-2xl text-white text-md `}>
+                                <TooltipContent className={`${barlowFont.className} tooltip-popup bg-green-500/80 backdrop-blur-2xl text-white text-md`}>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24">
                                         <path fill="#fff" d="M23.004 15.588a.995.995 0 1 0 .002-1.99a.995.995 0 0 0-.002 1.99m-.996-3.705h-.85c-.546 0-.84.41-.84 1.092v2.466h-1.61v-3.558h-.684c-.547 0-.84.41-.84 1.092v2.466h-1.61v-4.874h1.61v.74c.264-.574.626-.74 1.163-.74h1.972v.74c.264-.574.625-.74 1.162-.74h.527zm-6.786 1.501h-3.359c.088.546.43.858 1.006.858c.43 0 .732-.175.83-.487l1.425.4c-.351.848-1.22 1.364-2.255 1.364c-1.748 0-2.549-1.355-2.549-2.515c0-1.14.703-2.505 2.45-2.505c1.856 0 2.471 1.384 2.471 2.408c0 .224-.01.37-.02.477zm-1.562-.945c-.04-.42-.342-.81-.889-.81c-.508 0-.81.225-.908.81zM7.508 15.44h1.416l1.767-4.874h-1.62l-.86 2.837l-.878-2.837H5.72l1.787 4.874zm-6.6 0H2.51v-3.558h1.524v3.558h1.591v-4.874H2.51v-.302c0-.332.235-.536.606-.536h.918V8.412H2.85c-1.162 0-1.943.712-1.943 1.755v.4H0v1.316h.908v3.558z" />
                                     </svg>
@@ -224,32 +454,31 @@ function About() {
                         . Together with a friend, we build full-stack web applications he handles the backend, and I take care of the frontend. If you need a custom web app, a sleek user interface, or a complete project from start to finish, feel free to reach out!
                     </span>
 
-                    <div className="max-w-2xl border hover:scale-105 cursor-pointer transition-all duration-300 mt-8 border-[#e2404e] p-6 mx-auto my-6 font-sans">
-                        <div className="flex items-center ">
-                            <div className="w-14 h-14 bg-[#e2404e]  mr-4 shadow-md flex items-center justify-center"  >
-                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24">
-                                    <circle cx="12" cy="6" r="4" fill="#fff" />
-                                    <path fill="#fff" d="M20 17.5c0 2.485 0 4.5-8 4.5s-8-2.015-8-4.5S7.582 13 12 13s8 2.015 8 4.5" />
-                                </svg>
-                            </div>
-                            <div>
-                                <div className="w-full flex justify-between">
-                                    <span className={`${kodemonoFont.className} block font-semibold text-2xl`}>davidtimko1986</span>
-                                    <span className="block text-[#e2404e] text-lg">★★★★★ 5</span>
+                    <div className="px-4 sm:px-0" ref={reviewRef} onClick={()=> window.open("https://www.fiverr.com/impappdavid?public_mode=true", "_blank")}>
+                        <div className="max-w-2xl border hover:scale-105 cursor-pointer transition-all duration-300 mt-8 border-[#e2404e] p-6 mx-auto my-6 font-sans">
+                            <div className="flex items-center">
+                                <div className="w-14 h-14 bg-[#e2404e] mr-4 shadow-md hidden sm:flex items-center justify-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24">
+                                        <circle cx="12" cy="6" r="4" fill="#fff" />
+                                        <path fill="#fff" d="M20 17.5c0 2.485 0 4.5-8 4.5s-8-2.015-8-4.5S7.582 13 12 13s8 2.015 8 4.5" />
+                                    </svg>
                                 </div>
-                                <div className={`${barlowFont.className} text-base text-gray-800 leading-snug`}>
-                                    They did a good job. Quick response and solutions. Creative ideas. I recommend to everyone
+                                <div>
+                                    <div className="w-full flex justify-between">
+                                        <span className={`${kodemonoFont.className} block font-semibold text-2xl`}>davidtimko1986</span>
+                                        <span className="block text-[#e2404e] text-lg">★★★★★ 5</span>
+                                    </div>
+                                    <div className={`${barlowFont.className} text-base text-gray-800 leading-snug`}>
+                                        They did a good job. Quick response and solutions. Creative ideas. I recommend to everyone
+                                    </div>
                                 </div>
-
                             </div>
-
                         </div>
-
                     </div>
-
                 </div>
             </div>
         </>
     )
 }
+
 export default About
