@@ -218,8 +218,8 @@ function Works() {
                     <div className="card-content">
                         <HoverVideo
                             
-                            src="/projects/azura/azuraCover.mp4"
-                            poster="/projects/azura/cover.png"
+                            src="/azuraCover.mp4"
+                            poster="/azura.png"
                         />
                     </div>
                 </div>
@@ -239,7 +239,7 @@ function Works() {
                         </span>
                     </div>
                     <img
-                        src="/projects/CinemaView/login.png"
+                        src="/login.png"
                         alt="CinemaView"
                         width="100%"
                         style={{ maxHeight: 300, objectFit: "cover" }}

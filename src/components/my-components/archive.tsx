@@ -52,7 +52,7 @@ const tableRows: TableRow[] = [
         country: "HU",
         link: "https://github.com/impappdavid/Azura",
         year: 2024,
-        media: "/projects/azura/azuraCover.mp4",
+        media: "/azuraCover.mp4",
         mediaType: "video",
     },
     {
@@ -63,7 +63,7 @@ const tableRows: TableRow[] = [
         country: "HU",
         link: "",
         year: 2023,
-        media: "/projects/CinemaView/login.png",
+        media: "/login.png",
         mediaType: "image",
     },
 ];

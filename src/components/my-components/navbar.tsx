@@ -310,7 +310,7 @@ function Navbar() {
                   <DrawerTitle className={`text-black text-2xl ${kodemonoFont.className}`}>
                     Navigation
                   </DrawerTitle>
-                  <DrawerDescription className="text-gray-600">
+                  <DrawerDescription className={`text-gray-600 ${kodemonoFont.className}`}>
                     Choose your destination
                   </DrawerDescription>
                 </DrawerHeader>
@@ -318,7 +318,7 @@ function Navbar() {
                 <div className="flex flex-col space-y-4 p-6">
                   <button
                     onClick={() => handleNavigation("/")}
-                    className={`${kodemonoFont.className} text-left py-4 px-4 rounded-lg border border-[#e2404e]/20 hover:border-[#e2404e] transition-all duration-300 hover:bg-[#e2404e]/10 group ${
+                    className={`${kodemonoFont.className} text-left py-4 px-4 border border-[#e2404e]/20 hover:border-[#e2404e] transition-all duration-300 hover:bg-[#e2404e]/10 group ${
                       isActive("/") ? "bg-[#e2404e]/20 border-[#e2404e] text-[#e2404e]" : "text-black"
                     }`}
                   >
@@ -330,7 +330,7 @@ function Navbar() {
 
                   <button
                     onClick={() => handleNavigation("/works")}
-                    className={`${kodemonoFont.className} text-left py-4 px-4 rounded-lg border border-[#e2404e]/20 hover:border-[#e2404e] transition-all duration-300 hover:bg-[#e2404e]/10 group ${
+                    className={`${kodemonoFont.className} text-left py-4 px-4 border border-[#e2404e]/20 hover:border-[#e2404e] transition-all duration-300 hover:bg-[#e2404e]/10 group ${
                       isActive("/works") ? "bg-[#e2404e]/20 border-[#e2404e] text-[#e2404e]" : "text-black"
                     }`}
                   >
@@ -342,7 +342,7 @@ function Navbar() {
 
                   <button
                     onClick={() => handleNavigation("/archive")}
-                    className={`${kodemonoFont.className} text-left py-4 px-4 rounded-lg border border-[#e2404e]/20 hover:border-[#e2404e] transition-all duration-300 hover:bg-[#e2404e]/10 group ${
+                    className={`${kodemonoFont.className} text-left py-4 px-4 border border-[#e2404e]/20 hover:border-[#e2404e] transition-all duration-300 hover:bg-[#e2404e]/10 group ${
                       isActive("/archive") ? "bg-[#e2404e]/20 border-[#e2404e] text-[#e2404e]" : "text-black"
                     }`}
                   >
@@ -356,12 +356,12 @@ function Navbar() {
                 <DrawerFooter className="border-t border-[#e2404e]/20 pt-4">
                   <button
                     onClick={() => handleNavigation("/contact")}
-                    className={`${kodemonoFont.className} w-full bg-[#e2404e] text-white py-3 px-4 rounded-lg font-semibold transition-all duration-300 hover:bg-[#e2404e]/90 hover:scale-105 hover:shadow-lg hover:shadow-[#e2404e]/30`}
+                    className={`${kodemonoFont.className} w-full bg-[#e2404e] text-white py-3 px-4 font-semibold transition-all duration-300 hover:bg-[#e2404e]/90 hover:scale-105 hover:shadow-lg hover:shadow-[#e2404e]/30`}
                   >
                     Contact Me
                   </button>
                   <DrawerClose asChild>
-                    <button className={`${kodemonoFont.className} w-full border border-[#e2404e]/40 text-gray-700 py-3 px-4 rounded-lg font-semibold transition-all duration-300 hover:border-[#e2404e] hover:text-black`}>
+                    <button className={`${kodemonoFont.className} w-full border border-[#e2404e]/40 text-gray-700 py-3 px-4 font-semibold transition-all duration-300 hover:border-[#e2404e] hover:text-black`}>
                       Close
                     </button>
                   </DrawerClose>
