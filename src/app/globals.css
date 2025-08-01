@@ -60,6 +60,7 @@ input:-webkit-autofill:active {
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
+
   .dark {
     --background: 240 10% 3.9%;
     --foreground: 0 0% 98%;
@@ -96,10 +97,27 @@ input:-webkit-autofill:active {
   }
 }
 
+@keyframes reveal {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@layer utilities {
+  .animate-reveal {
+    animation: reveal 2s ease-out forwards;
+  }
+}
+
 @layer base {
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
@@ -114,18 +132,20 @@ input:-webkit-autofill:active {
 
 body {
   font-family: 'regularFont', sans-serif;
+  background-color: #ebe7e1;
 }
 
 @keyframes example {
   from {
     opacity: 0;
     filter: blur(5px);
-    transform:translateY(-100px);
+    transform: translateY(-100px);
   }
+
   to {
     filter: blur(0px);
     opacity: 1;
-    transform:translateY(0px);
+    transform: translateY(0px);
   }
 }
 
@@ -133,15 +153,17 @@ body {
   0% {
     opacity: 0;
     filter: blur(5px);
-    transform:translateX(50px);
+    transform: translateX(50px);
   }
-  50%{
+
+  50% {
     opacity: 0;
   }
+
   100% {
     filter: blur(0px);
     opacity: 1;
-    transform:translateX(0px);
+    transform: translateX(0px);
   }
 }
 
@@ -149,15 +171,17 @@ body {
   0% {
     opacity: 0;
     filter: blur(5px);
-    transform:translateY(50px);
+    transform: translateY(50px);
   }
-  50%{
+
+  50% {
     opacity: 0;
   }
+
   100% {
     filter: blur(0px);
     opacity: 1;
-    transform:translateY(0px);
+    transform: translateY(0px);
   }
 }
 
@@ -166,27 +190,64 @@ html {
 }
 
 body::-webkit-scrollbar {
-  width: 6px;             
+  width: 6px;
 }
 
 body::-webkit-scrollbar-track {
-  background: transparent;       
+  background: transparent;
 }
 
 body::-webkit-scrollbar-thumb {
-  background-color: rgba(44, 44, 44, 0.466);    
-  border-radius: 20px;       
+  background-color: rgba(44, 44, 44, 0.466);
+  border-radius: 20px;
   transition: all .5s;
 }
 
 body::-webkit-scrollbar-thumb:hover {
   cursor: pointer;
-  background-color: rgba(59, 59, 59, 0.466);    
-  border-radius: 20px;       
-  
+  background-color: rgba(59, 59, 59, 0.466);
+  border-radius: 20px;
+
 }
 
 ::selection {
-  background-color: #3f3f46; /* zinc-600 */
-  color: #ffffff;            /* white */
+  background-color: #3f3f46;
+  /* zinc-600 */
+  color: #ffffff;
+  /* white */
+}
+
+::view-transition-group(root){
+  z-index: auto !important;
+}
+::view-transition-image-pair(root){
+  isolation: isolate;
+  will-change: transform, opacity;
+  z-index: 1;
+}
+
+::view-transition-new(root){
+  z-index: 2;
+  animation: none !important;
+}
+
+::view-transition-old(root){
+  z-index: 1;
+  animation: none !important;
+}
+
+@keyframes tooltip-popup {
+  0% {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.tooltip-popup {
+  animation: tooltip-popup 200ms ease-out forwards;
+  transform-origin: center;
 }
