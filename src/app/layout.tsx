@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
-import Navbar from "@/components/my-components/navbar";
-import Footer from "@/components/my-components/footer";
 import { ViewTransitions } from "next-view-transitions"
-import CustomCursor from "@/components/my-components/customCursor";
 import { Karla } from 'next/font/google'
+import Dock from "@/components/my-components/dock";
 
 const karla = Karla({ subsets: ['latin'], variable: "--font-karla" })
 
@@ -31,11 +29,9 @@ export default function RootLayout({
         <head>
           <title>Papp Dávid</title>
         </head> 
-        <body className={`antialiased ${karla.className}`}>
-          <Navbar />
-          <CustomCursor />
+        <body>
           {children}
-          <Footer />
+          <Dock />
           <Analytics />
         </body>
       </html>
