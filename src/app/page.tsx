@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <>
       <ReactLenis root>
-        <div className="flex flex-col items-center bg-zinc-900/70">
+        <div className="flex flex-col items-center">
 
           <Content />
 
