@@ -130,8 +130,10 @@ input:-webkit-autofill:active {
   font-style: normal;
 }
 
+
 body {
   font-family: 'regularFont', sans-serif;
+
 }
 
 @keyframes example {
@@ -184,9 +186,6 @@ body {
   }
 }
 
-html {
-  scroll-behavior: smooth;
-}
 
 body::-webkit-scrollbar {
   width: 6px;
@@ -210,27 +209,28 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 ::selection {
-  background-color: #3f3f46;
+  background-color: #d4d4d8;
   /* zinc-600 */
-  color: #ffffff;
+  color: #52525b;
   /* white */
 }
 
-::view-transition-group(root){
+::view-transition-group(root) {
   z-index: auto !important;
 }
-::view-transition-image-pair(root){
+
+::view-transition-image-pair(root) {
   isolation: isolate;
   will-change: transform, opacity;
   z-index: 1;
 }
 
-::view-transition-new(root){
+::view-transition-new(root) {
   z-index: 2;
   animation: none !important;
 }
 
-::view-transition-old(root){
+::view-transition-old(root) {
   z-index: 1;
   animation: none !important;
 }
@@ -240,6 +240,7 @@ body::-webkit-scrollbar-thumb:hover {
     opacity: 0;
     transform: scale(0.85);
   }
+
   100% {
     opacity: 1;
     transform: scale(1);

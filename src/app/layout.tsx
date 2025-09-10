@@ -2,15 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import { ViewTransitions } from "next-view-transitions"
-import { Karla } from 'next/font/google'
 import Dock from "@/components/my-components/dock";
-
-const karla = Karla({ subsets: ['latin'], variable: "--font-karla" })
-
-export const metadata1: Metadata = {
-  title: 'Custom Cursor',
-  description: '',
-}
 
 
 export const metadata: Metadata = {
