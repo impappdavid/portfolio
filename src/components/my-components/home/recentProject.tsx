@@ -28,7 +28,7 @@ function RecentProject() {
                             <div className={`text-xs text-zinc-400 leading-tight ${kodemonoFont.className}`}>
                                 A booking platform for gamers and creators with profiles, services, payments, and admin tools.
                             </div>
-                            <a href="/" className="bg-blue-600 w-fit mt-3 text-white px-5 py-3 rounded-full hover:bg-blue-700 transition-all duration-200">Read More</a>
+                            <a href="/works/gamingwithme" className="bg-blue-600 w-fit mt-3 text-white px-5 py-3 rounded-full hover:bg-blue-700 transition-all duration-200">Read More</a>
                         </div>
                     </div>
                     <div className="col-span-2  overflow-hidden rounded-b-3xl sm:rounded-b-none sm:rounded-r-3xl">

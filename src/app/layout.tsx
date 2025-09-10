@@ -4,9 +4,6 @@ import { Analytics } from "@vercel/analytics/react"
 import Dock from "@/components/my-components/dock";
 
 
-import Dock from "@/components/my-components/dock";
-
-
 
 export const metadata: Metadata = {
   title: "Papp Dávid",
