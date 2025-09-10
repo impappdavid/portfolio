@@ -1,19 +1,21 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Analytics } from "@vercel/analytics/react";
+import { ThemeProvider } from "@/components/theme-provider";
+import { Analytics } from "@vercel/analytics/react"
+import Sidebar from "@/components/my-components/sidebar";
 import Navbar from "@/components/my-components/navbar";
-import Footer from "@/components/my-components/footer";
-import { ViewTransitions } from "next-view-transitions"
-import CustomCursor from "@/components/my-components/customCursor";
-import { Karla } from 'next/font/google'
+import { Toaster } from "@/components/ui/toaster";
 
-const karla = Karla({ subsets: ['latin'], variable: "--font-karla" })
-
-export const metadata1: Metadata = {
-  title: 'Custom Cursor',
-  description: '',
-}
-
+const geistSans = localFont({
+  src: "./fonts/GeistVF.woff",
+  variable: "--font-geist-sans",
+  weight: "100 900",
+});
+const geistMono = localFont({
+  src: "./fonts/GeistMonoVF.woff",
+  variable: "--font-geist-mono",
+  weight: "100 900",
+});
 
 export const metadata: Metadata = {
   title: "Papp Dávid",
@@ -26,16 +28,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ViewTransitions>
-      <html lang="en">
-        <head>
-          <title>Papp Dávid</title>
-        </head> 
-        <body className={`antialiased ${karla.className}`}>
-          <Navbar />
-          <CustomCursor />
+    <html lang="en">
+      <head>
+        <title>Papp Dávid</title>
+      </head>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+        >
+            <div className="flex md:hidden">
+              <Navbar />
+            </div>
+            <Sidebar />
           {children}
-          <Footer />
           <Analytics />
         </body>
       </html>

@@ -1,8 +1,8 @@
 "use client"
-import Content from "@/components/my-components/works/content";
+import Content from "@/components/my-components/about/content";
 import ReactLenis from "@studio-freight/react-lenis"
 
-export default function WorksPage() {
+export default function AboutPage() {
   return (
     <>
       <ReactLenis root>
