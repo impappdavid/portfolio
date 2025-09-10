@@ -171,28 +171,7 @@ body {
   }
 }
 
-@keyframes downblur {
-  0% {
-    opacity: 0;
-    filter: blur(5px);
-    transform: translateX(50px);
-    transform: translateX(50px);
-  }
 
-  50% {
-
-  50% {
-    opacity: 0;
-  }
-
-
-  100% {
-    filter: blur(0px);
-    opacity: 1;
-    transform: translateX(0px);
-    transform: translateX(0px);
-  }
-}
 
 @keyframes upblur {
   0% {
