@@ -28,7 +28,7 @@ export const projects: Record<string, Project> = {
     assets: {
       logo: '/projects/azura/logo.png',
       cover: '/projects/azura/cover.png',
-      video: '/projects/azura/cover.mp4',
+      video: '/videos/azura',
       poster: '/projects/azura/frame1.png',
       image: '/projects/azura/cover.png',
     },
@@ -45,7 +45,7 @@ export const projects: Record<string, Project> = {
     assets: {
       logo: '/projects/weecom/logo.png',
       cover: '/projects/weecom/cover.png',
-      video: '/cover',
+      video: '/videos/weecom',
       poster: '/projects/weecom/cover.png',
       image: '/projects/weecom/cover.png',
     },
@@ -62,7 +62,7 @@ export const projects: Record<string, Project> = {
     assets: {
       logo: '/projects/matchapply/logo.png',
       cover: '/projects/matchapply/cover.png',
-      video: '/projects/matchapply/cover.mp4',
+      video: '/videos/matchapply',
       poster: '/projects/matchapply/cover.png',
       image: '/projects/matchapply/cover.png',
     },
@@ -79,7 +79,7 @@ export const projects: Record<string, Project> = {
     assets: {
       logo: '/projects/gamingwithme/logo.png',
       cover: '/projects/gamingwithme/cover.png',
-      video: '/projects/gamingwithme/cover.mp4',
+      video: '/videos/gamingwithme',
       poster: '/projects/gamingwithme/cover.png',
       image: '/projects/gamingwithme/cover.png',
     },
@@ -96,7 +96,7 @@ export const projects: Record<string, Project> = {
     assets: {
       logo: '/projects/skillstack/logo.png',
       cover: '/projects/skillstack/cover.png',
-      video: '/projects/skillstack/cover.mp4',
+      video: '/videos/skillstack',
       poster: '/projects/skillstack/cover.png',
       image: '/projects/skillstack/cover.png',
     },
@@ -113,7 +113,7 @@ export const projects: Record<string, Project> = {
     assets: {
       logo: '/projects/codearc/logo.svg',
       cover: '/projects/codearc/cover.png',
-      video: '/projects/codearc/cover.mp4',
+      video: '/videos/codearc',
       poster: '/projects/codearc/cover.png',
       image: '/projects/codearc/cover.png',
     },
@@ -130,7 +130,7 @@ export const projects: Record<string, Project> = {
     assets: {
       logo: '/projects/CinemaView/logo.svg',
       cover: '/projects/CinemaView/cover.png',
-      video: '/projects/CinemaView/cover.mp4',
+      video: '/videos/cinemaview',
       poster: '/projects/CinemaView/cover.png',
       image: '/projects/CinemaView/cover.png',
     },
@@ -147,7 +147,7 @@ export const projects: Record<string, Project> = {
     assets: {
       logo: '/projects/projecthub/logo.png',
       cover: '/projects/projecthub/cover.png',
-      video: '/projects/projecthub/cover.mp4',
+      video: '/videos/projecthub',
       poster: '/projects/projecthub/cover.png',
       image: '/projects/projecthub/cover.png',
     },
