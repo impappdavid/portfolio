@@ -45,7 +45,7 @@ export const projects: Record<string, Project> = {
     assets: {
       logo: '/projects/weecom/logo.png',
       cover: '/projects/weecom/cover.png',
-      video: '/projects/weecom/cover.mp4',
+      video: '/cover',
       poster: '/projects/weecom/cover.png',
       image: '/projects/weecom/cover.png',
     },

@@ -83,12 +83,7 @@ export default function Content({ initialSlug }: { initialSlug?: string }) {
         animate="animate"
         className={`max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-24 pb-64 flex flex-col items-center text-center gap-16 relative ${kodemonoFont.className}`}
       >
-        <motion.div
-          initial={{ opacity: 0, y: 22, filter: 'blur(6px)' }}
-          animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-          transition={{ type: 'spring', stiffness: 480, damping: 34 }}
-          className="p-2 rounded-2xl bg-zinc-100"
-        />
+        
 
         <motion.div
           variants={heroChildren}
