@@ -61,6 +61,7 @@ input:-webkit-autofill:active {
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
+
   .dark {
     --background: 240 10% 3.9%;
     --foreground: 0 0% 98%;
@@ -113,10 +114,27 @@ input:-webkit-autofill:active {
   }
 }
 
+@keyframes reveal {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@layer utilities {
+  .animate-reveal {
+    animation: reveal 2s ease-out forwards;
+  }
+}
+
 @layer base {
   * {
     @apply border-border;
   }
+
 
   body {
     @apply bg-background text-foreground;
@@ -141,11 +159,14 @@ body {
     opacity: 0;
     filter: blur(5px);
     transform: translateY(-100px);
+    transform: translateY(-100px);
   }
+
 
   to {
     filter: blur(0px);
     opacity: 1;
+    transform: translateY(0px);
     transform: translateY(0px);
   }
 }
@@ -155,15 +176,20 @@ body {
     opacity: 0;
     filter: blur(5px);
     transform: translateX(50px);
+    transform: translateX(50px);
   }
+
+  50% {
 
   50% {
     opacity: 0;
   }
 
+
   100% {
     filter: blur(0px);
     opacity: 1;
+    transform: translateX(0px);
     transform: translateX(0px);
   }
 }
@@ -173,15 +199,18 @@ body {
     opacity: 0;
     filter: blur(5px);
     transform: translateY(50px);
+    transform: translateY(50px);
   }
 
   50% {
     opacity: 0;
   }
 
+
   100% {
     filter: blur(0px);
     opacity: 1;
+    transform: translateY(0px);
     transform: translateY(0px);
   }
 }
@@ -189,13 +218,17 @@ body {
 
 body::-webkit-scrollbar {
   width: 6px;
+  width: 6px;
 }
 
 body::-webkit-scrollbar-track {
   background: transparent;
+  background: transparent;
 }
 
 body::-webkit-scrollbar-thumb {
+  background-color: rgba(44, 44, 44, 0.466);
+  border-radius: 20px;
   background-color: rgba(44, 44, 44, 0.466);
   border-radius: 20px;
   transition: all .5s;
@@ -203,6 +236,9 @@ body::-webkit-scrollbar-thumb {
 
 body::-webkit-scrollbar-thumb:hover {
   cursor: pointer;
+  background-color: rgba(59, 59, 59, 0.466);
+  border-radius: 20px;
+
   background-color: rgba(59, 59, 59, 0.466);
   border-radius: 20px;
 

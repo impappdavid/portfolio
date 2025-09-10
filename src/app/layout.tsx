@@ -1,9 +1,21 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Analytics } from "@vercel/analytics/react";
-import { ViewTransitions } from "next-view-transitions"
-import Dock from "@/components/my-components/dock";
+import { ThemeProvider } from "@/components/theme-provider";
+import { Analytics } from "@vercel/analytics/react"
+import Sidebar from "@/components/my-components/sidebar";
+import Navbar from "@/components/my-components/navbar";
+import { Toaster } from "@/components/ui/toaster";
 
+const geistSans = localFont({
+  src: "./fonts/GeistVF.woff",
+  variable: "--font-geist-sans",
+  weight: "100 900",
+});
+const geistMono = localFont({
+  src: "./fonts/GeistMonoVF.woff",
+  variable: "--font-geist-mono",
+  weight: "100 900",
+});
 
 export const metadata: Metadata = {
   title: "Papp Dávid",
@@ -16,14 +28,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ViewTransitions>
-      <html lang="en">
-        <head>
-          <title>Papp Dávid</title>
-        </head> 
-        <body>
+    <html lang="en">
+      <head>
+        <title>Papp Dávid</title>
+      </head>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+        >
+            <div className="flex md:hidden">
+              <Navbar />
+            </div>
+            <Sidebar />
           {children}
-          <Dock />
           <Analytics />
         </body>
       </html>
