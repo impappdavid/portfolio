@@ -24,7 +24,7 @@ function Experience() {
                                 </g>
                             </svg>
                         </div>
-                        <div className="flex flex-col gap-2 items-start ">
+                        <div className="flex flex-col gap-1 items-start ">
                             <div className="flex flex-col items-start">
                                 <div className="text-md font-semibold">Frontend Developer</div>
                                 <div className={`text-xs text-zinc-400 ${kodemonoFont.className}`}>Freelance</div>
@@ -37,12 +37,14 @@ function Experience() {
                         <div className="relative">
                             <img src="/webvalto.png" alt="webvalto.png" className="h-14 grayscale" />
                         </div>
-                        <div className="flex flex-col gap-2 items-start">
+                        <div className="flex flex-col gap-1 items-start">
                             <div className="flex flex-col items-start">
                                 <div className="text-md font-semibold">Frontend Developer</div>
                                 <div className={`text-xs text-zinc-400 ${kodemonoFont.className}`}>Dual Training</div>
+                                
                             </div>
-                            <div className={`text-xs text-zinc-400 ${kodemonoFont.className}`}>January 2025 - Present</div>
+                            <div className={`text-xs text-zinc-400 ${kodemonoFont.className}`}>January 2023 - April 2023</div>
+                            
                         </div>
                     </div>
 
