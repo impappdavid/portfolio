@@ -18,13 +18,13 @@ function Footer() {
                 </div>
 
                 <div>
-                    <a href="mailto:impappdavid@gmail.com" target="_blank" className="bg-blue-600 text-white px-5 py-3 rounded-full hover:bg-blue-700 transition-all duration-200">
+                    <a href="mailto:impappdavid@gmail.com" className="bg-blue-600 text-white px-5 py-3 rounded-full hover:bg-blue-700 transition-all duration-200">
                         Send Message
                     </a>
                 </div>
 
                 <div className="grid sm:grid-cols-3 gap-4 w-full mt-6">
-                    <div className="col-span-3 p-4 rounded-3xl bg-zinc-200/60 flex  gap-4 sm:gap-0 justify-center items-center sm:items-start">
+                    <div className="col-span-3 p-4 rounded-2xl bg-zinc-200/60 flex hover:bg-zinc-300 gap-4 sm:gap-0 justify-center items-center sm:items-start transition-all duration-200">
                         <div className="text-xl font-semibold">impappdavid@gmail.com</div>
                     </div>
                     <div className="bg-zinc-200/60 rounded-3xl col-span-3 sm:col-span-1 p-4 flex flex-col items-center gap-2 w-full">

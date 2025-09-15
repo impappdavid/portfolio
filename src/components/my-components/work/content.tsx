@@ -117,7 +117,7 @@ export default function Content({ initialSlug }: { initialSlug?: string }) {
 
         <Link
           href="/works"
-          className="absolute top-10 right-2 p-2 bg-zinc-200/40 border border-zinc-300 rounded-full text-zinc-500 transition-all hover:bg-zinc-200/80 hover:text-black duration-200 hover:border-zinc-400/60"
+          className="fixed z-50 top-10 right-2 p-2 bg-zinc-200/40 border border-zinc-300 rounded-full text-zinc-500 transition-all hover:bg-zinc-200/80 hover:text-black duration-200 hover:border-zinc-400/60"
         >
           <X className="w-5 h-5" />
         </Link>

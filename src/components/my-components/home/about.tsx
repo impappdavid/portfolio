@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { Inter } from "next/font/google"
 
 const kodemonoFont = Inter({
@@ -16,7 +17,15 @@ function About() {
                             {' '}
                             <span className="text-3xl">with a love for clean UI and fast apps</span>
                         </div>
-                        <img src="/laptop.png" alt="laptopme.png" className="h-96" />
+                        <motion.img
+                            src="/laptop.png"
+                            alt="laptop.png"
+                            className="h-96 object-contain"
+                            initial={{ opacity: 0, scale: 0.001 }}
+                            whileInView={{ opacity: 1, scale: 1.02 }}
+                            transition={{ type: "tween", duration: 0.6, ease: "easeOut", delay: 0.2 }}
+                            viewport={{ once: true, amount: 0.5 }}
+                        />
                     </div>
                     <div className="flex flex-col col-span-2 items-start bg-zinc-200/60 rounded-3xl p-6 justify-between gap-4 pb-6">
                         <div className="flex flex-col items-start">
@@ -75,7 +84,15 @@ function About() {
                                 </div>
                             </div>
                             <div className="">
-                                <img src="learnme.png" alt="learnme.png" className="h-36" />
+                                <motion.img
+                                    src="/learnme.png"
+                                    alt="learnme.png"
+                                    className="h-36 object-contain"
+                                    initial={{ opacity: 0, scale: 0.001 }}
+                                    whileInView={{ opacity: 1, scale: 1.02 }}
+                                    transition={{ type: "tween", duration: 0.6, ease: "easeOut", delay: 0.2 }}
+                                    viewport={{ once: true, amount: 0.5 }}
+                                />
                             </div>
                         </div>
 
