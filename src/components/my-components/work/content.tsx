@@ -100,7 +100,7 @@ export default function Content({ initialSlug }: { initialSlug?: string }) {
             <img
               src={project.assets.logo}
               alt="logo.png"
-              className="w-24 h-fit invert grayscale brightness-75"
+              className="w-24 h-fit invert grayscale brightness-75 aspect-square"
               loading="lazy"
             />
           </motion.div>

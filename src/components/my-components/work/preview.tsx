@@ -34,7 +34,6 @@ export default function Preview({ project }: { project: Project }) {
       v.pause();
     }
   }, [isInView]);
-  console.log(project.assets.video)
 
   return (
     <video

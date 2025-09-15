@@ -6,6 +6,10 @@ export type Project = {
   role: string;
   year: string;
   description: string;
+  github: boolean;
+  githubUrl?: string;
+  isLive?: boolean;
+  liveUrl?: string;
   assets: {
     logo: string;
     cover: string;
@@ -23,6 +27,10 @@ export const projects: Record<string, Project> = {
     type: 'Personal',
     role: 'Frontend',
     year: '2025',
+    github: true,
+    githubUrl: 'https://github.com/impappdavid/Azura',
+    isLive: true,
+    liveUrl: 'https://azura-neon.vercel.app/',
     description:
       'Azura is an NFT marketplace where users can buy, sell, and trade digital assets in a secure and user-friendly environment. The platform offers wallet integration, auction systems, and social sharing options.',
     assets: {
@@ -40,6 +48,10 @@ export const projects: Record<string, Project> = {
     type: 'Job Task',
     role: 'Frontend',
     year: '2025',
+    github: true,
+    githubUrl: 'https://github.com/impappdavid/weecom-frontend-task',
+    isLive: true,
+    liveUrl: 'https://weecom-frontend-task-seven.vercel.app/',
     description:
       'This was a job task for Weecom. The task involved creating a responsive web application that showcases a list of products with filtering and sorting capabilities. The application had to use TanStack query.',
     assets: {
@@ -57,6 +69,10 @@ export const projects: Record<string, Project> = {
     type: 'Personal',
     role: 'Frontend',
     year: '2025',
+    github: true,
+    githubUrl: 'https://github.com/impappdavid/MatchApply',
+    isLive: false,
+    liveUrl: '',
     description:
       'This is a UI for a job application platform where users can leverage AI to assist in applying for jobs. The platform features user profiles, job listings, and an AI-powered application assistant to streamline the job application process.',
     assets: {
@@ -74,6 +90,10 @@ export const projects: Record<string, Project> = {
     type: 'Freelance',
     role: 'Frontend',
     year: '2025',
+    github: false,
+    githubUrl: '',
+    isLive: true,
+    liveUrl: 'https://gamingwithme.vercel.app/',
     description:
       'A booking platform for gamers and creators that includes user profiles, service listings, payment processing, and admin tools to manage bookings and user interactions.',
     assets: {
@@ -91,6 +111,10 @@ export const projects: Record<string, Project> = {
     type: 'Personal',
     role: 'Frontend',
     year: '2025',
+    github: true,
+    githubUrl: 'https://github.com/impappdavid/SkillStack',
+    isLive: false,
+    liveUrl: '',
     description:
       'This is a social media platform for developers where they can share code snippets, discuss problems, and collaborate on projects. The platform includes features like user profiles, code sharing, and discussion forums.',
     assets: {
@@ -108,6 +132,10 @@ export const projects: Record<string, Project> = {
     type: 'Personal',
     role: 'Frontend',
     year: '2025',
+    github: true,
+    githubUrl: 'https://github.com/impappdavid/codearc',
+    isLive: false,
+    liveUrl: '',
     description:
       'This is a platform for developer teams that allows them to create Kanban boards, manage API routes, and plan databases with a user-friendly interface. The platform aims to streamline project management and collaboration for development teams.',
     assets: {
@@ -125,6 +153,10 @@ export const projects: Record<string, Project> = {
     type: 'School Exam',
     role: 'Frontend',
     year: '2023',
+    github: false,
+    githubUrl: '',
+    isLive: false,
+    liveUrl: '',
     description:
       'This is an application for our exam. The project can allow employees to select their shifts online. Managers can add screenings and movies.',
     assets: {
@@ -142,6 +174,10 @@ export const projects: Record<string, Project> = {
     type: 'Personal',
     role: 'Frontend',
     year: '2025',
+    github: true,
+    githubUrl: 'https://github.com/Pacos-Kft/ProjectHub/tree/main/frontend',
+    isLive: false,
+    liveUrl: '',
     description:
       'This is a platform where you can create job postings and you can apply for jobs. The application has a seperate for you section that shows jobs based on your profile settings.',
     assets: {
