@@ -59,7 +59,7 @@ function Footer() {
                                 <div className={`text-sm text-zinc-400 ${kodemonoFont.className}`}>Socials</div>
                                 <div className="flex flex-col items-start">
                                     <Link href="https://x.com/impappdavid" target="_blank" className="text-xl font-semibold hover:text-zinc-600 transition-all duration-200">X</Link>
-                                    <Link href="https://www.linkedin.com/in/david-papp-726a09267/" target="_blank" className="text-xl font-semibold hover:text-zinc-600 transition-all duration-200">LinkedIn</Link>
+                                    <Link href="https://www.linkedin.com/in/impappdavid/" target="_blank" className="text-xl font-semibold hover:text-zinc-600 transition-all duration-200">LinkedIn</Link>
                                     <Link href="https://github.com/impappdavid" target="_blank" className="text-xl font-semibold hover:text-zinc-600 transition-all duration-200">GitHub</Link>
                                 </div>
                             </div>
