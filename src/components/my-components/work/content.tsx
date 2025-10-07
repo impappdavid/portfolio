@@ -9,6 +9,7 @@ import Preview from './preview';
 import Footer from '../footer';
 import { useParams } from 'next/navigation';
 import { projects } from './project-data';
+import Galery from './features';
 
 const kodemonoFont = Inter({ subsets: ['latin'], weight: '400' });
 
@@ -83,7 +84,7 @@ export default function Content({ initialSlug }: { initialSlug?: string }) {
         animate="animate"
         className={`max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-24 pb-64 flex flex-col items-center text-center gap-16 relative ${kodemonoFont.className}`}
       >
-        
+
 
         <motion.div
           variants={heroChildren}
@@ -100,7 +101,8 @@ export default function Content({ initialSlug }: { initialSlug?: string }) {
             <img
               src={project.assets.logo}
               alt="logo.png"
-              className="w-24 h-fit invert grayscale brightness-75 aspect-square"
+
+              className="w-24 h-fit rounded-2xl aspect-square"
               loading="lazy"
             />
           </motion.div>
@@ -112,11 +114,25 @@ export default function Content({ initialSlug }: { initialSlug?: string }) {
             <motion.div variants={heroItem} className="text-2xl font-semibold text-zinc-500">
               {project.subtitle}
             </motion.div>
+            <motion.div variants={heroItem} className="text-2xl font-semibold text-zinc-500">
+              {project.stack && (
+                <div className=" flex flex-wrap items-center justify-center gap-3">
+                  {project.stack.map((tech) => (
+                    <div
+                      key={tech.name}
+                      title={tech.name}
+                      className="w-6 h-6"
+                      dangerouslySetInnerHTML={{ __html: tech.svg }}
+                    />
+                  ))}
+                </div>
+              )}
+            </motion.div>
           </div>
         </motion.div>
 
         <Link
-          href="/works"
+          href="/projects"
           className="fixed z-50 top-10 right-2 p-2 bg-zinc-200/40 border border-zinc-300 rounded-full text-zinc-500 transition-all hover:bg-zinc-200/80 hover:text-black duration-200 hover:border-zinc-400/60"
         >
           <X className="w-5 h-5" />
@@ -129,6 +145,8 @@ export default function Content({ initialSlug }: { initialSlug?: string }) {
         <motion.div variants={cardReveal} initial="initial" animate="animate" className="w-full">
           <Preview project={project} />
         </motion.div>
+
+
 
         <motion.div variants={footerReveal} initial="initial" animate="animate" className="w-full">
           <Footer />

@@ -72,7 +72,7 @@ function Content() {
             transition={{ type: "spring", stiffness: 480, damping: 34 }}
             className="p-2 rounded-2xl bg-zinc-100"
           >
-            <img src="/me2.png" alt="me.png" className="w-24 h-24" />
+            <img src="/me2.png" alt="me.png" loading="lazy" className="w-24 h-24" />
           </motion.div>
 
           <motion.div

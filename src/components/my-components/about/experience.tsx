@@ -35,7 +35,7 @@ function Experience() {
 
                     <div className="p-6 bg-zinc-200/60 flex gap-4 rounded-3xl col-span-2 sm:col-span-1">
                         <div className="relative">
-                            <img src="/webvalto.png" alt="webvalto.png" className="h-14 grayscale" />
+                            <img src="/webvalto.png" alt="webvalto.png" loading="lazy" className="h-14 grayscale" />
                         </div>
                         <div className="flex flex-col gap-1 items-start">
                             <div className="flex flex-col items-start">
@@ -60,6 +60,7 @@ function Experience() {
                                 <motion.img
                                     src="/jobme.png"
                                     alt="jobme.png"
+                                    loading="lazy"
                                     className="h-72 object-contain"
                                     initial={{ opacity: 0, scale: 0.001 }}
                                     whileInView={{ opacity: 1, scale: 1.02 }}

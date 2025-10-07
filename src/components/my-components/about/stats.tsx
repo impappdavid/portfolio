@@ -21,6 +21,7 @@ function FreelanceStats() {
                         <motion.img
                             src="/laptop.png"
                             alt="laptop.png"
+                            loading="lazy"
                             className="h-full object-contain"
                             initial={{ opacity: 0, scale: 0.001 }}
                             whileInView={{ opacity: 1, scale: 1.02 }}
@@ -45,6 +46,7 @@ function FreelanceStats() {
                         <motion.img
                             src="/happy.png"
                             alt="happy.png"
+                            loading="lazy"
                             className="h-fit object-contain"
                             initial={{ opacity: 0, scale: 0.001 }}
                             whileInView={{ opacity: 1, scale: 1.02 }}

@@ -13,13 +13,14 @@ function About() {
                 <div className="grid sm:grid-cols-4 grid-rows-2 w-full gap-4">
                     <div className="flex flex-col col-span-2 row-span-2 items-start bg-zinc-200/60 rounded-3xl p-6 gap-2">
                         <div className="font-semibold text-zinc-400 text-start text-base">
-                            <span className="text-black text-3xl">Frontend developer</span>
+                            <span className="text-black text-3xl">Full-Stack developer</span>
                             {' '}
                             <span className="text-3xl">with a love for clean UI and fast apps</span>
                         </div>
                         <motion.img
                             src="/laptop.png"
                             alt="laptop.png"
+                            loading="lazy"
                             className="h-96 object-contain"
                             initial={{ opacity: 0, scale: 0.001 }}
                             whileInView={{ opacity: 1, scale: 1.02 }}
@@ -87,6 +88,7 @@ function About() {
                                 <motion.img
                                     src="/learnme.png"
                                     alt="learnme.png"
+                                    loading="lazy"
                                     className="h-36 object-contain"
                                     initial={{ opacity: 0, scale: 0.001 }}
                                     whileInView={{ opacity: 1, scale: 1.02 }}

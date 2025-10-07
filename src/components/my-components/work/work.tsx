@@ -3,16 +3,47 @@
 import { Inter } from 'next/font/google';
 import type { Project } from './project-data';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
+import { motion } from 'framer-motion';
+import Galery from './features';
 
 const kodemonoFont = Inter({
   subsets: ['latin'],
   weight: '600',
 });
 
+const cardReveal = {
+  initial: { opacity: 0, y: 32, scale: 0.985, filter: 'blur(8px)' },
+  animate: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    filter: 'blur(0px)',
+    transition: { duration: 1, delay: 0.2, ease: 'easeOut' },
+  },
+};
+
 export default function Work({ project }: { project: Project }) {
   return (
     <div className="flex flex-col gap-8">
-      <img src={project.assets.cover} alt={`${project.title} cover`} className="rounded-3xl" />
+      {project.galery ? (
+        <>
+          {
+            project.galery?.length > 0 ? (
+              <motion.div variants={cardReveal} initial="initial" animate="animate" className="w-full">
+                <Galery project={project} />
+              </motion.div>
+            ) : (
+              <motion.div variants={cardReveal} initial="initial" animate="animate" className="w-full">
+                <img src={project.assets.cover} alt={project.title} loading="lazy" />
+              </motion.div>
+            )
+          }
+        </>
+      ) : (
+        <motion.div variants={cardReveal} initial="initial" animate="animate" className="w-full">
+          <img src={project.assets.cover} alt={project.title} loading="lazy" />
+        </motion.div>
+      )}
 
 
       {project.isLive && project.github ? (
@@ -25,7 +56,7 @@ export default function Work({ project }: { project: Project }) {
               className="bg-transparent text-blue-500 border-2 border-blue-500 font-medium px-5 py-3 rounded-full flex gap-1 group items-center justify-center hover:bg-blue-500/20 transition-all duration-200 w-full"
             >
               View Source Code
-              <ArrowRight className='w-5 h-5 group-hover:-rotate-45 transition-all duration-300'/>
+              <ArrowRight className='w-5 h-5 group-hover:-rotate-45 transition-all duration-300' />
             </a>
             <a
               href={project.liveUrl}
@@ -34,7 +65,7 @@ export default function Work({ project }: { project: Project }) {
               className="bg-blue-600 text-white px-5 py-3 rounded-full hover:bg-blue-700 transition-all flex gap-1 group items-center justify-center duration-200 w-full"
             >
               View Live Project
-              <ArrowRight className='w-5 h-5 group-hover:-rotate-45 transition-all duration-300'/>
+              <ArrowRight className='w-5 h-5 group-hover:-rotate-45 transition-all duration-300' />
             </a>
           </div>
         </>
@@ -47,7 +78,7 @@ export default function Work({ project }: { project: Project }) {
           className="bg-transparent text-blue-500 border-2 border-blue-500 group font-medium px-5 py-3 gap-1 rounded-full hover:bg-blue-500/20 transition-all duration-200 w-full flex items-center justify-center"
         >
           View Source Code
-          <ArrowRight className='w-5 h-5 group-hover:-rotate-45 transition-all duration-300'/>
+          <ArrowRight className='w-5 h-5 group-hover:-rotate-45 transition-all duration-300' />
         </a>
       ) : project.isLive ? (
         <a
@@ -57,7 +88,7 @@ export default function Work({ project }: { project: Project }) {
           className="bg-blue-600 text-white px-5 py-3 rounded-full hover:bg-blue-700 flex gap-1 group items-center justify-center  transition-all duration-200 w-full"
         >
           View Live Project
-          <ArrowRight className='w-5 h-5 group-hover:-rotate-45 transition-all duration-300'/>
+          <ArrowRight className='w-5 h-5 group-hover:-rotate-45 transition-all duration-300' />
         </a>
       ) : null}
       <div className="grid grid-cols-3 grid-rows-3">

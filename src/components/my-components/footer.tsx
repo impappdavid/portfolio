@@ -30,12 +30,13 @@ function Footer() {
                     <div className="bg-zinc-200/60 rounded-3xl col-span-3 sm:col-span-1 p-4 flex flex-col items-center gap-2 w-full">
                         <div>
                             <div className="text-black font-semibold text-sm">Hi, I’m David.</div>
-                            <div className="text-zinc-400 font-semibold text-sm">I create user interfaces.</div>
+                            <div className="text-zinc-400 font-semibold text-sm">I create web applications.</div>
                         </div>
 
                         <motion.img
                             src="/laptop.png"
                             alt="laptop.png"
+                            loading="lazy"
                             className="w-64 h-40 object-contain"
                             initial={{ opacity: 0, scale: 0.001 }}
                             whileInView={{ opacity: 1, scale: 1.02 }}
@@ -50,7 +51,7 @@ function Footer() {
                                 <div className={`text-sm text-zinc-400 ${kodemonoFont.className}`}>Menu</div>
                                 <div className="flex flex-col items-start">
                                     <Link href="/" className="text-xl font-semibold hover:text-zinc-600 transition-all duration-200">Home</Link>
-                                    <Link href="/works" className="text-xl font-semibold hover:text-zinc-600 transition-all duration-200">Works</Link>
+                                    <Link href="/projects" className="text-xl font-semibold hover:text-zinc-600 transition-all duration-200">Projects</Link>
                                     <Link href="/about" className="text-xl font-semibold hover:text-zinc-600 transition-all duration-200">About</Link>
                                 </div>
                             </div>

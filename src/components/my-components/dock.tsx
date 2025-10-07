@@ -18,7 +18,7 @@ const kodemonoFont = Inter({
 export default function Dock() {
   const pathname = usePathname();
   const isHome = pathname === "/";
-  const isWork = pathname.startsWith("/work");
+  const isWork = pathname.startsWith("/projects");
   const isAbout = pathname.startsWith("/about");
 
   const baseWrap =
@@ -65,8 +65,8 @@ export default function Dock() {
         <Tooltip>
           <TooltipTrigger asChild>
             <Link
-              href="/works"
-              aria-label="Works"
+              href="/projects"
+              aria-label="Projects"
               className={`${baseItem} ${isWork ? activeColor : idleColor}`}
             >
               <svg
@@ -83,7 +83,7 @@ export default function Dock() {
             </Link>
           </TooltipTrigger>
           <TooltipContent>
-            <p className={`font-medium ${kodemonoFont.className}`}>Works</p>
+            <p className={`font-medium ${kodemonoFont.className}`}>Projects</p>
           </TooltipContent>
         </Tooltip>
 
