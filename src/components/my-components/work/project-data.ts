@@ -60,6 +60,10 @@ export const projects: Record<string, Project> = {
         img: "/projects/revalo/feed.png"
       },
       {
+        name: "Music Page",
+        img: "/projects/revalo/musicPage.png"
+      },
+      {
         name: "Messenger",
         img: "/projects/revalo/messenger.png"
       },
