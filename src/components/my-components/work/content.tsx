@@ -10,6 +10,7 @@ import Footer from '../footer';
 import { useParams } from 'next/navigation';
 import { projects } from './project-data';
 import Galery from './features';
+import Challenges from './challenge';
 
 const kodemonoFont = Inter({ subsets: ['latin'], weight: '400' });
 
@@ -142,10 +143,21 @@ export default function Content({ initialSlug }: { initialSlug?: string }) {
           <Work project={project} />
         </motion.div>
 
-        <motion.div variants={cardReveal} initial="initial" animate="animate" className="w-full">
-          <Preview project={project} />
-        </motion.div>
+        {project.assets.video ? (
+          <motion.div variants={cardReveal} initial="initial" animate="animate" className="w-full">
+            <Preview project={project} />
+          </motion.div>
+        ) : (
+          <div className=""></div>
+        )}
 
+        {project.dificulties ? (
+          <motion.div variants={cardReveal} initial="initial" animate="animate" className="w-full">
+            <Challenges project={project} />
+          </motion.div>
+        ) : (
+          <div className=""></div>
+        )}
 
 
         <motion.div variants={footerReveal} initial="initial" animate="animate" className="w-full">
