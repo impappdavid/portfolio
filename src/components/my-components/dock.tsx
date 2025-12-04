@@ -119,7 +119,7 @@ export default function Dock() {
         <Tooltip>
           <TooltipTrigger asChild>
             <Link
-              href="/Papp_David_Resume.pdf"
+              href="/David-Papp-cv.pdf"
               aria-label="Resume"
               className={`relative text-white flex justify-center items-center w-12 h-12 rounded-xl bg-blue-500 p-2 transition-transform duration-200 cursor-pointer hover:scale-110`}
             >
