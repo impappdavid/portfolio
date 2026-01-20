@@ -178,7 +178,12 @@ const toolsTesting = [
     },
 ];
 
-function TechItem({ icon }: { icon: JSX.Element }) {
+type TechItemType = {
+    id: string | number;
+    icon: React.ReactNode;
+};
+
+function TechItem({ icon }: { icon: React.ReactNode }) {
     return (
         <div className="flex p-2 gap-2 border items-center justify-center hover:bg-zinc-200 aspect-square transition-all">
             <div className="p-2">
@@ -188,7 +193,15 @@ function TechItem({ icon }: { icon: JSX.Element }) {
     );
 }
 
-function StackSection({ title, items, columns = 4 }) {
+
+
+type StackSectionProps = {
+    title: string;
+    items: TechItemType[];
+    columns?: 1 | 2 | 3 | 4 | 5 | 6;   // limit to valid Tailwind grid sizes
+};
+
+function StackSection({ title, items, columns = 4 }: StackSectionProps) {
     return (
         <div className="flex flex-col gap-2 w-full">
             <div className={`text-start text-sm text-zinc-400 ${kodemonoFont.className}`}>
