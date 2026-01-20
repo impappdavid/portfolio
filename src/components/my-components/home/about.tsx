@@ -79,7 +79,7 @@ function About() {
                                     <div className="font-semibold text-zinc-400 text-start leading-tight text-base pr-2">
                                         <span className=" text-xl">Exploring</span>
                                         <br />
-                                        <span className="text-black text-xl">TanStack query</span>
+                                        <span className="text-black text-xl">GraphQL</span>
                                     </div>
 
                                 </div>
