@@ -9,7 +9,6 @@ import Preview from './preview';
 import Footer from '../footer';
 import { useParams } from 'next/navigation';
 import { projects } from './project-data';
-import Galery from './features';
 import Challenges from './challenge';
 
 const kodemonoFont = Inter({ subsets: ['latin'], weight: '400' });

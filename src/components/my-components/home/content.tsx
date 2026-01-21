@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import Footer from "../footer";
 import About from "./about";
 import RecentProject from "./recentProject";
-import Stack from "./stack";
+import Stack from "./TechStack/stack";
 import { motion } from "framer-motion";
 
 const kodemonoFont = Inter({ subsets: ["latin"], weight: "400" });
