@@ -29,7 +29,7 @@ function Experience() {
                                 <div className="text-md font-semibold">Frontend Developer</div>
                                 <div className={`text-xs text-zinc-400 ${kodemonoFont.className}`}>Freelance</div>
                             </div>
-                            <div className={`text-xs text-zinc-400 ${kodemonoFont.className}`}>January 2025 - Present</div>
+                            <div className={`text-xs text-zinc-400 ${kodemonoFont.className}`}>May 2025 – August 2025</div>
                         </div>
                     </div>
 
