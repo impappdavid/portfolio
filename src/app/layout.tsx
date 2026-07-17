@@ -24,7 +24,6 @@ export default function RootLayout({
         <body
           className={` antialiased`}
         >
-          <Dock />
           {children}
           <Analytics />
         </body>
