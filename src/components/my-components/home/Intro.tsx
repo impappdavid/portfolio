@@ -1,7 +1,29 @@
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 function Intro() {
-  const trajectoryPath = "M 20 120 Q 150 0 280 130";
+  const [activeMode, setActiveMode] = useState<"1" | "2" | "3">("1");
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+
+  // Handle Initial Load (1500ms timeout)
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1500);
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Handle Mode Switching Loading State (1500ms timeout)
+  const handleModeChange = (mode: "1" | "2" | "3") => {
+    if (mode === activeMode) return;
+    setIsLoading(true);
+    setActiveMode(mode);
+
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1500);
+  };
+
   return (
     <>
       <div className="min-w-96 max-w-96 h-full p-4 flex flex-col gap-6 text-zinc-100 shadow-xl overflow-hidden">
@@ -27,6 +49,9 @@ function Intro() {
 
           <div className="text-sm text-zinc-400">&gt; Currently Learning</div>
           <div className="text-sm">c++</div>
+
+          <div className="text-sm text-zinc-400">&gt; Location</div>
+          <div className="text-sm">Hungary</div>
         </div>
 
         {/* Aerospace Orbital Radar & Trajectory Display */}
@@ -36,21 +61,14 @@ function Intro() {
           <div className="absolute inset-x-0 top-1/2 border-b border-dashed border-zinc-800/80" />
           <div className="absolute inset-y-0 left-1/2 border-r border-dashed border-zinc-800/80" />
 
-          {/* SVG Canvas for Planet, Orbits, Trajectory & Target Dot */}
+          {/* SVG Canvas */}
           <svg
             className="absolute inset-0 w-full h-full p-2"
             viewBox="0 0 300 150"
             preserveAspectRatio="xMidYMid meet"
           >
             <defs>
-              {/* Glow filter for planet & target */}
-              <filter
-                id="cyan-glow"
-                x="-50%"
-                y="-50%"
-                width="200%"
-                height="200%"
-              >
+              <filter id="cyan-glow" x="-50%" y="-50%" width="200%" height="200%">
                 <feGaussianBlur stdDeviation="3" result="blur" />
                 <feMerge>
                   <feMergeNode in="blur" />
@@ -59,91 +77,196 @@ function Intro() {
               </filter>
             </defs>
 
-            {/* Concentric Orbit Rings around the central planet */}
-            <circle
-              cx="150"
-              cy="75"
-              r="30"
-              fill="none"
-              stroke="#27272a"
-              strokeWidth="1"
-              strokeDasharray="3 3"
-            />
-            <circle
-              cx="150"
-              cy="75"
-              r="55"
-              fill="none"
-              stroke="#18181b"
-              strokeWidth="1"
-            />
+            {/* Orbit Rings around Central Body */}
+            <circle cx="150" cy="75" r="30" fill="none" stroke="#27272a" strokeWidth="1" strokeDasharray="3 3" />
+            <circle cx="150" cy="75" r="55" fill="none" stroke="#18181b" strokeWidth="1" />
 
-            {/* Gravitational Body / Planet in the Center */}
+            {/* Central Planet Mass (Main Dot) */}
             <g>
-              {/* Gravitational atmosphere ring */}
-              <circle cx="150" cy="75" r="18" fill="#082f49" opacity="0.4" />
-              {/* Solid Planet Body */}
-              <circle
-                cx="150"
-                cy="75"
-                r="10"
-                fill="#0284c7"
-                stroke="#38bdf8"
-                strokeWidth="1.5"
-              />
-              {/* Inner core accent */}
+              <circle cx="150" cy="75" r="16" fill="#f59e0b" opacity="0.2" />
+              <circle cx="150" cy="75" r="9" fill="#f59e04" stroke="#f59e0b" strokeWidth="1" />
             </g>
 
-            {/* Bent Trajectory Arc Line */}
-            <path
-              id="gravity-trajectory"
-              d={trajectoryPath}
-              fill="none"
-              stroke="#06b6d4"
-              strokeWidth="1.5"
-              strokeDasharray="4 4"
-              className="opacity-70"
-            />
-
-            {/* Satellite locked 100% to the path via native SVG motion */}
-            <g filter="url(#cyan-glow)">
-              <circle r="4" fill="#22d3ee">
-                <animateMotion
-                  dur="6s"
-                  repeatCount="indefinite"
-                  rotate="auto"
-                  path={trajectoryPath}
-                  calcMode="spline"
-                  keySplines="0.4 0 0.6 1"
+            {/* SKETCH #1: Wide, gentle arc far over the top */}
+            {activeMode === "1" && (
+              <g>
+                <path
+                  d="M 20 0 Q 150 -50 280 50"
+                  fill="none"
+                  stroke="#f59e0b"
+                  strokeWidth="1.5"
+                  strokeDasharray="4 4"
+                  className="opacity-70"
                 />
-              </circle>
-            </g>
+                <g filter="url(#cyan-glow)">
+                  <circle r="4" fill="#f59e0b">
+                    <animateMotion
+                      key="case-1"
+                      dur="5s"
+                      repeatCount="indefinite"
+                      rotate="auto"
+                      path="M 20 0 Q 150 -50 280 50"
+                      calcMode="spline"
+                      keySplines="0.4 0 0.6 1"
+                    />
+                  </circle>
+                </g>
+              </g>
+            )}
+
+            {/* SKETCH #2: Tight hairpin wrap closely over the planet */}
+            {activeMode === "2" && (
+              <g>
+                <path
+                  d="M 30 130 C 100 110, 110 50, 150 50 C 190 50, 200 110, 220 140"
+                  fill="none"
+                  stroke="#f59e0b"
+                  strokeWidth="1.5"
+                  strokeDasharray="3 3"
+                  className="opacity-80"
+                />
+                <g filter="url(#cyan-glow)">
+                  <circle r="4" fill="#f59e0b">
+                    <animateMotion
+                      key="case-2"
+                      dur="3.5s"
+                      repeatCount="indefinite"
+                      rotate="auto"
+                      path="M 30 130 C 100 110, 110 50, 150 50 C 190 50, 200 110, 220 140"
+                    />
+                  </circle>
+                </g>
+              </g>
+            )}
+
+            {/* SKETCH #3: Wraps tight over main body, then curves around 2nd smaller mass */}
+            {activeMode === "3" && (
+              <g>
+                {/* Second Smaller Mass (Dot down & right) */}
+                <circle cx="215" cy="105" r="7" fill="#064e3b" opacity="0.5" />
+                <circle cx="215" cy="105" r="4" fill="#059669" stroke="#34d399" strokeWidth="1" />
+
+                {/* S-curve path passing both masses */}
+                <path
+                  d="M 25 125 C 80 110, 100 52, 145 52 C 185 52, 185 105, 200 120 C 200 120, 230 155, 255 170"
+                  fill="none"
+                  stroke="#f59e0b"
+                  strokeWidth="1.5"
+                  strokeDasharray="3 3"
+                  className="opacity-80"
+                />
+                <g filter="url(#cyan-glow)">
+                  <circle r="4" fill="#f59e0b">
+                    <animateMotion
+                      key="case-3"
+                      dur="4s"
+                      repeatCount="indefinite"
+                      rotate="auto"
+                      path="M 25 125 C 80 110, 100 52, 145 52 C 185 52, 185 105, 200 120 C 200 120, 230 155, 255 170"
+                    />
+                  </circle>
+                </g>
+              </g>
+            )}
           </svg>
 
           {/* Fixed Aspect Radar Sweep */}
           <motion.div
-            className="w-32 h-32 border-r border-cyan-500/30 rounded-full bg-gradient-to-tr from-transparent via-transparent to-cyan-500/10 pointer-events-none"
+            className="w-32 h-32 border-r border-[#f59e0b]/30 rounded-full bg-gradient-to-tr from-transparent via-transparent to-[#f59e0b]/10 pointer-events-none"
             animate={{ rotate: 360 }}
             transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
           />
 
-          {/* Telemetry HUD Labels */}
+          {/* Telemetry HUD Label */}
           <div className="absolute top-1.5 left-2 font-mono text-[9px] text-zinc-600 tracking-widest pointer-events-none">
-            GRAV.WELL // 1.2G
+            {activeMode === "1" && "TRAJECTORY // 01.WIDE_ARC"}
+            {activeMode === "2" && "TRAJECTORY // 02.CLOSE_HAIRPIN"}
+            {activeMode === "3" && "TRAJECTORY // 03.DUAL_DEFLECTION"}
           </div>
-          <div className="absolute bottom-1.5 right-2 font-mono text-[9px] text-cyan-500/70 tracking-widest flex items-center gap-1 pointer-events-none">
-            <span className="w-1 h-1 rounded-full bg-cyan-500 animate-pulse" />
-            SLINGSHOT.ACTIVE
+
+          {/* 3 Buttons matching your drawing (Top Right) */}
+          <div className="absolute top-1.5 right-1.5 z-10 flex flex-col gap-1 font-mono text-[9px]">
+            <button
+              onClick={() => handleModeChange("1")}
+              className={`w-fit px-2 h-5 flex items-center justify-center border transition-colors ${
+                activeMode === "1"
+                  ? "bg-[#f59e0b]/20 text-[#f59e0b] border-[#f59e0b]/20"
+                  : "bg-zinc-900/80 text-zinc-400 border-zinc-800 hover:text-zinc-200"
+              }`}
+            >
+              case 1
+            </button>
+            <button
+              onClick={() => handleModeChange("2")}
+              className={`w-fit px-2 h-5 flex items-center justify-center border transition-colors ${
+                activeMode === "2"
+                 ? "bg-[#f59e0b]/20 text-[#f59e0b] border-[#f59e0b]/20"
+                  : "bg-zinc-900/80 text-zinc-400 border-zinc-800 hover:text-zinc-200"
+              }`}
+            >
+              case 2
+            </button>
+            <button
+              onClick={() => handleModeChange("3")}
+              className={`w-fit px-2 h-5 flex items-center justify-center border transition-colors ${
+                activeMode === "3"
+                  ? "bg-[#f59e0b]/20 text-[#f59e0b] border-[#f59e0b]/20"
+                  : "bg-zinc-900/80 text-zinc-400 border-zinc-800 hover:text-zinc-200"
+              }`}
+            >
+              case 3
+            </button>
           </div>
+
+          {/* Active Status Badge (Bottom Right) */}
+          <div className="absolute bottom-1.5 right-2 font-mono text-[9px] text-[#f59e0b]/70 tracking-widest flex items-center gap-1 pointer-events-none">
+            <span className="w-1 h-1 rounded-full bg-[#f59e0b] animate-pulse" />
+            {activeMode === "1" && "WIDE.SLINGSHOT"}
+            {activeMode === "2" && "HAIRPIN.PASS"}
+            {activeMode === "3" && "BINARY.DEFLECTION"}
+          </div>
+
+          {/* Plain Text "loading..." with Wave Dots Animation */}
+          <AnimatePresence>
+            {isLoading && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0 }}
+                className="absolute inset-0 z-20 flex items-center justify-center bg-[#0d0d0f] select-none"
+              >
+                <div className="flex items-center font-mono text-xs text-zinc-400 tracking-wider">
+                  <span>Loading</span>
+                  <div className="flex ml-0.5">
+                    {[0, 1, 2].map((i) => (
+                      <motion.span
+                        key={i}
+                        animate={{ y: [0, -3, 0] }}
+                        transition={{
+                          duration: 0.6,
+                          repeat: Infinity,
+                          ease: "easeInOut",
+                          delay: i * 0.15,
+                        }}
+                      >
+                        .
+                      </motion.span>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
 
         {/* Minimal Text Social Links */}
-        <div className="flex items-center justify-between pt-3  font-mono text-xs text-zinc-400">
+        <div className="flex items-center justify-between pt-3 font-mono text-xs text-zinc-400">
           <a
             href="https://github.com/yourusername"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-cyan-400 transition-colors duration-200"
+            className="hover:text-[#f59e0b] transition-colors duration-200"
           >
             github/<span className="text-zinc-200">davidpapp</span>
           </a>
@@ -152,7 +275,7 @@ function Intro() {
             href="https://linkedin.com/in/yourusername"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-cyan-400 transition-colors duration-200"
+            className="hover:text-[#f59e0b] transition-colors duration-200"
           >
             linkedin/<span className="text-zinc-200">davidpapp</span>
           </a>
@@ -161,4 +284,5 @@ function Intro() {
     </>
   );
 }
-export default Intro
+
+export default Intro;

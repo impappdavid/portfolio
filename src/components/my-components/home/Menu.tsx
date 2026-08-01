@@ -38,6 +38,8 @@ const DIRECTORIES: Record<
   },
 };
 
+const BASE_PATH = "Portfolio:\\David";
+
 const WELCOME_BANNER = `
   ██████╗  █████╗ ██╗   ██╗██╗██████╗ 
   ██╔══██╗██╔══██╗██║   ██║██║██╔══██╗
@@ -55,28 +57,69 @@ Use 'cd <dir>' to enter a section (e.g., 'cd about').
 
 export default function MainMenu() {
   const [isTerminal, setIsTerminal] = useState(false);
-  const [currentDir, setCurrentDir] = useState<string>("Portfolio:\\David>");
+  const [activeFolder, setActiveFolder] = useState<string>(""); // Empty = root
   const [input, setInput] = useState("");
-  const [history, setHistory] = useState<HistoryItem[]>([
-    { type: "output", text: WELCOME_BANNER },
-  ]);
+  const [history, setHistory] = useState<HistoryItem[]>([]);
+
+  // Typewriter animation states
+  const [displayedBanner, setDisplayedBanner] = useState("");
+  const [isTyping, setIsTyping] = useState(false);
 
   const inputRef = useRef<HTMLInputElement>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
+  // Compute full current directory display string
+  const currentDir = activeFolder
+    ? `${BASE_PATH}\\${activeFolder}`
+    : BASE_PATH;
+
+  // Typewriter Animation Logic trigger when opening terminal
+  useEffect(() => {
+    if (isTerminal && history.length === 0) {
+      setIsTyping(true);
+      setDisplayedBanner("");
+      let i = 0;
+      const speed = 3;
+
+      const timer = setInterval(() => {
+        if (i < WELCOME_BANNER.length) {
+          setDisplayedBanner((prev) => prev + WELCOME_BANNER.charAt(i));
+          i++;
+        } else {
+          clearInterval(timer);
+          setIsTyping(false);
+          setHistory([{ type: "output", text: WELCOME_BANNER }]);
+        }
+      }, speed);
+
+      return () => clearInterval(timer);
+    }
+  }, [isTerminal, history.length]);
+
+  // Click to skip typing animation
+  const handleTerminalClick = () => {
+    if (isTyping) {
+      setIsTyping(false);
+      setDisplayedBanner(WELCOME_BANNER);
+      setHistory([{ type: "output", text: WELCOME_BANNER }]);
+    }
+    inputRef.current?.focus();
+  };
+
   // Auto-scroll output container to bottom
   useEffect(() => {
     if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollTop = scrollContainerRef.current.scrollHeight;
+      scrollContainerRef.current.scrollTop =
+        scrollContainerRef.current.scrollHeight;
     }
-  }, [history, isTerminal]);
+  }, [history, displayedBanner, isTerminal]);
 
   // Auto-focus input when entering terminal mode
   useEffect(() => {
-    if (isTerminal) {
+    if (isTerminal && !isTyping) {
       inputRef.current?.focus();
     }
-  }, [isTerminal]);
+  }, [isTerminal, isTyping]);
 
   const handleCommand = (e: React.FormEvent) => {
     e.preventDefault();
@@ -107,14 +150,14 @@ export default function MainMenu() {
 
       case "ls":
       case "list":
-        if (currentDir === "~") {
+        if (!activeFolder) {
           newHistory.push({
             type: "output",
-            text: `DIRECTORIES:\n  about/\n  projects/\n  experience/\n  future/\n  education/\n\nUse 'cd <dir>' to enter a section.`,
+            text: `DIRECTORIES:\n  about\\\n  projects\\\n  experience\\\n  future\\\n  education\\\n\nUse 'cd <dir>' to enter a section.`,
           });
         } else {
-          const dirData = DIRECTORIES[currentDir];
-          const targetsList = Object.keys(dirData.targets)
+          const dirData = DIRECTORIES[activeFolder];
+          const targetsList = Object.keys(dirData ? dirData.targets : {})
             .map((t) => `  * ${t}`)
             .join("\n");
           newHistory.push({
@@ -125,17 +168,17 @@ export default function MainMenu() {
         break;
 
       case "cd":
-        if (!arg || arg === "~" || arg === "/") {
-          setCurrentDir("~");
-          newHistory.push({ type: "output", text: "Returned to root (~)" });
-        } else if (arg === "..") {
-          setCurrentDir("~");
-          newHistory.push({ type: "output", text: "Returned to root (~)" });
-        } else if (DIRECTORIES[arg]) {
-          setCurrentDir(arg);
+        if (!arg || arg === "~" || arg === "/" || arg === "..") {
+          setActiveFolder("");
           newHistory.push({
             type: "output",
-            text: `Entered ~/${arg}\n${DIRECTORIES[arg].description}\nType 'ls' to view available target links.`,
+            text: `Returned to ${BASE_PATH}`,
+          });
+        } else if (DIRECTORIES[arg]) {
+          setActiveFolder(arg);
+          newHistory.push({
+            type: "output",
+            text: `Entered ${BASE_PATH}\\${arg}\n${DIRECTORIES[arg].description}\nType 'ls' to view available target links.`,
           });
         } else {
           newHistory.push({
@@ -150,8 +193,8 @@ export default function MainMenu() {
           newHistory.push({ type: "error", text: "Usage: goto <target>" });
         } else {
           let targetHash = "";
-          if (currentDir !== "~" && DIRECTORIES[currentDir]?.targets[arg]) {
-            targetHash = DIRECTORIES[currentDir].targets[arg];
+          if (activeFolder && DIRECTORIES[activeFolder]?.targets[arg]) {
+            targetHash = DIRECTORIES[activeFolder].targets[arg];
           } else {
             for (const dir of Object.values(DIRECTORIES)) {
               if (dir.targets[arg]) {
@@ -163,7 +206,10 @@ export default function MainMenu() {
 
           if (targetHash) {
             window.location.hash = targetHash;
-            newHistory.push({ type: "output", text: `Navigating to ${targetHash}...` });
+            newHistory.push({
+              type: "output",
+              text: `Navigating to ${targetHash}...`,
+            });
           } else {
             newHistory.push({
               type: "error",
@@ -174,15 +220,15 @@ export default function MainMenu() {
         break;
 
       case "cat":
-        if (currentDir === "~") {
+        if (!activeFolder) {
           newHistory.push({
             type: "output",
-            text: "Root directory containing portfolio sections. Use 'cd <dir>' to enter one.",
+            text: `Root directory [${BASE_PATH}]. Use 'cd <dir>' to enter a section.`,
           });
         } else {
           newHistory.push({
             type: "output",
-            text: `[${currentDir.toUpperCase()}]: ${DIRECTORIES[currentDir].description}`,
+            text: `[${currentDir.toUpperCase()}]: ${DIRECTORIES[activeFolder]?.description}`,
           });
         }
         break;
@@ -216,13 +262,15 @@ export default function MainMenu() {
       <div className="flex items-center justify-between pb-4 mb-4 border-b border-zinc-900/80 shrink-0">
         <div className="flex items-center gap-2 text-zinc-500 text-sm">
           <span>#</span>
-          <span className="text-zinc-400">{isTerminal ? "terminal" : "main"}</span>
+          <span className="text-zinc-400">
+            {isTerminal ? "terminal" : "main"}
+          </span>
         </div>
         <div className="flex items-center gap-3 text-zinc-500">
           <button
             onClick={() => setIsTerminal(!isTerminal)}
             className={`transition-colors ${
-              isTerminal ? "text-cyan-400" : "hover:text-zinc-200"
+              isTerminal ? "text-[#f59e0b]" : "hover:text-zinc-200"
             }`}
             title="Toggle Terminal"
           >
@@ -239,42 +287,60 @@ export default function MainMenu() {
         <div
           ref={scrollContainerRef}
           className="flex-1 min-h-0 overflow-y-auto scrollbar-none [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden text-xs cursor-text"
-          onClick={() => inputRef.current?.focus()}
+          onClick={handleTerminalClick}
         >
           <div className="flex flex-col gap-2">
-            {/* Command History */}
-            {history.map((item, index) => (
-              <div key={index} className="whitespace-pre-wrap leading-relaxed">
-                {item.type === "input" && (
-                  <div className="flex items-center gap-2 text-cyan-400">
-                    <span className="text-zinc-200">{item.text}</span>
-                  </div>
-                )}
-                {item.type === "output" && (
-                  <div className="text-zinc-400 pl-2 border-l border-zinc-800">
-                    {item.text}
-                  </div>
-                )}
-                {item.type === "error" && (
-                  <div className="text-red-400/90 pl-2 border-l border-red-900/50">
-                    {item.text}
-                  </div>
-                )}
+            {/* Animated Typing Output for Welcome Banner */}
+            {isTyping ? (
+              <div className="text-zinc-400 pl-2 border-l border-zinc-800 whitespace-pre-wrap leading-relaxed">
+                {displayedBanner}
+                <span className="inline-block w-2 h-3 bg-cyan-400 animate-pulse ml-0.5 align-middle" />
               </div>
-            ))}
+            ) : (
+              /* Static History Output once typed */
+              history.map((item, index) => (
+                <div
+                  key={index}
+                  className="whitespace-pre-wrap leading-relaxed"
+                >
+                  {item.type === "input" && (
+                    <div className="flex items-center gap-2 text-cyan-400">
+                      <span className="text-zinc-200">{item.text}</span>
+                    </div>
+                  )}
+                  {item.type === "output" && (
+                    <div className="text-zinc-400 pl-2 border-l border-zinc-800">
+                      {item.text}
+                    </div>
+                  )}
+                  {item.type === "error" && (
+                    <div className="text-red-400/90 pl-2 border-l border-red-900/50">
+                      {item.text}
+                    </div>
+                  )}
+                </div>
+              ))
+            )}
 
             {/* Inline Active Input Line */}
-            <form onSubmit={handleCommand} className="flex items-center gap-2 pt-1 pb-2">
-              <span className="text-cyan-400 shrink-0">{currentDir} $&gt;</span>
-              <input
-                ref={inputRef}
-                type="text"
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                className="w-full bg-transparent outline-none text-zinc-100 placeholder-zinc-700"
-                placeholder="type 'help' or command..."
-              />
-            </form>
+            {!isTyping && (
+              <form
+                onSubmit={handleCommand}
+                className="flex items-center gap-2 pt-1 pb-2"
+              >
+                <span className="text-[#f59e0b] shrink-0">
+                  {currentDir} $&gt;
+                </span>
+                <input
+                  ref={inputRef}
+                  type="text"
+                  value={input}
+                  onChange={(e) => setInput(e.target.value)}
+                  className="w-full bg-transparent outline-none text-zinc-100 placeholder-zinc-700"
+                  placeholder="type 'help' or command..."
+                />
+              </form>
+            )}
           </div>
         </div>
       ) : (
@@ -287,7 +353,7 @@ export default function MainMenu() {
             <div className="text-zinc-300 font-medium text-sm"># About</div>
             <a
               href="#about-me"
-              className="flex items-center gap-2 text-xs w-fit text-zinc-500 hover:text-zinc-200 transition-colors pl-2"
+              className="flex items-center gap-2 text-xs w-fit text-zinc-500 hover:text-[#f59e0b] transition-colors pl-2"
             >
               <span>&gt;</span>
               <span>More About Me</span>
@@ -296,15 +362,17 @@ export default function MainMenu() {
 
           {/* Category 2: Project Types */}
           <div className="flex flex-col gap-1.5 pl-2">
-            <div className="text-zinc-300 font-medium text-sm"># Project Types</div>
+            <div className="text-zinc-300 font-medium text-sm">
+              # Project Types
+            </div>
             <a
               href="#web-development"
-              className="flex items-center gap-2 text-xs w-fit text-zinc-500 hover:text-zinc-200 transition-colors pl-2"
+              className="flex items-center gap-2 text-xs w-fit text-zinc-500 hover:text-[#f59e0b] transition-colors pl-2"
             >
               <span>&gt;</span>
               <span>Web Development</span>
             </a>
-            <div className="flex items-center gap-2 text-xs w-fit text-zinc-500 hover:text-zinc-200 transition-colors pl-2">
+            <div className="flex items-center gap-2 text-xs w-fit text-zinc-500 hover:text-[#f59e0b] transition-colors pl-2">
               <span>&gt;</span>
               <span>s00n</span>
             </div>
@@ -312,17 +380,19 @@ export default function MainMenu() {
 
           {/* Category 3: Experience */}
           <div className="flex flex-col gap-1.5 pl-2">
-            <div className="text-zinc-300 font-medium text-sm"># Experience</div>
+            <div className="text-zinc-300 font-medium text-sm">
+              # Experience
+            </div>
             <a
               href="#freelance"
-              className="flex items-center gap-2 text-xs w-fit text-zinc-500 hover:text-zinc-200 transition-colors pl-2"
+              className="flex items-center gap-2 text-xs w-fit text-zinc-500 hover:text-[#f59e0b] transition-colors pl-2"
             >
               <span>&gt;</span>
               <span>Freelance</span>
             </a>
             <a
               href="#freelance"
-              className="flex items-center gap-2 text-xs w-fit text-zinc-500 hover:text-zinc-200 transition-colors pl-2"
+              className="flex items-center gap-2 text-xs w-fit text-zinc-500 hover:text-[#f59e0b] transition-colors pl-2"
             >
               <span>&gt;</span>
               <span>Intern</span>
@@ -334,7 +404,7 @@ export default function MainMenu() {
             <div className="text-zinc-300 font-medium text-sm"># My Future</div>
             <a
               href="#aerospace"
-              className="flex items-center gap-2 text-xs w-fit text-zinc-500 hover:text-zinc-200 transition-colors pl-2"
+              className="flex items-center gap-2 text-xs w-fit text-zinc-500 hover:text-[#f59e0b] transition-colors pl-2"
             >
               <span>&gt;</span>
               <span>Aerospace Software</span>
@@ -348,7 +418,7 @@ export default function MainMenu() {
             </div>
             <a
               href="#aerospace"
-              className="flex items-center gap-2 text-xs w-fit text-zinc-500 hover:text-zinc-200 transition-colors pl-2"
+              className="flex items-center gap-2 text-xs w-fit text-zinc-500 hover:text-[#f59e0b] transition-colors pl-2"
             >
               <span>&gt;</span>
               <span>Full Stack Open - University of Helsinki</span>

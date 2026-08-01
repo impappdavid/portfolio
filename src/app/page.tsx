@@ -1,4 +1,5 @@
 "use client";
+import HungaryWidget from "@/components/my-components/home/Info";
 import Intro from "@/components/my-components/home/Intro";
 import MainMenu from "@/components/my-components/home/Menu";
 import ReactLenis from "@studio-freight/react-lenis";
@@ -24,9 +25,7 @@ export default function Home() {
         >
           <div className="w-full max-w-6xl border border-zinc-800 h-screen flex">
             <Intro />
-            <div className="min-w-16 h-fill p-2 border-x border-zinc-800 text-white">
-              
-            </div>
+            <HungaryWidget />
             <MainMenu />
           </div>
         </div>
