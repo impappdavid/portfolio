@@ -7,34 +7,47 @@ type HistoryItem = {
   text: string;
 };
 
-const DIRECTORIES: Record<
-  string,
-  { name: string; description: string; targets: Record<string, string> }
-> = {
+type DirectoryData = {
+  name: string;
+  description: string;
+  targets: Record<string, string>;
+  info?: string[];
+};
+
+// Target directory configurations & static info records
+const DIRECTORIES: Record<string, DirectoryData> = {
   about: {
     name: "about",
-    description: "Personal overview, background, and tech stack.",
-    targets: { "more-about-me": "#about-me" },
+    description: "Personal overview, background, tech stack, and future goals.",
+    targets: { 
+      "more-about-me": "/about",
+      "tech-stack": "/about/stack",
+      "aerospace-software": "/aerospace" 
+    },
   },
   projects: {
     name: "projects",
     description: "Selected web development projects & upcoming builds.",
-    targets: { "web-development": "#web-development", s00n: "#s00n" },
+    targets: { "web-development": "/projects", s00n: "/projects/soon" },
   },
   experience: {
     name: "experience",
-    description: "Professional background and internship history.",
-    targets: { freelance: "#freelance", intern: "#freelance" },
-  },
-  future: {
-    name: "future",
-    description: "Long-term goals and aerospace engineering roadmap.",
-    targets: { "aerospace-software": "#aerospace" },
+    description: "Professional background and internship history (6 months total).",
+    targets: {},
+    info: [
+      "Freelance Frontend Developer (Fiverr) | May 2025 – Aug 2025",
+      "Software Developer Intern (Webváltó Kft.) | Jan 2023 – Apr 2023",
+    ],
   },
   education: {
     name: "education",
     description: "Academic background and certifications.",
-    targets: { "full-stack-open": "#aerospace" },
+    targets: {},
+    info: [
+      "Full Stack Open (Univ. of Helsinki) | 2025 – 2026",
+      "Software Dev. Tech. (BMSZC Petrik) | 2022 – 2023",
+      "IT System Operator (BMSZC Újpest) | 2017 – 2022",
+    ],
   },
 };
 
@@ -64,6 +77,7 @@ export default function MainMenu() {
   // Typewriter animation states
   const [displayedBanner, setDisplayedBanner] = useState("");
   const [isTyping, setIsTyping] = useState(false);
+  const [hasInitializedTerminal, setHasInitializedTerminal] = useState(false);
 
   const inputRef = useRef<HTMLInputElement>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -73,9 +87,9 @@ export default function MainMenu() {
     ? `${BASE_PATH}\\${activeFolder}`
     : BASE_PATH;
 
-  // Typewriter Animation Logic trigger when opening terminal
+  // Typewriter Animation Logic trigger ONLY on first terminal open
   useEffect(() => {
-    if (isTerminal && history.length === 0) {
+    if (isTerminal && !hasInitializedTerminal) {
       setIsTyping(true);
       setDisplayedBanner("");
       let i = 0;
@@ -88,18 +102,20 @@ export default function MainMenu() {
         } else {
           clearInterval(timer);
           setIsTyping(false);
+          setHasInitializedTerminal(true);
           setHistory([{ type: "output", text: WELCOME_BANNER }]);
         }
       }, speed);
 
       return () => clearInterval(timer);
     }
-  }, [isTerminal, history.length]);
+  }, [isTerminal, hasInitializedTerminal]);
 
   // Click to skip typing animation
   const handleTerminalClick = () => {
     if (isTyping) {
       setIsTyping(false);
+      setHasInitializedTerminal(true);
       setDisplayedBanner(WELCOME_BANNER);
       setHistory([{ type: "output", text: WELCOME_BANNER }]);
     }
@@ -139,10 +155,10 @@ export default function MainMenu() {
         newHistory.push({
           type: "output",
           text: `AVAILABLE COMMANDS:
-  ls / list         - List directories or targets in current path
+  ls / list         - List directories or targets/info in current path
   cd <dir>          - Change directory (e.g., 'cd about', 'cd ..' to return)
-  goto <target>     - Jump to page section (e.g., 'goto more-about-me')
-  cat               - Print current section details
+  goto <target>     - Jump to target page (e.g., 'goto tech-stack')
+  cat [dir]         - Print directory details/info
   clear             - Clear terminal history
   exit / gui        - Return to graphical menu mode`,
         });
@@ -153,17 +169,28 @@ export default function MainMenu() {
         if (!activeFolder) {
           newHistory.push({
             type: "output",
-            text: `DIRECTORIES:\n  about\\\n  projects\\\n  experience\\\n  future\\\n  education\\\n\nUse 'cd <dir>' to enter a section.`,
+            text: `DIRECTORIES:\n  about\\\n  projects\\\n  experience\\\n  education\\\n\nUse 'cd <dir>' to enter a section.`,
           });
         } else {
           const dirData = DIRECTORIES[activeFolder];
-          const targetsList = Object.keys(dirData ? dirData.targets : {})
-            .map((t) => `  * ${t}`)
-            .join("\n");
-          newHistory.push({
-            type: "output",
-            text: `TARGETS IN [${currentDir.toUpperCase()}]:\n${targetsList}\n\nUse 'goto <target>' to navigate.`,
-          });
+          const targetKeys = Object.keys(dirData ? dirData.targets : {});
+          
+          if (targetKeys.length === 0) {
+            const infoLines = (dirData?.info || [])
+              .map((item) => `  # ${item}`)
+              .join("\n");
+
+            newHistory.push({
+              type: "output",
+              text: `[${currentDir.toUpperCase()}]:\n(No redirect links available for this section)\n\nINFORMATIONAL ENTRIES:\n${infoLines}`,
+            });
+          } else {
+            const targetsList = targetKeys.map((t) => `  * ${t}`).join("\n");
+            newHistory.push({
+              type: "output",
+              text: `TARGETS IN [${currentDir.toUpperCase()}]:\n${targetsList}\n\nUse 'goto <target>' to navigate.`,
+            });
+          }
         }
         break;
 
@@ -176,9 +203,16 @@ export default function MainMenu() {
           });
         } else if (DIRECTORIES[arg]) {
           setActiveFolder(arg);
+          const dirData = DIRECTORIES[arg];
+          let outputText = `Entered ${BASE_PATH}\\${arg}\n${dirData.description}`;
+          if (dirData.info && dirData.info.length > 0) {
+            outputText += `\nType 'ls' or 'cat' to view detailed items.`;
+          } else {
+            outputText += `\nType 'ls' to view available target links.`;
+          }
           newHistory.push({
             type: "output",
-            text: `Entered ${BASE_PATH}\\${arg}\n${DIRECTORIES[arg].description}\nType 'ls' to view available target links.`,
+            text: outputText,
           });
         } else {
           newHistory.push({
@@ -192,46 +226,65 @@ export default function MainMenu() {
         if (!arg) {
           newHistory.push({ type: "error", text: "Usage: goto <target>" });
         } else {
-          let targetHash = "";
+          let targetPath = "";
           if (activeFolder && DIRECTORIES[activeFolder]?.targets[arg]) {
-            targetHash = DIRECTORIES[activeFolder].targets[arg];
+            targetPath = DIRECTORIES[activeFolder].targets[arg];
           } else {
             for (const dir of Object.values(DIRECTORIES)) {
               if (dir.targets[arg]) {
-                targetHash = dir.targets[arg];
+                targetPath = dir.targets[arg];
                 break;
               }
             }
           }
 
-          if (targetHash) {
-            window.location.hash = targetHash;
+          if (targetPath) {
             newHistory.push({
               type: "output",
-              text: `Navigating to ${targetHash}...`,
+              text: `Navigating to ${targetPath} --- ...`,
             });
+            setHistory(newHistory);
+            setInput("");
+
+            setTimeout(() => {
+              window.location.href = targetPath;
+            }, 1200);
+            return;
           } else {
             newHistory.push({
               type: "error",
-              text: `Target '${arg}' not found. Type 'ls' inside directory to view targets.`,
+              text: `Target '${arg}' not found. Type 'ls' inside directory to view available targets.`,
             });
           }
         }
         break;
 
-      case "cat":
-        if (!activeFolder) {
+      case "cat": {
+        const targetDirKey = arg || activeFolder;
+        if (!targetDirKey) {
           newHistory.push({
             type: "output",
-            text: `Root directory [${BASE_PATH}]. Use 'cd <dir>' to enter a section.`,
+            text: `Root directory [${BASE_PATH}]. Use 'cd <dir>' or 'cat <dir>' to view a section.`,
+          });
+        } else if (DIRECTORIES[targetDirKey]) {
+          const dirData = DIRECTORIES[targetDirKey];
+          let outputText = `[${targetDirKey.toUpperCase()}]: ${dirData.description}`;
+          if (dirData.info && dirData.info.length > 0) {
+            const infoList = dirData.info.map((item) => `  # ${item}`).join("\n");
+            outputText += `\n\nDETAILS:\n${infoList}`;
+          }
+          newHistory.push({
+            type: "output",
+            text: outputText,
           });
         } else {
           newHistory.push({
-            type: "output",
-            text: `[${currentDir.toUpperCase()}]: ${DIRECTORIES[activeFolder]?.description}`,
+            type: "error",
+            text: `cat: directory not found: ${arg}`,
           });
         }
         break;
+      }
 
       case "clear":
         setHistory([]);
@@ -290,14 +343,14 @@ export default function MainMenu() {
           onClick={handleTerminalClick}
         >
           <div className="flex flex-col gap-2">
-            {/* Animated Typing Output for Welcome Banner */}
+            {/* Animated Typing Output for Welcome Banner (Only triggers on first initialization) */}
             {isTyping ? (
               <div className="text-zinc-400 pl-2 border-l border-zinc-800 whitespace-pre-wrap leading-relaxed">
                 {displayedBanner}
                 <span className="inline-block w-2 h-3 bg-cyan-400 animate-pulse ml-0.5 align-middle" />
               </div>
             ) : (
-              /* Static History Output once typed */
+              /* Terminal History Output */
               history.map((item, index) => (
                 <div
                   key={index}
@@ -345,18 +398,32 @@ export default function MainMenu() {
         </div>
       ) : (
         /* STANDARD GRAPHICAL MENU */
-        <div className="flex-1 min-h-0 flex flex-col gap-6 max-w-xs overflow-y-auto scrollbar-none [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+        <div className="flex-1 min-h-0 flex flex-col gap-6 max-w-md overflow-y-auto scrollbar-none [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
           <div className="text-zinc-400 font-semibold text-base">.menu</div>
 
           {/* Category 1: About */}
           <div className="flex flex-col gap-1.5 pl-2">
             <div className="text-zinc-300 font-medium text-sm"># About</div>
             <a
-              href="#about-me"
+              href="/about"
               className="flex items-center gap-2 text-xs w-fit text-zinc-500 hover:text-[#f59e0b] transition-colors pl-2"
             >
               <span>&gt;</span>
               <span>More About Me</span>
+            </a>
+            <a
+              href="/about/stack"
+              className="flex items-center gap-2 text-xs w-fit text-zinc-500 hover:text-[#f59e0b] transition-colors pl-2"
+            >
+              <span>&gt;</span>
+              <span>Tech Stack</span>
+            </a>
+            <a
+              href="/aerospace"
+              className="flex items-center gap-2 text-xs w-fit text-zinc-500 hover:text-[#f59e0b] transition-colors pl-2"
+            >
+              <span>&gt;</span>
+              <span>Aerospace Software (Goals)</span>
             </a>
           </div>
 
@@ -366,63 +433,53 @@ export default function MainMenu() {
               # Project Types
             </div>
             <a
-              href="#web-development"
+              href="/projects"
               className="flex items-center gap-2 text-xs w-fit text-zinc-500 hover:text-[#f59e0b] transition-colors pl-2"
             >
               <span>&gt;</span>
               <span>Web Development</span>
             </a>
-            <div className="flex items-center gap-2 text-xs w-fit text-zinc-500 hover:text-[#f59e0b] transition-colors pl-2">
+            <div
+              className="flex items-center gap-2 text-xs w-fit text-zinc-500 hover:text-[#f59e0b] transition-colors pl-2"
+            >
               <span>&gt;</span>
               <span>s00n</span>
             </div>
           </div>
 
-          {/* Category 3: Experience */}
+          {/* Category 3: Experience (Static Info) */}
           <div className="flex flex-col gap-1.5 pl-2">
-            <div className="text-zinc-300 font-medium text-sm">
+            <div className="text-zinc-300 font-medium text-sm flex gap-2 items-center">
               # Experience
+              <div className="text-xs text-zinc-400">(6 months)</div>
             </div>
-            <a
-              href="#freelance"
-              className="flex items-center gap-2 text-xs w-fit text-zinc-500 hover:text-[#f59e0b] transition-colors pl-2"
-            >
-              <span>&gt;</span>
-              <span>Freelance</span>
-            </a>
-            <a
-              href="#freelance"
-              className="flex items-center gap-2 text-xs w-fit text-zinc-500 hover:text-[#f59e0b] transition-colors pl-2"
-            >
-              <span>&gt;</span>
-              <span>Intern</span>
-            </a>
+            <div className="flex items-center gap-2 hover:text-[#f59e0b] transition-colors text-xs text-zinc-500 pl-2">
+              <span>#</span>
+              <span>Freelance Frontend Developer (Fiverr) | May 2025 – Aug 2025</span>
+            </div>
+            <div className="flex items-center gap-2 text-xs hover:text-[#f59e0b] transition-colors text-zinc-500 pl-2">
+              <span>#</span>
+              <span>Software Developer Intern (Webváltó Kft.) | Jan 2023 – Apr 2023</span>
+            </div>
           </div>
 
-          {/* Category 4: Goal */}
-          <div className="flex flex-col gap-1.5 pl-2">
-            <div className="text-zinc-300 font-medium text-sm"># My Future</div>
-            <a
-              href="#aerospace"
-              className="flex items-center gap-2 text-xs w-fit text-zinc-500 hover:text-[#f59e0b] transition-colors pl-2"
-            >
-              <span>&gt;</span>
-              <span>Aerospace Software</span>
-            </a>
-          </div>
-
-          {/* Category 5: Education */}
+          {/* Category 4: Education & Certification (Static Info) */}
           <div className="flex flex-col gap-1.5 pl-2">
             <div className="text-zinc-300 font-medium text-sm">
               # Education &amp; Certification
             </div>
-            <a
-              href="#aerospace"
-              className="flex items-center gap-2 text-xs w-fit text-zinc-500 hover:text-[#f59e0b] transition-colors pl-2"
-            >
-              <span>&gt;</span>
-              <span>Full Stack Open - University of Helsinki</span>
-            </a>
+            <div className="flex items-center gap-2 hover:text-[#f59e0b] transition-colors text-xs text-zinc-500 pl-2">
+              <span>#</span>
+              <span>Full Stack Open (Univ. of Helsinki) | 2025 – 2026</span>
+            </div>
+            <div className="flex items-center gap-2 hover:text-[#f59e0b] transition-colors text-xs text-zinc-500 pl-2">
+              <span>#</span>
+              <span>Software Dev. Tech. (BMSZC Petrik) | 2022 – 2023</span>
+            </div>
+            <div className="flex items-center gap-2 hover:text-[#f59e0b] transition-colors text-xs text-zinc-500 pl-2">
+              <span>#</span>
+              <span>IT System Operator (BMSZC Újpest) | 2017 – 2022</span>
+            </div>
           </div>
         </div>
       )}
