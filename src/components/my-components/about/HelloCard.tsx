@@ -115,7 +115,7 @@ export default function IntroCard() {
         {/* Bottom Section: Narrative Copy */}
         <div className="relative z-20 flex flex-col gap-3 w-full border-t border-zinc-700/60 pt-4">
           <p className="text-[13px] font-normal leading-relaxed text-zinc-400 group-hover:text-zinc-300 transition-colors balance font-sans">
-            im a fullstack developer ibeen coding since 2017 i made some complex frontend projects not just showcase pages
+            I'm a fullstack developer i've been coding since 2017 i made some complex frontend projects.
           </p>
 
           <div className="flex justify-between items-center w-full font-mono text-[10px] text-zinc-600 group-hover:text-zinc-500 transition-colors">

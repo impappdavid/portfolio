@@ -266,3 +266,15 @@ body::-webkit-scrollbar-thumb:hover {
   animation: tooltip-popup 200ms ease-out forwards;
   transform-origin: center;
 }
+
+@font-face {
+  font-family: 'Spleen';
+  src: url('/font/spleen-16x32.bdf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  font-family: 'Spleen', monospace;
+}
