@@ -1,5 +1,6 @@
 "use client";
 import Intro from "@/components/my-components/home/Intro";
+import MainMenu from "@/components/my-components/home/Menu";
 import ReactLenis from "@studio-freight/react-lenis";
 import localFont from "next/font/local";
 
@@ -26,7 +27,7 @@ export default function Home() {
             <div className="min-w-16 h-fill p-2 border-x border-zinc-800 text-white">
               
             </div>
-            <div className="w-full h-fill p-2 "></div>
+            <MainMenu />
           </div>
         </div>
       </ReactLenis>
