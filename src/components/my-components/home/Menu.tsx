@@ -22,13 +22,12 @@ const DIRECTORIES: Record<string, DirectoryData> = {
     targets: { 
       "more-about-me": "/about",
       "tech-stack": "/about/stack",
-      "aerospace-software": "/aerospace" 
     },
   },
   projects: {
     name: "projects",
     description: "Selected web development projects & upcoming builds.",
-    targets: { "web-development": "/projects", s00n: "/projects/soon" },
+    targets: { "web-development": "/projects/web", s00n: "/projects/soon" },
   },
   experience: {
     name: "experience",
@@ -418,13 +417,7 @@ export default function MainMenu() {
               <span>&gt;</span>
               <span>Tech Stack</span>
             </a>
-            <a
-              href="/aerospace"
-              className="flex items-center gap-2 text-xs w-fit text-zinc-500 hover:text-[#f59e0b] transition-colors pl-2"
-            >
-              <span>&gt;</span>
-              <span>Aerospace Software (Goals)</span>
-            </a>
+            
           </div>
 
           {/* Category 2: Project Types */}
@@ -433,7 +426,7 @@ export default function MainMenu() {
               # Project Types
             </div>
             <a
-              href="/projects"
+              href="/projects/web"
               className="flex items-center gap-2 text-xs w-fit text-zinc-500 hover:text-[#f59e0b] transition-colors pl-2"
             >
               <span>&gt;</span>

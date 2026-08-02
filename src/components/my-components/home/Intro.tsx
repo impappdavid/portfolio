@@ -1,6 +1,91 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
+// Helper component for typewriter character animation
+function TypewriterText({
+  text,
+  delay = 0,
+  speed = 0.02,
+  className = "",
+}: {
+  text: string;
+  delay?: number;
+  speed?: number;
+  className?: string;
+}) {
+  const characters = Array.from(text);
+
+  const containerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: speed,
+        delayChildren: delay,
+      },
+    },
+  };
+
+  const childVariants = {
+    hidden: { opacity: 0, display: "none" },
+    visible: { opacity: 1, display: "inline" },
+  };
+
+  return (
+    <motion.span
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+      className={className}
+    >
+      {characters.map((char, index) => (
+        <motion.span key={index} variants={childVariants}>
+          {char}
+        </motion.span>
+      ))}
+    </motion.span>
+  );
+}
+
+// Fade/slide-in container for block elements
+const fadeInUp = {
+  hidden: { opacity: 0, y: 6 },
+  visible: (delay: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.4, delay, ease: "easeOut" },
+  }),
+};
+
+// Variants for staggered parent grid container
+const gridContainerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      delayChildren: 2.1, // Starts right after bio finishes
+      staggerChildren: 0.15, // Delay between each row reveal
+    },
+  },
+};
+
+// Variants for each individual grid row
+const gridItemVariants = {
+  hidden: { opacity: 0, x: -8 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.3, ease: "easeOut" },
+  },
+};
+
+const INFO_ITEMS = [
+  { label: "> Full Name", value: "Dávid Papp" },
+  { label: "> Date of Birth", value: "12/21/2002" },
+  { label: "> Profession", value: "Software Developer" },
+  { label: "> Currently Learning", value: "c++" },
+  { label: "> Location", value: "Hungary" },
+];
+
 function Intro() {
   const [activeMode, setActiveMode] = useState<"1" | "2" | "3">("1");
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -26,36 +111,48 @@ function Intro() {
 
   return (
     <>
-      <div className="min-w-96 max-w-96 h-full p-4 flex flex-col gap-6 text-zinc-100 shadow-xl overflow-hidden">
+      <div className="min-w-96 max-w-96 h-full p-4 flex flex-col gap-6 text-zinc-100 shadow-xl overflow-hidden font-mono">
         {/* Bio / Header */}
         <div className="flex flex-col gap-2">
-          <div className="tracking-wide">Hello World!</div>
-          <div className="text-sm text-zinc-300 leading-relaxed">
-            Hi, I'm Dávid a Full-Stack Developer. My goal is to write software
-            for the aerospace and space industry.
+          <div className="tracking-wide text-lg font-bold text-[#f59e0b]">
+            <TypewriterText text="Hello World!" speed={0.04} delay={0.2} />
+          </div>
+          <div className="text-sm text-zinc-300 leading-relaxed min-h-[48px]">
+            <TypewriterText
+              text="Hi, I'm Dávid a Full-Stack Developer. My goal is to write software for the aerospace and space industry."
+              speed={0.015}
+              delay={0.7}
+            />
           </div>
         </div>
 
-        {/* Info Grid */}
-        <div className="grid grid-cols-2 gap-2 font-mono">
-          <div className="text-sm text-zinc-400">&gt; Full Name</div>
-          <div className="text-sm">Dávid Papp</div>
-
-          <div className="text-sm text-zinc-400">&gt; Date of Birth</div>
-          <div className="text-sm">12/21/2002</div>
-
-          <div className="text-sm text-zinc-400">&gt; Profession</div>
-          <div className="text-sm">Software Developer</div>
-
-          <div className="text-sm text-zinc-400">&gt; Currently Learning</div>
-          <div className="text-sm">c++</div>
-
-          <div className="text-sm text-zinc-400">&gt; Location</div>
-          <div className="text-sm">Hungary</div>
-        </div>
+        {/* Info Table - Animated Row by Row */}
+        <motion.div
+          variants={gridContainerVariants}
+          initial="hidden"
+          animate="visible"
+          className="flex flex-col gap-2 text-sm"
+        >
+          {INFO_ITEMS.map((item, index) => (
+            <motion.div
+              key={index}
+              variants={gridItemVariants}
+              className="grid grid-cols-2 gap-2"
+            >
+              <div className="text-zinc-400">{item.label}</div>
+              <div className="text-zinc-100">{item.value}</div>
+            </motion.div>
+          ))}
+        </motion.div>
 
         {/* Aerospace Orbital Radar & Trajectory Display */}
-        <div className="relative flex-1 min-h-[140px] w-full flex items-center justify-center my-2 overflow-hidden rounded border border-zinc-900/60 bg-zinc-950/40">
+        <motion.div
+          custom={3.2}
+          variants={fadeInUp}
+          initial="hidden"
+          animate="visible"
+          className="relative flex-1 min-h-[140px] w-full flex items-center justify-center my-2 overflow-hidden rounded border border-zinc-900/60 bg-zinc-950/40"
+        >
           {/* Background Grid & Crosshairs */}
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#27272a_1px,transparent_1px),linear-gradient(to_bottom,#27272a_1px,transparent_1px)] bg-[size:1rem_1rem] opacity-20" />
           <div className="absolute inset-x-0 top-1/2 border-b border-dashed border-zinc-800/80" />
@@ -87,7 +184,7 @@ function Intro() {
               <circle cx="150" cy="75" r="9" fill="#f59e04" stroke="#f59e0b" strokeWidth="1" />
             </g>
 
-            {/* SKETCH #1: Wide, gentle arc far over the top */}
+            {/* SKETCH #1 */}
             {activeMode === "1" && (
               <g>
                 <path
@@ -114,7 +211,7 @@ function Intro() {
               </g>
             )}
 
-            {/* SKETCH #2: Tight hairpin wrap closely over the planet */}
+            {/* SKETCH #2 */}
             {activeMode === "2" && (
               <g>
                 <path
@@ -139,14 +236,12 @@ function Intro() {
               </g>
             )}
 
-            {/* SKETCH #3: Wraps tight over main body, then curves around 2nd smaller mass */}
+            {/* SKETCH #3 */}
             {activeMode === "3" && (
               <g>
-                {/* Second Smaller Mass (Dot down & right) */}
                 <circle cx="215" cy="105" r="7" fill="#064e3b" opacity="0.5" />
                 <circle cx="215" cy="105" r="4" fill="#059669" stroke="#34d399" strokeWidth="1" />
 
-                {/* S-curve path passing both masses */}
                 <path
                   d="M 25 125 C 80 110, 100 52, 145 52 C 185 52, 185 105, 200 120 C 200 120, 230 155, 255 170"
                   fill="none"
@@ -184,7 +279,7 @@ function Intro() {
             {activeMode === "3" && "TRAJECTORY // 03.DUAL_DEFLECTION"}
           </div>
 
-          {/* 3 Buttons matching your drawing (Top Right) */}
+          {/* Mode Switch Buttons */}
           <div className="absolute top-1.5 right-1.5 z-10 flex flex-col gap-1 font-mono text-[9px]">
             <button
               onClick={() => handleModeChange("1")}
@@ -200,7 +295,7 @@ function Intro() {
               onClick={() => handleModeChange("2")}
               className={`w-fit px-2 h-5 flex items-center justify-center border transition-colors ${
                 activeMode === "2"
-                 ? "bg-[#f59e0b]/20 text-[#f59e0b] border-[#f59e0b]/20"
+                  ? "bg-[#f59e0b]/20 text-[#f59e0b] border-[#f59e0b]/20"
                   : "bg-zinc-900/80 text-zinc-400 border-zinc-800 hover:text-zinc-200"
               }`}
             >
@@ -218,7 +313,7 @@ function Intro() {
             </button>
           </div>
 
-          {/* Active Status Badge (Bottom Right) */}
+          {/* Active Status Badge */}
           <div className="absolute bottom-1.5 right-2 font-mono text-[9px] text-[#f59e0b]/70 tracking-widest flex items-center gap-1 pointer-events-none">
             <span className="w-1 h-1 rounded-full bg-[#f59e0b] animate-pulse" />
             {activeMode === "1" && "WIDE.SLINGSHOT"}
@@ -226,7 +321,7 @@ function Intro() {
             {activeMode === "3" && "BINARY.DEFLECTION"}
           </div>
 
-          {/* Plain Text "loading..." with Wave Dots Animation */}
+          {/* Plain Text "loading..." Overlay */}
           <AnimatePresence>
             {isLoading && (
               <motion.div
@@ -258,10 +353,16 @@ function Intro() {
               </motion.div>
             )}
           </AnimatePresence>
-        </div>
+        </motion.div>
 
         {/* Minimal Text Social Links */}
-        <div className="flex items-center justify-between pt-3 font-mono text-xs text-zinc-400">
+        <motion.div
+          custom={3.6}
+          variants={fadeInUp}
+          initial="hidden"
+          animate="visible"
+          className="flex items-center justify-between pt-3 text-xs text-zinc-400"
+        >
           <a
             href="https://github.com/yourusername"
             target="_blank"
@@ -279,7 +380,7 @@ function Intro() {
           >
             linkedin/<span className="text-zinc-200">davidpapp</span>
           </a>
-        </div>
+        </motion.div>
       </div>
     </>
   );

@@ -78,7 +78,7 @@ export default function StackContent() {
               <span>T+{formatUptime(uptime)}</span>
             </div>
           </div>
-          <h1 className="text-xl md:text-2xl font-bold text-zinc-100 tracking-tight pt-1">
+          <h1 className="text-xl md:text-2xl text-zinc-100 tracking-tight pt-1">
             # TECHNICAL CAPABILITIES & TOOLSET
           </h1>
         </div>
@@ -87,7 +87,7 @@ export default function StackContent() {
         <div className="space-y-8">
           {STACK_CATEGORIES.map((cat, idx) => (
             <div key={idx} className="space-y-3">
-              <h2 className="text-sm font-bold text-zinc-200 tracking-wider">
+              <h2 className="text-sm  text-zinc-200 tracking-wider">
                 {cat.section}
               </h2>
               <p className="text-xs text-zinc-500 pl-4 border-l border-zinc-800">
@@ -102,8 +102,8 @@ export default function StackContent() {
                     className="flex flex-col sm:flex-row sm:items-center justify-between text-xs md:text-sm py-1 border-b border-zinc-900/60 gap-1"
                   >
                     <div className="flex items-baseline gap-2">
-                      <span className="text-zinc-400 font-bold">&gt;</span>
-                      <span className="text-zinc-100 font-semibold">{item.name}</span>
+                      <span className="text-zinc-400 ">&gt;</span>
+                      <span className="text-zinc-100 ">{item.name}</span>
                       <span className="text-zinc-600 hidden sm:inline">::</span>
                       <span className="text-zinc-400 text-xs">{item.detail}</span>
                     </div>
