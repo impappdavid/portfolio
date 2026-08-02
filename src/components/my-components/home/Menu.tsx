@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
 import { Settings, SquareTerminal } from "lucide-react";
+import { motion } from "framer-motion";
 
 type HistoryItem = {
   type: "input" | "output" | "error";
@@ -14,7 +15,6 @@ type DirectoryData = {
   info?: string[];
 };
 
-// Target directory configurations & static info records
 const DIRECTORIES: Record<string, DirectoryData> = {
   about: {
     name: "about",
@@ -67,11 +67,35 @@ Type 'ls' to list available directories or targets.
 Use 'cd <dir>' to enter a section (e.g., 'cd about').
 `;
 
+// Dynamic Motion Variants for the Graphical Menu
+const getMenuContainerVariants = (delay: number) => ({
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      delayChildren: delay, // 2.8s initial delay, 0.05s on return from terminal
+      staggerChildren: 0.06, // Faster stagger speed
+    },
+  },
+});
+
+const menuItemVariants = {
+  hidden: { opacity: 0, x: -8 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.2, ease: "easeOut" },
+  },
+};
+
 export default function MainMenu() {
   const [isTerminal, setIsTerminal] = useState(false);
-  const [activeFolder, setActiveFolder] = useState<string>(""); // Empty = root
+  const [activeFolder, setActiveFolder] = useState<string>("");
   const [input, setInput] = useState("");
   const [history, setHistory] = useState<HistoryItem[]>([]);
+
+  // Tracks if user has seen the menu at least once
+  const [hasSeenMenu, setHasSeenMenu] = useState(false);
 
   // Typewriter animation states
   const [displayedBanner, setDisplayedBanner] = useState("");
@@ -81,12 +105,21 @@ export default function MainMenu() {
   const inputRef = useRef<HTMLInputElement>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
-  // Compute full current directory display string
   const currentDir = activeFolder
     ? `${BASE_PATH}\\${activeFolder}`
     : BASE_PATH;
 
-  // Typewriter Animation Logic trigger ONLY on first terminal open
+  // Mark menu as seen after the initial sequence runs
+  useEffect(() => {
+    if (!hasSeenMenu && !isTerminal) {
+      const timer = setTimeout(() => {
+        setHasSeenMenu(true);
+      }, 3500); // Intro timing offset
+      return () => clearTimeout(timer);
+    }
+  }, [hasSeenMenu, isTerminal]);
+
+  // Terminal welcome typewriter trigger
   useEffect(() => {
     if (isTerminal && !hasInitializedTerminal) {
       setIsTyping(true);
@@ -110,7 +143,6 @@ export default function MainMenu() {
     }
   }, [isTerminal, hasInitializedTerminal]);
 
-  // Click to skip typing animation
   const handleTerminalClick = () => {
     if (isTyping) {
       setIsTyping(false);
@@ -121,7 +153,6 @@ export default function MainMenu() {
     inputRef.current?.focus();
   };
 
-  // Auto-scroll output container to bottom
   useEffect(() => {
     if (scrollContainerRef.current) {
       scrollContainerRef.current.scrollTop =
@@ -129,7 +160,6 @@ export default function MainMenu() {
     }
   }, [history, displayedBanner, isTerminal]);
 
-  // Auto-focus input when entering terminal mode
   useEffect(() => {
     if (isTerminal && !isTyping) {
       inputRef.current?.focus();
@@ -342,14 +372,12 @@ export default function MainMenu() {
           onClick={handleTerminalClick}
         >
           <div className="flex flex-col gap-2">
-            {/* Animated Typing Output for Welcome Banner (Only triggers on first initialization) */}
             {isTyping ? (
               <div className="text-zinc-400 pl-2 border-l border-zinc-800 whitespace-pre-wrap leading-relaxed">
                 {displayedBanner}
                 <span className="inline-block w-2 h-3 bg-cyan-400 animate-pulse ml-0.5 align-middle" />
               </div>
             ) : (
-              /* Terminal History Output */
               history.map((item, index) => (
                 <div
                   key={index}
@@ -374,7 +402,6 @@ export default function MainMenu() {
               ))
             )}
 
-            {/* Inline Active Input Line */}
             {!isTyping && (
               <form
                 onSubmit={handleCommand}
@@ -396,85 +423,97 @@ export default function MainMenu() {
           </div>
         </div>
       ) : (
-        /* STANDARD GRAPHICAL MENU */
-        <div className="flex-1 min-h-0 flex flex-col gap-6 max-w-md overflow-y-auto scrollbar-none [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
-          <div className="text-zinc-400 font-semibold text-base">.menu</div>
+        /* GRAPHICAL MENU WITH DYNAMIC INITIAL DELAY */
+        <motion.div
+          variants={getMenuContainerVariants(hasSeenMenu ? 0.05 : 3.5)}
+          initial="hidden"
+          animate="visible"
+          className="flex-1 min-h-0 flex flex-col gap-6 max-w-md overflow-y-auto scrollbar-none [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+        >
+          <motion.div variants={menuItemVariants} className="text-zinc-400 font-semibold text-base">
+            .menu
+          </motion.div>
 
           {/* Category 1: About */}
           <div className="flex flex-col gap-1.5 pl-2">
-            <div className="text-zinc-300 font-medium text-sm"># About</div>
-            <a
+            <motion.div variants={menuItemVariants} className="text-zinc-300 font-medium text-sm">
+              # About
+            </motion.div>
+            <motion.a
+              variants={menuItemVariants}
               href="/about"
               className="flex items-center gap-2 text-xs w-fit text-zinc-500 hover:text-[#f59e0b] transition-colors pl-2"
             >
               <span>&gt;</span>
               <span>More About Me</span>
-            </a>
-            <a
+            </motion.a>
+            <motion.a
+              variants={menuItemVariants}
               href="/about/stack"
               className="flex items-center gap-2 text-xs w-fit text-zinc-500 hover:text-[#f59e0b] transition-colors pl-2"
             >
               <span>&gt;</span>
               <span>Tech Stack</span>
-            </a>
-            
+            </motion.a>
           </div>
 
           {/* Category 2: Project Types */}
           <div className="flex flex-col gap-1.5 pl-2">
-            <div className="text-zinc-300 font-medium text-sm">
+            <motion.div variants={menuItemVariants} className="text-zinc-300 font-medium text-sm">
               # Project Types
-            </div>
-            <a
+            </motion.div>
+            <motion.a
+              variants={menuItemVariants}
               href="/projects/web"
               className="flex items-center gap-2 text-xs w-fit text-zinc-500 hover:text-[#f59e0b] transition-colors pl-2"
             >
               <span>&gt;</span>
               <span>Web Development</span>
-            </a>
-            <div
+            </motion.a>
+            <motion.div
+              variants={menuItemVariants}
               className="flex items-center gap-2 text-xs w-fit text-zinc-500 hover:text-[#f59e0b] transition-colors pl-2"
             >
               <span>&gt;</span>
               <span>s00n</span>
-            </div>
+            </motion.div>
           </div>
 
-          {/* Category 3: Experience (Static Info) */}
+          {/* Category 3: Experience */}
           <div className="flex flex-col gap-1.5 pl-2">
-            <div className="text-zinc-300 font-medium text-sm flex gap-2 items-center">
+            <motion.div variants={menuItemVariants} className="text-zinc-300 font-medium text-sm flex gap-2 items-center">
               # Experience
               <div className="text-xs text-zinc-400">(6 months)</div>
-            </div>
-            <div className="flex items-center gap-2 hover:text-[#f59e0b] transition-colors text-xs text-zinc-500 pl-2">
+            </motion.div>
+            <motion.div variants={menuItemVariants} className="flex items-center gap-2 hover:text-[#f59e0b] transition-colors text-xs text-zinc-500 pl-2">
               <span>#</span>
               <span>Freelance Frontend Developer (Fiverr) | May 2025 – Aug 2025</span>
-            </div>
-            <div className="flex items-center gap-2 text-xs hover:text-[#f59e0b] transition-colors text-zinc-500 pl-2">
+            </motion.div>
+            <motion.div variants={menuItemVariants} className="flex items-center gap-2 text-xs hover:text-[#f59e0b] transition-colors text-zinc-500 pl-2">
               <span>#</span>
               <span>Software Developer Intern (Webváltó Kft.) | Jan 2023 – Apr 2023</span>
-            </div>
+            </motion.div>
           </div>
 
-          {/* Category 4: Education & Certification (Static Info) */}
+          {/* Category 4: Education & Certification */}
           <div className="flex flex-col gap-1.5 pl-2">
-            <div className="text-zinc-300 font-medium text-sm">
+            <motion.div variants={menuItemVariants} className="text-zinc-300 font-medium text-sm">
               # Education &amp; Certification
-            </div>
-            <div className="flex items-center gap-2 hover:text-[#f59e0b] transition-colors text-xs text-zinc-500 pl-2">
+            </motion.div>
+            <motion.div variants={menuItemVariants} className="flex items-center gap-2 hover:text-[#f59e0b] transition-colors text-xs text-zinc-500 pl-2">
               <span>#</span>
               <span>Full Stack Open (Univ. of Helsinki) | 2025 – 2026</span>
-            </div>
-            <div className="flex items-center gap-2 hover:text-[#f59e0b] transition-colors text-xs text-zinc-500 pl-2">
+            </motion.div>
+            <motion.div variants={menuItemVariants} className="flex items-center gap-2 hover:text-[#f59e0b] transition-colors text-xs text-zinc-500 pl-2">
               <span>#</span>
               <span>Software Dev. Tech. (BMSZC Petrik) | 2022 – 2023</span>
-            </div>
-            <div className="flex items-center gap-2 hover:text-[#f59e0b] transition-colors text-xs text-zinc-500 pl-2">
+            </motion.div>
+            <motion.div variants={menuItemVariants} className="flex items-center gap-2 hover:text-[#f59e0b] transition-colors text-xs text-zinc-500 pl-2">
               <span>#</span>
               <span>IT System Operator (BMSZC Újpest) | 2017 – 2022</span>
-            </div>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
       )}
     </div>
   );

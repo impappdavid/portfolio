@@ -1,4 +1,6 @@
+"use client";
 import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function HungaryWidget() {
   const [hungaryTime, setHungaryTime] = useState<string>("");
@@ -29,7 +31,7 @@ export default function HungaryWidget() {
         );
         const data = await res.json();
         if (data?.current?.temperature_2m !== undefined) {
-          setTemperature(`${data.current.temperature_2m}°C`);
+          setTemperature(`${Math.round(data.current.temperature_2m)}°C`);
         }
       } catch (error) {
         console.error("Failed to fetch live weather:", error);
@@ -43,9 +45,37 @@ export default function HungaryWidget() {
   }, []);
 
   return (
-    <div className="min-w-16 h-full p-4 border-x border-zinc-800 text-[#f59e0b] flex flex-col justify-between items-center text-xs font-mono">
-      <span>{temperature}</span>
-      <span>{hungaryTime}</span>
+    /* Static Box Container (No initial slide/fade on the box itself) */
+    <div className="min-w-16 h-full p-4 border-x border-zinc-800 text-[#f59e0b] flex flex-col justify-between items-center text-xs font-mono relative overflow-hidden select-none">
+      {/* Live Temperature Text Animation */}
+      <motion.span
+        key={temperature}
+        initial={{ opacity: 0, y: -4 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4, ease: "easeOut" }}
+        className="font-semibold tracking-wider"
+      >
+        {temperature}
+      </motion.span>
+
+     
+
+      {/* Live Budapest Time Text Animation */}
+      <AnimatePresence mode="wait">
+        {hungaryTime ? (
+          <motion.span
+            key={hungaryTime}
+            initial={{ opacity: 0, y: 4 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+            className="text-zinc-400 font-medium"
+          >
+            {hungaryTime}
+          </motion.span>
+        ) : (
+          <span className="text-zinc-700 animate-pulse">--:--</span>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
