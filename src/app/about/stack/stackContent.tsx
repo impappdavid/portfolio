@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
 const STACK_CATEGORIES = [
   {
@@ -42,6 +43,28 @@ const STACK_CATEGORIES = [
   },
 ];
 
+// Container variant with an initial delay to sync with the box popup animation
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      delayChildren: 0.4, // Wait 400ms for box popup to finish
+      staggerChildren: 0.1, // Smooth cascade for each section
+    },
+  },
+};
+
+// Item variant for subtle fade-up reveals
+const itemVariants = {
+  hidden: { opacity: 0, y: 12 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.35, ease: "easeOut" },
+  },
+};
+
 export default function StackContent() {
   const [uptime, setUptime] = useState(0);
 
@@ -64,10 +87,14 @@ export default function StackContent() {
       className="w-full h-full p-6 text-zinc-300 font-mono flex flex-col justify-between overflow-y-auto scrollbar-none [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
     >
       {/* Narrative Container */}
-      <div className="max-w-6xl space-y-6 text-sm md:text-base leading-relaxed text-zinc-300">
-        
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        className="max-w-6xl space-y-6 text-sm md:text-base leading-relaxed text-zinc-300"
+      >
         {/* Header Section */}
-        <div className="space-y-2 border-b border-zinc-900 pb-4">
+        <motion.div variants={itemVariants} className="space-y-2 border-b border-zinc-900 pb-4">
           <div className="flex items-center justify-between text-xs">
             <span className="text-zinc-500 tracking-widest uppercase flex items-center gap-2">
               &gt; SYSTEM_INVENTORY
@@ -79,15 +106,15 @@ export default function StackContent() {
             </div>
           </div>
           <h1 className="text-xl md:text-2xl text-zinc-100 tracking-tight pt-1">
-            # TECHNICAL CAPABILITIES & TOOLSET
+            # TECHNICAL CAPABILITIES &amp; TOOLSET
           </h1>
-        </div>
+        </motion.div>
 
         {/* Categories List */}
         <div className="space-y-8">
           {STACK_CATEGORIES.map((cat, idx) => (
-            <div key={idx} className="space-y-3">
-              <h2 className="text-sm  text-zinc-200 tracking-wider">
+            <motion.div variants={itemVariants} key={idx} className="space-y-3">
+              <h2 className="text-sm text-zinc-200 tracking-wider">
                 {cat.section}
               </h2>
               <p className="text-xs text-zinc-500 pl-4 border-l border-zinc-800">
@@ -102,8 +129,8 @@ export default function StackContent() {
                     className="flex flex-col sm:flex-row sm:items-center justify-between text-xs md:text-sm py-1 border-b border-zinc-900/60 gap-1"
                   >
                     <div className="flex items-baseline gap-2">
-                      <span className="text-zinc-400 ">&gt;</span>
-                      <span className="text-zinc-100 ">{item.name}</span>
+                      <span className="text-zinc-400">&gt;</span>
+                      <span className="text-zinc-100">{item.name}</span>
                       <span className="text-zinc-600 hidden sm:inline">::</span>
                       <span className="text-zinc-400 text-xs">{item.detail}</span>
                     </div>
@@ -114,18 +141,22 @@ export default function StackContent() {
                   </div>
                 ))}
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
-
-      </div>
+      </motion.div>
 
       {/* Footer */}
-      <footer className="pt-8 mt-12 border-t border-zinc-900 flex flex-wrap justify-between items-center text-xs text-zinc-500 font-mono gap-4 select-none shrink-0">
+      <motion.footer
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.35, delay: 0.85 }} // Delayed sync with stack list finish
+        className="pt-8 mt-12 border-t border-zinc-900 flex flex-wrap justify-between items-center text-xs text-zinc-500 font-mono gap-4 select-none shrink-0"
+      >
         <span className="text-zinc-500">&gt; STATUS: CONTINUOUSLY LEARNING</span>
         <div className="flex items-center gap-6">
           <a
-            href="https://github.com/yourusername"
+            href="https://github.com/impappdavid"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-[#f59e0b] transition-colors duration-200"
@@ -134,7 +165,7 @@ export default function StackContent() {
           </a>
 
           <a
-            href="https://linkedin.com/in/yourusername"
+            href="https://linkedin.com/in/impappdavid"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-[#f59e0b] transition-colors duration-200"
@@ -142,15 +173,13 @@ export default function StackContent() {
             linkedin/<span className="text-zinc-200">impappdavid</span>
           </a>
           <a
-            href="https://linkedin.com/in/yourusername"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="mailto:impappdavid@gmail.com"
             className="hover:text-[#f59e0b] transition-colors duration-200"
           >
-            <span className="text-zinc-200">impappdavid</span>@gmai.com
+            <span className="text-zinc-200">impappdavid</span>@gmail.com
           </a>
         </div>
-      </footer>
+      </motion.footer>
     </div>
   );
 }

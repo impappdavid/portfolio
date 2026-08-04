@@ -77,7 +77,7 @@ export default function About() {
                 <button
                   onClick={handleClose}
                   aria-label="Close"
-                  className="w-5 h-5 text-zinc-400 hover:text-[#f59e0b] flex items-center justify-center transition-colors text-[10px]"
+                  className="w-5 h-5 text-zinc-400 hover:text-[#22C55E] flex items-center justify-center transition-colors text-[10px]"
                 >
                   <X className="w-4 h-4" />
                 </button>

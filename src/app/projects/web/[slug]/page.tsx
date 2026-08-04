@@ -6,19 +6,18 @@ import { motion } from "framer-motion";
 import ReactLenis from "@studio-freight/react-lenis";
 import localFont from "next/font/local";
 import { Maximize2, Minimize2, X } from "lucide-react";
-import StackContent from "./stackContent";
+import DocsContent from "./docsContent";
 
 const spleen = localFont({
-  src: "../../fonts/spleen.otf",
+  src: "../../../fonts/spleen.otf",
   variable: "--font-spleen",
 });
 
-export default function Stack() {
+export default function ProjectDocs() {
   const [isMaximized, setIsMaximized] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
   const router = useRouter();
 
-  // Animated exit before redirecting back home
   const handleClose = (e: React.MouseEvent) => {
     e.preventDefault();
     setIsClosing(true);
@@ -53,7 +52,7 @@ export default function Stack() {
               {/* Left Side: Title */}
               <div className="flex items-center gap-2">
                 <span className="text-zinc-400 font-semibold tracking-wider">
-                  # tech stack & tools
+                  # project documentation / system specs
                 </span>
               </div>
 
@@ -72,7 +71,7 @@ export default function Stack() {
                   )}
                 </button>
 
-                {/* Exit / Close Button (Triggers Exit Animation) */}
+                {/* Exit / Close Button */}
                 <button
                   onClick={handleClose}
                   aria-label="Close"
@@ -83,7 +82,7 @@ export default function Stack() {
               </div>
             </header>
 
-            {/* Full Width Stack Area - Centered when maximized */}
+            {/* Full Width Content Area */}
             <div
               className={`flex-1 w-full min-h-0 overflow-hidden ${
                 isMaximized ? "flex justify-center" : ""
@@ -95,7 +94,7 @@ export default function Stack() {
                   isMaximized ? "max-w-5xl" : ""
                 }`}
               >
-                <StackContent />
+                <DocsContent />
               </div>
             </div>
           </motion.div>

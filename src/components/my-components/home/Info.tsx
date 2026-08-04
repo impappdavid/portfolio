@@ -46,7 +46,7 @@ export default function HungaryWidget() {
 
   return (
     /* Static Box Container (No initial slide/fade on the box itself) */
-    <div className="min-w-16 h-full p-4 border-x border-zinc-800 text-[#f59e0b] flex flex-col justify-between items-center text-xs font-mono relative overflow-hidden select-none">
+    <div className="min-w-16 h-full p-4 border-x border-zinc-800 text-[#22C55E] flex flex-col justify-between items-center text-xs font-mono relative overflow-hidden select-none">
       {/* Live Temperature Text Animation */}
       <motion.span
         key={temperature}
@@ -68,7 +68,7 @@ export default function HungaryWidget() {
             initial={{ opacity: 0, y: 4 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, ease: "easeOut" }}
-            className="text-zinc-400 font-medium"
+            className="text-[#22C55E] font-medium"
           >
             {hungaryTime}
           </motion.span>

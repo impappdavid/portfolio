@@ -1,80 +1,35 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-// Helper component for typewriter character animation
-function TypewriterText({
-  text,
-  delay = 0,
-  speed = 0.02,
-  className = "",
-}: {
-  text: string;
-  delay?: number;
-  speed?: number;
-  className?: string;
-}) {
-  const characters = Array.from(text);
-
-  const containerVariants = {
-    hidden: {},
-    visible: {
-      transition: {
-        staggerChildren: speed,
-        delayChildren: delay,
-      },
-    },
-  };
-
-  const childVariants = {
-    hidden: { opacity: 0, display: "none" },
-    visible: { opacity: 1, display: "inline" },
-  };
-
-  return (
-    <motion.span
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-      className={className}
-    >
-      {characters.map((char, index) => (
-        <motion.span key={index} variants={childVariants}>
-          {char}
-        </motion.span>
-      ))}
-    </motion.span>
-  );
-}
-
-// Fade/slide-in container for block elements
+// Quick fade/slide-in container for block elements
 const fadeInUp = {
-  hidden: { opacity: 0, y: 6 },
+  hidden: { opacity: 0, y: 4 },
   visible: (delay: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.4, delay, ease: "easeOut" },
+    transition: { duration: 1, delay, ease: "easeOut" },
   }),
 };
 
-// Variants for staggered parent grid container
+// Variants for staggered parent grid container (Snappy Speed)
 const gridContainerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: {
-      delayChildren: 2.1, // Starts right after bio finishes
-      staggerChildren: 0.15, // Delay between each row reveal
+      delayChildren: 0.05,
+      staggerChildren: 0.03, // Rapid row reveal
     },
   },
 };
 
 // Variants for each individual grid row
 const gridItemVariants = {
-  hidden: { opacity: 0, x: -8 },
+  hidden: { opacity: 0, x: -4 },
   visible: {
     opacity: 1,
     x: 0,
-    transition: { duration: 0.3, ease: "easeOut" },
+    transition: { duration: 1, ease: "easeOut" },
   },
 };
 
@@ -90,15 +45,15 @@ function Intro() {
   const [activeMode, setActiveMode] = useState<"1" | "2" | "3">("1");
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
-  // Handle Initial Load (1500ms timeout)
+  // Handle Initial Load (Fast 200ms timeout)
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 1500);
+    }, 200);
     return () => clearTimeout(timer);
   }, []);
 
-  // Handle Mode Switching Loading State (1500ms timeout)
+  // Handle Mode Switching Loading State (Fast 200ms timeout)
   const handleModeChange = (mode: "1" | "2" | "3") => {
     if (mode === activeMode) return;
     setIsLoading(true);
@@ -106,25 +61,27 @@ function Intro() {
 
     setTimeout(() => {
       setIsLoading(false);
-    }, 1500);
+    }, 200);
   };
 
   return (
     <>
       <div className="min-w-96 max-w-96 h-full p-4 flex flex-col gap-6 text-zinc-100 shadow-xl overflow-hidden font-mono">
-        {/* Bio / Header */}
-        <div className="flex flex-col gap-2">
-          <div className="tracking-wide text-lg font-bold text-[#f59e0b]">
-            <TypewriterText text="Hello World!" speed={0.04} delay={0.2} />
+        {/* Animated Bio / Header */}
+        <motion.div
+          custom={0}
+          variants={fadeInUp}
+          initial="hidden"
+          animate="visible"
+          className="flex flex-col gap-2"
+        >
+          <div className="tracking-wide text-lg font-bold text-[#22C55E]">
+            Hello World!
           </div>
           <div className="text-sm text-zinc-300 leading-relaxed min-h-[48px]">
-            <TypewriterText
-              text="Hi, I'm Dávid a Full-Stack Developer. My goal is to write software for the aerospace and space industry."
-              speed={0.015}
-              delay={0.7}
-            />
+            Hi, I'm Dávid a Full-Stack Developer. My goal is to write software for the aerospace and space industry.
           </div>
-        </div>
+        </motion.div>
 
         {/* Info Table - Animated Row by Row */}
         <motion.div
@@ -147,7 +104,7 @@ function Intro() {
 
         {/* Aerospace Orbital Radar & Trajectory Display */}
         <motion.div
-          custom={3.2}
+          custom={0.1}
           variants={fadeInUp}
           initial="hidden"
           animate="visible"
@@ -180,8 +137,8 @@ function Intro() {
 
             {/* Central Planet Mass (Main Dot) */}
             <g>
-              <circle cx="150" cy="75" r="16" fill="#f59e0b" opacity="0.2" />
-              <circle cx="150" cy="75" r="9" fill="#f59e04" stroke="#f59e0b" strokeWidth="1" />
+              <circle cx="150" cy="75" r="16" fill="#22C55E" opacity="0.2" />
+              <circle cx="150" cy="75" r="9" fill="#22C55E" stroke="#22C55E" strokeWidth="1" />
             </g>
 
             {/* SKETCH #1 */}
@@ -190,13 +147,13 @@ function Intro() {
                 <path
                   d="M 20 0 Q 150 -50 280 50"
                   fill="none"
-                  stroke="#f59e0b"
+                  stroke="#22C55E"
                   strokeWidth="1.5"
                   strokeDasharray="4 4"
                   className="opacity-70"
                 />
                 <g filter="url(#cyan-glow)">
-                  <circle r="4" fill="#f59e0b">
+                  <circle r="4" fill="#22C55E">
                     <animateMotion
                       key="case-1"
                       dur="5s"
@@ -217,13 +174,13 @@ function Intro() {
                 <path
                   d="M 30 130 C 100 110, 110 50, 150 50 C 190 50, 200 110, 220 140"
                   fill="none"
-                  stroke="#f59e0b"
+                  stroke="#22C55E"
                   strokeWidth="1.5"
                   strokeDasharray="3 3"
                   className="opacity-80"
                 />
                 <g filter="url(#cyan-glow)">
-                  <circle r="4" fill="#f59e0b">
+                  <circle r="4" fill="#22C55E">
                     <animateMotion
                       key="case-2"
                       dur="3.5s"
@@ -239,19 +196,19 @@ function Intro() {
             {/* SKETCH #3 */}
             {activeMode === "3" && (
               <g>
-                <circle cx="215" cy="105" r="7" fill="#064e3b" opacity="0.5" />
-                <circle cx="215" cy="105" r="4" fill="#059669" stroke="#34d399" strokeWidth="1" />
+                <circle cx="215" cy="105" r="7" fill="#22C55E" opacity="0.5" />
+                <circle cx="215" cy="105" r="4" fill="#22C55E" stroke="#22C55E" strokeWidth="1" />
 
                 <path
                   d="M 25 125 C 80 110, 100 52, 145 52 C 185 52, 185 105, 200 120 C 200 120, 230 155, 255 170"
                   fill="none"
-                  stroke="#f59e0b"
+                  stroke="#22C55E"
                   strokeWidth="1.5"
                   strokeDasharray="3 3"
                   className="opacity-80"
                 />
                 <g filter="url(#cyan-glow)">
-                  <circle r="4" fill="#f59e0b">
+                  <circle r="4" fill="#22C55E">
                     <animateMotion
                       key="case-3"
                       dur="4s"
@@ -267,7 +224,7 @@ function Intro() {
 
           {/* Fixed Aspect Radar Sweep */}
           <motion.div
-            className="w-32 h-32 border-r border-[#f59e0b]/30 rounded-full bg-gradient-to-tr from-transparent via-transparent to-[#f59e0b]/10 pointer-events-none"
+            className="w-32 h-32 border-r border-[#22C55E]/30 rounded-full bg-gradient-to-tr from-transparent via-transparent to-[#22C55E]/10 pointer-events-none"
             animate={{ rotate: 360 }}
             transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
           />
@@ -285,7 +242,7 @@ function Intro() {
               onClick={() => handleModeChange("1")}
               className={`w-fit px-2 h-5 flex items-center justify-center border transition-colors ${
                 activeMode === "1"
-                  ? "bg-[#f59e0b]/20 text-[#f59e0b] border-[#f59e0b]/20"
+                  ? "bg-[#22C55E]/20 text-[#22C55E] border-[#22C55E]/20"
                   : "bg-zinc-900/80 text-zinc-400 border-zinc-800 hover:text-zinc-200"
               }`}
             >
@@ -295,7 +252,7 @@ function Intro() {
               onClick={() => handleModeChange("2")}
               className={`w-fit px-2 h-5 flex items-center justify-center border transition-colors ${
                 activeMode === "2"
-                  ? "bg-[#f59e0b]/20 text-[#f59e0b] border-[#f59e0b]/20"
+                  ? "bg-[#22C55E]/20 text-[#22C55E] border-[#22C55E]/20"
                   : "bg-zinc-900/80 text-zinc-400 border-zinc-800 hover:text-zinc-200"
               }`}
             >
@@ -305,7 +262,7 @@ function Intro() {
               onClick={() => handleModeChange("3")}
               className={`w-fit px-2 h-5 flex items-center justify-center border transition-colors ${
                 activeMode === "3"
-                  ? "bg-[#f59e0b]/20 text-[#f59e0b] border-[#f59e0b]/20"
+                  ? "bg-[#22C55E]/20 text-[#22C55E] border-[#22C55E]/20"
                   : "bg-zinc-900/80 text-zinc-400 border-zinc-800 hover:text-zinc-200"
               }`}
             >
@@ -314,8 +271,8 @@ function Intro() {
           </div>
 
           {/* Active Status Badge */}
-          <div className="absolute bottom-1.5 right-2 font-mono text-[9px] text-[#f59e0b]/70 tracking-widest flex items-center gap-1 pointer-events-none">
-            <span className="w-1 h-1 rounded-full bg-[#f59e0b] animate-pulse" />
+          <div className="absolute bottom-1.5 right-2 font-mono text-[9px] text-[#22C55E]/70 tracking-widest flex items-center gap-1 pointer-events-none">
+            <span className="w-1 h-1 rounded-full bg-[#22C55E] animate-pulse" />
             {activeMode === "1" && "WIDE.SLINGSHOT"}
             {activeMode === "2" && "HAIRPIN.PASS"}
             {activeMode === "3" && "BINARY.DEFLECTION"}
@@ -357,7 +314,7 @@ function Intro() {
 
         {/* Minimal Text Social Links */}
         <motion.div
-          custom={3.6}
+          custom={0.15}
           variants={fadeInUp}
           initial="hidden"
           animate="visible"
@@ -367,7 +324,7 @@ function Intro() {
             href="https://github.com/yourusername"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-[#f59e0b] transition-colors duration-200"
+            className="hover:text-[#22C55E] transition-colors duration-200"
           >
             github/<span className="text-zinc-200">davidpapp</span>
           </a>
@@ -376,7 +333,7 @@ function Intro() {
             href="https://linkedin.com/in/yourusername"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-[#f59e0b] transition-colors duration-200"
+            className="hover:text-[#22C55E] transition-colors duration-200"
           >
             linkedin/<span className="text-zinc-200">davidpapp</span>
           </a>
