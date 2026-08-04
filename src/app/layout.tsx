@@ -6,7 +6,7 @@ import Dock from "@/components/my-components/dock";
 
 
 export const metadata: Metadata = {
-  title: "Papp Dávid",
+  title: "Dávid Papp",
   description: "Portfolio",
 };
 
@@ -19,7 +19,7 @@ export default function RootLayout({
     <>
       <html lang="en">
         <head>
-          <title>Papp Dávid</title>
+          <title>Dávid Papp</title>
         </head>
         <body
           className={` antialiased`}
