@@ -10,7 +10,7 @@ const PROJECTS = [
     id: "001",
     tag: "Click for more",
     title: "Noda",
-    coverImage: "/test.jpg",
+    coverImage: "/projects/Noda/Cover.jpg",
     stack: ["Reactjs", "TypeScript", "TailwindCss", "shadcn/ui"],
     demoUrl: "https://example.com",
     githubUrl: "https://github.com",

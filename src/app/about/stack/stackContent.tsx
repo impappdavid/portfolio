@@ -84,7 +84,7 @@ export default function StackContent() {
   return (
     <div
       data-lenis-prevent
-      className="w-full h-full p-6 text-zinc-300 font-mono flex flex-col justify-between overflow-y-auto scrollbar-none [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+      className="w-full h-full p-4 lg:p-6 text-zinc-300 font-mono flex flex-col justify-between overflow-y-auto scrollbar-none [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
     >
       {/* Narrative Container */}
       <motion.div
@@ -153,30 +153,30 @@ export default function StackContent() {
         transition={{ duration: 0.35, delay: 0.85 }} // Delayed sync with stack list finish
         className="pt-8 mt-12 border-t border-zinc-900 flex flex-wrap justify-between items-center text-xs text-zinc-500 font-mono gap-4 select-none shrink-0"
       >
-        <span className="text-zinc-500">&gt; STATUS: CONTINUOUSLY LEARNING</span>
+        <span className="text-zinc-500 lg:flex hidden">&gt; STATUS: CONTINUOUSLY LEARNING</span>
         <div className="flex items-center gap-6">
           <a
             href="https://github.com/impappdavid"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-[#f59e0b] transition-colors duration-200"
+            className="hover:text-[#22C55E] transition-colors duration-200"
           >
-            github/<span className="text-zinc-200">impappdavid</span>
+            github/<span className="text-zinc-200 lg:flex hidden">impappdavid</span>
           </a>
 
           <a
             href="https://linkedin.com/in/impappdavid"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-[#f59e0b] transition-colors duration-200"
+            className="hover:text-[#22C55E] transition-colors duration-200"
           >
-            linkedin/<span className="text-zinc-200">impappdavid</span>
+            linkedin/<span className="text-zinc-200 lg:flex hidden">impappdavid</span>
           </a>
           <a
             href="mailto:impappdavid@gmail.com"
-            className="hover:text-[#f59e0b] transition-colors duration-200"
+            className="hover:text-[#22C55E] transition-colors duration-200"
           >
-            <span className="text-zinc-200">impappdavid</span>@gmail.com
+            <span className="text-zinc-200 lg:flex hidden">impappdavid</span>@gmail.com
           </a>
         </div>
       </motion.footer>

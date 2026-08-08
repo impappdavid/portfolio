@@ -3,12 +3,13 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowLeft, ExternalLink, Github, Calendar, User, Copy, Check, Maximize2 } from "lucide-react";
+import { ArrowLeft, ExternalLink, Github, Calendar, User, Copy, Check, Maximize2, Code, ChevronRight, ChevronLeft } from "lucide-react";
 
 interface DocumentationItem {
   title: string;
   content: string;
   codeSnippet?: string;
+  image?: string; // Optional showcase image
 }
 
 interface ChallengeItem {
@@ -47,69 +48,133 @@ interface ProjectDoc {
 }
 
 const PROJECT_DATA: ProjectDoc = {
-  title: "RETRO OS PORTFOLIO",
-  subtitle: "v2.4.0 System Specification & Engineering Docs",
+  title: "Noda",
+  subtitle: "Job Board",
   metadata: {
     date: "2026",
-    role: "Lead Frontend Engineer / Designer",
+    role: "Frontend Engineer / Designer",
     demoUrl: "https://demo.example.com",
     sourceUrl: "https://github.com/example/portfolio",
   },
   description: [
-    "A terminal-inspired web application mimicking desktop window management systems. Built with Next.js App Router, Framer Motion, and Tailwind CSS.",
-    "Engineered for sub-100ms transitions, smooth Lenis inertia scrolling, and modular UI windows that emulate classic operating systems."
+    "After experiencing the frustrations of a prolonged job search firsthand, I built Noda to address systemic flaws in existing recruitment platforms. Current systems are plagued by unverified ghost jobs, opaque qualification requirements, fragmented tracking, and recruiter ghosting.",
+    "Noda fixes these friction points through automated pipeline state machines, built-in application tracking, verified company reviews, and strict employer response timers. Alongside the job marketplace, it features Launchpad—a collaborative module where engineers form equity-based teams to ship side projects and prove real engineering capability."
   ],
-  stack: ["Next.js 14", "TypeScript", "Tailwind CSS", "Framer Motion", "React Lenis", "Lucide Icons"],
+  stack: [
+    "React", 
+    "TypeScript", 
+    "TailwindCSS", 
+    "Vite", 
+    "React Router", 
+    "shadcn", 
+    "CMDK", 
+    "Recharts", 
+    "Framer Motion"
+  ],
   howToStart: {
-    prerequisites: ["Node.js 20.x or higher", "pnpm package manager"],
-    commands: `git clone https://github.com/example/portfolio.git\ncd portfolio\npnpm install\npnpm dev`
+    prerequisites: ["Node.js 20.x or higher", "npm package manager"],
+    commands: `git clone https://github.com/example/noda.git\ncd noda\nnpm install\nnpm run dev`
   },
   documentation: [
     {
-      title: "1.0 Window Lifecycle Management",
-      content: "All pages wrap around a unified scale transition handler. When close (X) is triggered, the route change is deferred by 300ms to allow the scale-down exit animation to complete.",
-      codeSnippet: `const handleClose = (e: React.MouseEvent) => {\n  e.preventDefault();\n  setIsClosing(true);\n  setTimeout(() => router.push("/"), 300);\n};`
+      title: "1.0 Anonymus Mode",
+      content: "I saw on job boards that some people wont write their real oppinion because, they are affraid that companies will see and they can get a disadvantage from that. So this feature is helping to write our real oppinion.",
+      codeSnippet: ``,
+      image: "/projects/Noda/features/anonymus.png"
     },
     {
-      title: "2.0 Isolated Lenis Scroll Containers",
-      content: "Nested scrollable views inside fixed-height window viewports use data-lenis-prevent to isolate internal scrolling from root smooth-scroll handlers.",
-      codeSnippet: `// Isolate container scrolling\n<div data-lenis-prevent className="overflow-y-auto">\n  {children}\n</div>`
-    }
+      title: "1.1 Role Match",
+      content: "This feature came from that when i searched for jobs i always had to read each role because i just saw the title but nothing else. Thats why i put every important information on the trigger card like title, company, experience a match percentage based on your profile setup(skills, experience) so you dont have to read all and the end you see something that not you.",
+      codeSnippet: ``,
+      image: "/projects/Noda/features/jobmatch.png"
+    },
+    {
+      title: "1.2 Tracker",
+      content: "I tracked most of my applies but started to get annoying to go to another web application and document everything that was connected to that role. Thats why the on site applications are automaticly added in the tracker but you can add manually.",
+      codeSnippet: ``,
+      image: "/projects/Noda/features/tracker.png"
+    },
+    {
+      title: "1.3 Multiple Sources",
+      content: "I saw a lot of comments that people are annoyed to go through multiple web applications to see every opportunity. So i decided that why not implement api-s so the user doesnt have to go throuh 10 web site.",
+      codeSnippet: ``
+    },
+    {
+      title: "1.4 Company Reviews",
+      content: "So this is an interesting feature and i had to think for this one but i got it. So for the interview we cant let anyone to comment because that would be some fake accusations so just whose applied onsite can like get access like interview to share their experience. For the employees we want that every experience to be valid so on this application you have to be in a team to count that experience.",
+      codeSnippet: ``
+    },
+    {
+      title: "1.5 Anti Ghosting Protocol",
+      content: "On this feature i had to be careful because it couldnt be that strict. I thought that the company can choose like a waiting for applierers day up to 30day after the waiting time we start a 14day period where the recruiter must answer canidates. If not the role will be delisted and the company page got a strike that is seeable on their profile.",
+      codeSnippet: ``
+    },
+    {
+      title: "2.0 Verifications",
+      content: "So job boards usually verify users to help companies that they dont get bots or trolls but what about the users it is so annoying that a random company post a job but they dont even exist they just farm user datas. So in this application we verify both parties.",
+      codeSnippet: ``
+    },
+    {
+      title: "2.1 Easy Accept and Reject",
+      content: "If a recruiter chose the canidates we dont want that the recruiter click on each canidate that rejected so we ask after each accepted canidate that the recruiter would want to continue the selection or reject everyone else and everyone else would get an automatic message.",
+      codeSnippet: ``
+    },
+    {
+      title: "2.2 Canidate Filter",
+      content: "In these days ai can make it easier for do your profile so we decided that the recruiter could add more filters that the user cant see and cant modify his account to match with the job a 100%.",
+      codeSnippet: ``
+    },
+    {
+      title: "2.3 Canidate Match",
+      content: "Beside the filter there will be a canidate match too which is showing to the recruiter whose the best match for that role.",
+      codeSnippet: ``
+    },
+    {
+      title: "2.4 Interview",
+      content: "To reduce emails i wanted to implement a feature that helps recruiters. The recruiter for each role can add interview dates and if a user accepted the site automaticly send a message to the canidate that he is accepted and he has to choose an interview date.",
+      codeSnippet: ``
+    },
   ],
   challenges: [
     {
-      issue: "Nested Scroll Synchronization",
-      solution: "Parent desktop scroll was capturing touch events from inside maximized windows. Solved by isolating sub-containers with custom data attributes and preventDefault handlers.",
-      codeSnippet: `const onTouchMove = (e: TouchEvent) => {\n  if (e.target.closest('[data-lenis-prevent]')) {\n    e.stopPropagation();\n  }\n};`
+      issue: "Eliminating Application 'Black Holes' & Recruiter Ghosting",
+      solution: "Engineered a state machine layer into job application pipelines. Applications feature an automatic system countdown; if an employer fails to send a decision or request an interview within 14 days, the posting is flagged and removed, penalizing the employer's responsiveness score.",
+      codeSnippet: `const checkPipelineExpiry = (application: AppRecord) => {\n  const SLA_DAYS = 14;\n  const daysSinceApplied = differenceInDays(new Date(), application.appliedAt);\n  \n  if (daysSinceApplied > SLA_DAYS && application.status === 'pending') {\n    return triggerSlaViolation(application.employerId, application.id);\n  }\n  return application.status;\n};`
     },
     {
-      issue: "Custom OTF Font Loading Flash",
-      solution: "Implemented Next.js localFont variables at root level with CSS fallback font-display swaps."
+      issue: "High-Performance Keyboard Command Palette Across Dynamic Routes",
+      solution: "Implementing a global shortcut palette that needs to instantly search across deep relational data caused unnecessary re-renders. Leveraged CMDK with decoupled state triggers and memoized indexing hooks to allow sub-10ms UI filtering without blocking the React render thread.",
+      codeSnippet: `// Memoizing lookup indices to prevent re-render lag\nconst searchIndex = useMemo(() => {\n  return buildSearchIndex([\n    ...activeJobs.map(j => ({ type: 'job', text: j.title })),\n    ...candidates.map(c => ({ type: 'user', text: c.name }))\n  ]);\n}, [activeJobs, candidates]);`
+    },
+    {
+      issue: "Native Upgrades to Tailwind CSS v4 Ecosystem",
+      solution: "Upgrading to Tailwind v4 removed the conventional postcss setup, breaking standard utility classes. Refactored the design system to align with Tailwind v4’s CSS-first config approach, defining custom color primitives directly inside the main CSS entry file.",
+      codeSnippet: `@import "tailwindcss";\n\n@theme {\n  --color-primary: #3b82f6;\n  --color-surface-dark: #121212;\n  --font-sans: 'Inter', sans-serif;\n  --radius-xl: 1rem;\n}`
     }
   ],
   gallery: [
     {
       id: "fig-1",
-      src: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1200&q=80",
-      alt: "Desktop Interface",
-      caption: "FIG 01. Desktop Overview Interface",
-      description: "Main workspace showing window management, custom retro taskbar, and active workspace widgets.",
+      src: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1200&q=80",
+      alt: "Candidate Dashboard",
+      caption: "FIG 01. Unified Candidate Dashboard",
+      description: "Main workspace showing the automated application tracker, match-scored job feed, and upcoming interview calendar.",
       aspectRatio: "aspect-video"
     },
     {
       id: "fig-2",
-      src: "https://images.unsplash.com/photo-1629654297299-c8506221ca97?auto=format&fit=crop&w=1200&q=80",
-      alt: "Terminal State",
-      caption: "FIG 02. Terminal Modal State",
-      description: "Built-in command line interface executing custom CLI scripts and dynamic command responses.",
+      src: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+      alt: "Employer Pipeline",
+      caption: "FIG 02. Employer Pipeline & SLA Timers",
+      description: "Recruiter view highlighting the 14-day anti-ghosting countdown timers and batch-rejection workflow interface.",
       aspectRatio: "aspect-video"
     },
     {
       id: "fig-3",
-      src: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1200&q=80",
-      alt: "Code Structure",
-      caption: "FIG 03. System Architecture View",
-      description: "High-level overview of component architecture, state management flow, and routing strategy.",
+      src: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80",
+      alt: "Launchpad Incubator",
+      caption: "FIG 03. Launchpad Project Incubator",
+      description: "Collaborative team formation view where engineers build verifiable side-projects and manage equity splits.",
       aspectRatio: "aspect-video"
     }
   ]
@@ -158,10 +223,10 @@ export default function DocsContent() {
               <span className="text-white font-semibold">docs</span>
             </div>
 
-            {/* Jump Links Navigation (Removed 'tree') */}
+            {/* Jump Links Navigation */}
             <div className="flex items-center gap-3 text-[11px] overflow-x-auto scrollbar-none">
               <span className="text-zinc-600 hidden md:inline">JUMP TO:</span>
-              {["meta", "stack", "setup", "architecture", "challenges", "gallery"].map((sec) => (
+              {["meta", "stack", "setup", "features", "challenges", "gallery"].map((sec) => (
                 <button
                   key={sec}
                   onClick={() => scrollToSection(sec)}
@@ -234,10 +299,10 @@ export default function DocsContent() {
             {/* Section 2: Tech Stack */}
             <section id="stack" className="scroll-mt-4 flex flex-col gap-3 border-t border-zinc-900 pt-6">
               <div className="text-white font-medium text-xs"># TECH STACK</div>
-              <div className="flex flex-wrap gap-x-4 gap-y-1 pl-3 text-zinc-400">
+              <div className="flex flex-wrap gap-x-1 gap-y-1 pl-3 text-zinc-400">
                 {PROJECT_DATA.stack.map((item, idx) => (
-                  <span key={idx} className="text-zinc-300">
-                    • {item}
+                  <span key={idx} className="text-zinc-300 flex items-center">
+                    <ChevronLeft className="w-3.5 h-3.5 text-zinc-500"/> {item} <ChevronRight className="w-3.5 h-3.5 text-zinc-500"/>
                   </span>
                 ))}
               </div>
@@ -280,40 +345,64 @@ export default function DocsContent() {
               </div>
             </section>
 
-            {/* Section 4: Architecture & Documentation */}
-            <section id="architecture" className="scroll-mt-4 flex flex-col gap-4 border-t border-zinc-900 pt-6">
-              <div className="text-white font-medium text-xs"># ARCHITECTURE & DOCUMENTATION</div>
-              <div className="flex flex-col gap-6 pl-3">
+            {/* Section 4: Architecture & Documentation / Features */}
+            <section id="features" className="scroll-mt-4 flex flex-col gap-4 border-t border-zinc-900 pt-6">
+              <div className="text-white font-medium text-xs"># FEATURES</div>
+              <div className="flex flex-col gap-8 pl-3">
                 {PROJECT_DATA.documentation.map((doc, idx) => {
                   const snippetId = `doc-snippet-${idx}`;
                   return (
-                    <div key={idx} className="flex flex-col gap-2">
-                      <div className="text-zinc-200 font-semibold">{doc.title}</div>
-                      <p className="text-zinc-400 leading-relaxed">{doc.content}</p>
-                      
-                      {doc.codeSnippet && (
-                        <div className="flex flex-col gap-1 mt-1">
-                          <div className="flex justify-end">
-                            <button
-                              onClick={() => handleCopyCode(doc.codeSnippet!, snippetId)}
-                              className="flex items-center gap-1.5 text-[10px] text-zinc-500 hover:text-emerald-400 transition-colors py-0.5 px-1"
-                            >
-                              {copiedId === snippetId ? (
-                                <>
-                                  <Check className="w-3 h-3 text-emerald-400" />
-                                  <span className="text-emerald-400">COPIED</span>
-                                </>
-                              ) : (
-                                <>
-                                  <Copy className="w-3 h-3" />
-                                  <span>COPY</span>
-                                </>
-                              )}
-                            </button>
+                    <div 
+                      key={idx} 
+                      className={`flex flex-col ${doc.image ? 'md:flex-row md:items-start' : ''} gap-4 pb-4 ${
+                        idx !== PROJECT_DATA.documentation.length - 1 ? 'border-b border-zinc-900/50' : ''
+                      }`}
+                    >
+                      {/* Left side: Content & Snippet */}
+                      <div className={`flex flex-col gap-2 ${doc.image ? 'md:w-1/2' : 'w-full'}`}>
+                        <div className="text-zinc-200 font-semibold">{doc.title}</div>
+                        <p className="text-zinc-400 leading-relaxed">{doc.content}</p>
+                        
+                        {doc.codeSnippet && (
+                          <div className="flex flex-col gap-1 mt-1">
+                            <div className="flex justify-end">
+                              <button
+                                onClick={() => handleCopyCode(doc.codeSnippet!, snippetId)}
+                                className="flex items-center gap-1.5 text-[10px] text-zinc-500 hover:text-emerald-400 transition-colors py-0.5 px-1"
+                              >
+                                {copiedId === snippetId ? (
+                                  <>
+                                    <Check className="w-3 h-3 text-emerald-400" />
+                                    <span className="text-emerald-400">COPIED</span>
+                                  </>
+                                ) : (
+                                  <>
+                                    <Copy className="w-3 h-3" />
+                                    <span>COPY</span>
+                                  </>
+                                )}
+                              </button>
+                            </div>
+                            <pre className="text-[11px] text-emerald-400 whitespace-pre overflow-x-auto py-1 font-mono bg-zinc-950/40 p-2 border border-zinc-900 rounded">
+                              {doc.codeSnippet}
+                            </pre>
                           </div>
-                          <pre className="text-[11px] text-emerald-400 whitespace-pre overflow-x-auto py-1 font-mono">
-                            {doc.codeSnippet}
-                          </pre>
+                        )}
+                      </div>
+
+                      {/* Right side: Image Showcase (rendered if `image` URL is supplied) */}
+                      {doc.image && (
+                        <div className="md:w-1/2 flex flex-col gap-1.5 mt-2 md:mt-0">
+                          <div className="relative overflow-hidden border border-zinc-800 bg-zinc-950 group">
+                            <img
+                              src={doc.image}
+                              alt={doc.title}
+                              className="w-full h-auto max-h-52 object-cover opacity-85 group-hover:opacity-100 transition-opacity"
+                            />
+                          </div>
+                          <span className="text-[9px] text-zinc-500 uppercase tracking-wider font-mono">
+                            [Feature Preview: {doc.title}]
+                          </span>
                         </div>
                       )}
                     </div>
@@ -357,7 +446,7 @@ export default function DocsContent() {
                               )}
                             </button>
                           </div>
-                          <pre className="text-[11px] text-emerald-400 whitespace-pre overflow-x-auto py-1 font-mono">
+                          <pre className="text-[11px] text-emerald-400 whitespace-pre overflow-x-auto py-1 font-mono bg-zinc-950/40 p-2 border border-zinc-900 rounded">
                             {c.codeSnippet}
                           </pre>
                         </div>

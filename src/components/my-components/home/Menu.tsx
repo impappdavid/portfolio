@@ -673,7 +673,7 @@ export default function MainMenu() {
 
       {/* Top Bar / Header */}
 
-      <div className="flex items-center justify-between pb-4 mb-4 border-b border-zinc-900/80 shrink-0">
+      <div className="hidden lg:flex items-center justify-between pb-4 mb-4 border-b border-zinc-900/80 shrink-0">
 
         <div className="flex items-center gap-2 text-zinc-500 text-sm">
 

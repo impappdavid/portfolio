@@ -45,8 +45,8 @@ export default function HungaryWidget() {
   }, []);
 
   return (
-    /* Static Box Container (No initial slide/fade on the box itself) */
-    <div className="min-w-16 h-full p-4 border-x border-zinc-800 text-[#22C55E] flex flex-col justify-between items-center text-xs font-mono relative overflow-hidden select-none">
+    /* Static Box Container - Horizontal below `lg`, Vertical on `lg`+ */
+    <div className="w-full lg:w-auto min-w-16 lg:h-full p-4 border-y lg:border-y-0 lg:border-x border-zinc-800 text-[#22C55E] flex flex-row lg:flex-col justify-between items-center text-xs font-mono relative overflow-hidden select-none">
       {/* Live Temperature Text Animation */}
       <motion.span
         key={temperature}
@@ -57,8 +57,6 @@ export default function HungaryWidget() {
       >
         {temperature}
       </motion.span>
-
-     
 
       {/* Live Budapest Time Text Animation */}
       <AnimatePresence mode="wait">
