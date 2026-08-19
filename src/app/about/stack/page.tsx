@@ -31,7 +31,7 @@ export default function Stack() {
     <>
       <ReactLenis root>
         <div
-          className={`flex flex-col items-center text-2xl bg-[#0d0d0f] w-full text-white h-screen transition-all duration-300 ${
+          className={`flex flex-col items-center text-2xl bg-zinc-300/20 dark:bg-[#0d0d0f] w-full text-zinc-900 dark:text-white h-screen transition-all duration-300 ${
             isMaximized ? "p-0" : "p-6 md:p-14"
           } ${spleen.variable}`}
         >
@@ -44,16 +44,16 @@ export default function Stack() {
                 : { scale: 1, opacity: 1 }
             }
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className={`w-full border border-zinc-800 h-full flex flex-col overflow-hidden bg-zinc-950/40 transition-all duration-300 ${
+            className={`w-full border border-zinc-300 dark:border-zinc-800 h-full flex flex-col overflow-hidden bg-zinc-300/20 dark:bg-zinc-950/40 transition-all duration-300 ${
               isMaximized ? "max-w-full border-none" : "max-w-6xl"
             }`}
           >
             {/* Retro Window Header */}
-            <header className="w-full border-b border-zinc-900 p-4 flex justify-between items-center text-xs font-mono select-none shrink-0">
+            <header className="w-full border-b border-zinc-200 dark:border-zinc-900 p-4 flex justify-between items-center text-xs font-mono select-none shrink-0">
               {/* Left Side: Title */}
               <div className="flex items-center gap-2">
-                <span className="text-zinc-400 font-semibold tracking-wider">
-                  # tech stack & tools
+                <span className="text-zinc-600 dark:text-zinc-400 font-semibold tracking-wider">
+                  # tech stack &amp; tools
                 </span>
               </div>
 
@@ -63,7 +63,7 @@ export default function Stack() {
                 <button
                   onClick={() => setIsMaximized((prev) => !prev)}
                   aria-label={isMaximized ? "Minimize" : "Maximize"}
-                  className="w-5 h-5 text-zinc-400 hover:text-zinc-100 flex items-center justify-center transition-colors text-[10px]"
+                  className="w-5 h-5 text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 flex items-center justify-center transition-colors text-[10px]"
                 >
                   {isMaximized ? (
                     <Minimize2 className="w-3.5 h-3.5" />
@@ -76,7 +76,7 @@ export default function Stack() {
                 <button
                   onClick={handleClose}
                   aria-label="Close"
-                  className="w-5 h-5 text-zinc-400 hover:text-[#22C55E] flex items-center justify-center transition-colors text-[10px]"
+                  className="w-5 h-5 text-zinc-500 dark:text-zinc-400 hover:text-[#16a34a] dark:hover:text-[#22C55E] flex items-center justify-center transition-colors text-[10px]"
                 >
                   <X className="w-4 h-4" />
                 </button>

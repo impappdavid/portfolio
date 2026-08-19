@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Analytics } from "@vercel/analytics/react"
+import { Analytics } from "@vercel/analytics/react";
 import Dock from "@/components/my-components/dock";
-
-
+import { ThemeProvider } from "@/components/my-components/theme-provider";
 
 export const metadata: Metadata = {
   title: "Dávid Papp",
@@ -16,18 +15,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <>
-      <html lang="en">
-        <head>
-          <title>Dávid Papp</title>
-        </head>
-        <body
-          className={` antialiased`}
+    <html lang="en" suppressHydrationWarning>
+      <body className="antialiased">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
         >
           {children}
           <Analytics />
-        </body>
-      </html>
-    </>
+        </ThemeProvider>
+      </body>
+    </html>
   );
 }

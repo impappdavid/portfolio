@@ -1,4 +1,5 @@
 "use client";
+
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -46,7 +47,7 @@ export default function HungaryWidget() {
 
   return (
     /* Static Box Container - Horizontal below `lg`, Vertical on `lg`+ */
-    <div className="w-full lg:w-auto min-w-16 lg:h-full p-4 border-y lg:border-y-0 lg:border-x border-zinc-800 text-[#22C55E] flex flex-row lg:flex-col justify-between items-center text-xs font-mono relative overflow-hidden select-none">
+    <div className="w-full lg:w-auto min-w-16 lg:h-full p-4 border-y lg:border-y-0 lg:border-x border-zinc-300 dark:border-zinc-800 text-[#16a34a] dark:text-[#22C55E] flex flex-row lg:flex-col justify-between items-center text-xs font-mono relative overflow-hidden select-none">
       {/* Live Temperature Text Animation */}
       <motion.span
         key={temperature}
@@ -66,12 +67,12 @@ export default function HungaryWidget() {
             initial={{ opacity: 0, y: 4 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, ease: "easeOut" }}
-            className="text-[#22C55E] font-medium"
+            className="text-[#16a34a] dark:text-[#22C55E] font-medium"
           >
             {hungaryTime}
           </motion.span>
         ) : (
-          <span className="text-zinc-700 animate-pulse">--:--</span>
+          <span className="text-zinc-400 dark:text-zinc-700 animate-pulse">--:--</span>
         )}
       </AnimatePresence>
     </div>

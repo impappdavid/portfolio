@@ -66,7 +66,7 @@ function Intro() {
 
   return (
     <>
-      <div className="w-full lg:w-96 lg:min-w-[24rem] h-full p-4 flex flex-col justify-between gap-6 text-zinc-100 shadow-xl overflow-y-auto lg:overflow-hidden font-mono border-b lg:border-b-0 lg:border-r border-zinc-900">
+      <div className="w-full lg:w-96 lg:min-w-[24rem] h-full p-4 flex flex-col justify-between gap-6 overflow-y-auto lg:overflow-hidden font-mono border-b lg:border-b-0 lg:border-r border-zinc-200 dark:border-zinc-900 ">
         
         {/* Responsive Layout Split: 2 Columns below `lg`, 1 Column stacked on `lg`+ */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:flex lg:flex-col gap-6 flex-1">
@@ -84,7 +84,7 @@ function Intro() {
               <div className="tracking-wide text-lg font-bold text-[#22C55E]">
                 Hello World!
               </div>
-              <div className="text-sm text-zinc-300 leading-relaxed min-h-[48px]">
+              <div className="text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed min-h-[48px]">
                 Hi, I'm Dávid a Full-Stack Developer. My goal is to write software for the aerospace and space industry.
               </div>
             </motion.div>
@@ -102,8 +102,8 @@ function Intro() {
                   variants={gridItemVariants}
                   className="grid grid-cols-2 gap-2"
                 >
-                  <div className="text-zinc-400">{item.label}</div>
-                  <div className="text-zinc-100">{item.value}</div>
+                  <div className="text-zinc-500 dark:text-zinc-400">{item.label}</div>
+                  <div className="text-zinc-900 dark:text-zinc-100 font-medium">{item.value}</div>
                 </motion.div>
               ))}
             </motion.div>
@@ -116,12 +116,12 @@ function Intro() {
               variants={fadeInUp}
               initial="hidden"
               animate="visible"
-              className="relative flex-1 min-h-[160px] w-full flex items-center justify-center overflow-hidden rounded border border-zinc-900/60 bg-zinc-950/40"
+              className="relative flex-1 min-h-[160px] w-full flex items-center justify-center overflow-hidden border border-zinc-300 dark:border-zinc-900/60 bg-zinc-100 dark:bg-zinc-950/40"
             >
               {/* Background Grid & Crosshairs */}
-              <div className="absolute inset-0 bg-[linear-gradient(to_right,#27272a_1px,transparent_1px),linear-gradient(to_bottom,#27272a_1px,transparent_1px)] bg-[size:1rem_1rem] opacity-20" />
-              <div className="absolute inset-x-0 top-1/2 border-b border-dashed border-zinc-800/80" />
-              <div className="absolute inset-y-0 left-1/2 border-r border-dashed border-zinc-800/80" />
+              <div className="absolute inset-0 bg-[linear-gradient(to_right,#e4e4e7_1px,transparent_1px),linear-gradient(to_bottom,#e4e4e7_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#27272a_1px,transparent_1px),linear-gradient(to_bottom,#27272a_1px,transparent_1px)] bg-[size:1rem_1rem] opacity-40 dark:opacity-20" />
+              <div className="absolute inset-x-0 top-1/2 border-b border-dashed border-zinc-400/80 dark:border-zinc-800/80" />
+              <div className="absolute inset-y-0 left-1/2 border-r border-dashed border-zinc-400/80 dark:border-zinc-800/80" />
 
               {/* SVG Canvas */}
               <svg
@@ -140,8 +140,8 @@ function Intro() {
                 </defs>
 
                 {/* Orbit Rings around Central Body */}
-                <circle cx="150" cy="75" r="30" fill="none" stroke="#27272a" strokeWidth="1" strokeDasharray="3 3" />
-                <circle cx="150" cy="75" r="55" fill="none" stroke="#18181b" strokeWidth="1" />
+                <circle cx="150" cy="75" r="30" fill="none" className="stroke-zinc-400 dark:stroke-zinc-800" strokeWidth="1" strokeDasharray="3 3" />
+                <circle cx="150" cy="75" r="55" fill="none" className="stroke-zinc-300 dark:stroke-zinc-900" strokeWidth="1" />
 
                 {/* Central Planet Mass (Main Dot) */}
                 <g>
@@ -238,7 +238,7 @@ function Intro() {
               />
 
               {/* Telemetry HUD Label */}
-              <div className="absolute top-1.5 left-2 font-mono text-[9px] text-zinc-600 tracking-widest pointer-events-none">
+              <div className="absolute top-1.5 left-2 font-mono text-[9px] text-zinc-500 dark:text-zinc-600 tracking-widest pointer-events-none">
                 {activeMode === "1" && "TRAJECTORY // 01.WIDE_ARC"}
                 {activeMode === "2" && "TRAJECTORY // 02.CLOSE_HAIRPIN"}
                 {activeMode === "3" && "TRAJECTORY // 03.DUAL_DEFLECTION"}
@@ -250,8 +250,8 @@ function Intro() {
                   onClick={() => handleModeChange("1")}
                   className={`w-fit px-2 h-5 flex items-center justify-center border transition-colors ${
                     activeMode === "1"
-                      ? "bg-[#22C55E]/20 text-[#22C55E] border-[#22C55E]/20"
-                      : "bg-zinc-900/80 text-zinc-400 border-zinc-800 hover:text-zinc-200"
+                      ? "bg-[#22C55E]/20 text-[#16a34a] dark:text-[#22C55E] border-[#22C55E]/40"
+                      : "bg-zinc-200/80 dark:bg-zinc-900/80 text-zinc-600 dark:text-zinc-400 border-zinc-300 dark:border-zinc-800 hover:text-zinc-900 dark:hover:text-zinc-200"
                   }`}
                 >
                   case 1
@@ -260,8 +260,8 @@ function Intro() {
                   onClick={() => handleModeChange("2")}
                   className={`w-fit px-2 h-5 flex items-center justify-center border transition-colors ${
                     activeMode === "2"
-                      ? "bg-[#22C55E]/20 text-[#22C55E] border-[#22C55E]/20"
-                      : "bg-zinc-900/80 text-zinc-400 border-zinc-800 hover:text-zinc-200"
+                      ? "bg-[#22C55E]/20 text-[#16a34a] dark:text-[#22C55E] border-[#22C55E]/40"
+                      : "bg-zinc-200/80 dark:bg-zinc-900/80 text-zinc-600 dark:text-zinc-400 border-zinc-300 dark:border-zinc-800 hover:text-zinc-900 dark:hover:text-zinc-200"
                   }`}
                 >
                   case 2
@@ -270,8 +270,8 @@ function Intro() {
                   onClick={() => handleModeChange("3")}
                   className={`w-fit px-2 h-5 flex items-center justify-center border transition-colors ${
                     activeMode === "3"
-                      ? "bg-[#22C55E]/20 text-[#22C55E] border-[#22C55E]/20"
-                      : "bg-zinc-900/80 text-zinc-400 border-zinc-800 hover:text-zinc-200"
+                      ? "bg-[#22C55E]/20 text-[#16a34a] dark:text-[#22C55E] border-[#22C55E]/40"
+                      : "bg-zinc-200/80 dark:bg-zinc-900/80 text-zinc-600 dark:text-zinc-400 border-zinc-300 dark:border-zinc-800 hover:text-zinc-900 dark:hover:text-zinc-200"
                   }`}
                 >
                   case 3
@@ -279,7 +279,7 @@ function Intro() {
               </div>
 
               {/* Active Status Badge */}
-              <div className="absolute bottom-1.5 right-2 font-mono text-[9px] text-[#22C55E]/70 tracking-widest flex items-center gap-1 pointer-events-none">
+              <div className="absolute bottom-1.5 right-2 font-mono text-[9px] text-[#16a34a] dark:text-[#22C55E]/70 tracking-widest flex items-center gap-1 pointer-events-none">
                 <span className="w-1 h-1 rounded-full bg-[#22C55E] animate-pulse" />
                 {activeMode === "1" && "WIDE.SLINGSHOT"}
                 {activeMode === "2" && "HAIRPIN.PASS"}
@@ -294,9 +294,9 @@ function Intro() {
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0 }}
-                    className="absolute inset-0 z-20 flex items-center justify-center bg-[#0d0d0f] select-none"
+                    className="absolute inset-0 z-20 flex items-center justify-center bg-zinc-50 dark:bg-[#0d0d0f] select-none"
                   >
-                    <div className="flex items-center font-mono text-xs text-zinc-400 tracking-wider">
+                    <div className="flex items-center font-mono text-xs text-zinc-600 dark:text-zinc-400 tracking-wider">
                       <span>Loading</span>
                       <div className="flex ml-0.5">
                         {[0, 1, 2].map((i) => (
@@ -329,7 +329,7 @@ function Intro() {
           variants={fadeInUp}
           initial="hidden"
           animate="visible"
-          className="flex items-center justify-between pt-3 text-xs text-zinc-400 shrink-0 border-t border-zinc-900"
+          className="flex items-center justify-between pt-3 text-xs text-zinc-500 dark:text-zinc-400 shrink-0 border-t border-zinc-200 dark:border-zinc-900"
         >
           <a
             href="https://github.com/yourusername"
@@ -337,7 +337,7 @@ function Intro() {
             rel="noopener noreferrer"
             className="hover:text-[#22C55E] transition-colors duration-200"
           >
-            github/<span className="text-zinc-200">davidpapp</span>
+            github/<span className="text-zinc-800 dark:text-zinc-200">davidpapp</span>
           </a>
 
           <a
@@ -346,7 +346,7 @@ function Intro() {
             rel="noopener noreferrer"
             className="hover:text-[#22C55E] transition-colors duration-200"
           >
-            linkedin/<span className="text-zinc-200">davidpapp</span>
+            linkedin/<span className="text-zinc-800 dark:text-zinc-200">davidpapp</span>
           </a>
         </motion.div>
       </div>
