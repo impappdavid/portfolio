@@ -2,27 +2,26 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import ReactLenis from "@studio-freight/react-lenis";
 import localFont from "next/font/local";
-import AboutStory from "./aboutstory";
 import { Maximize2, Minimize2, X } from "lucide-react";
+import StackContent from "./stackContent";
 
 const spleen = localFont({
-  src: "../fonts/spleen.otf",
+  src: "../../fonts/spleen.otf",
   variable: "--font-spleen",
 });
 
-export default function About() {
+export default function Stack() {
   const [isMaximized, setIsMaximized] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
   const router = useRouter();
 
-  // Handles animated exit before redirecting
+  // Animated exit before redirecting back home
   const handleClose = (e: React.MouseEvent) => {
     e.preventDefault();
     setIsClosing(true);
-    // Wait for the scale-down animation to complete before changing routes
     setTimeout(() => {
       router.push("/");
     }, 300);
@@ -54,7 +53,7 @@ export default function About() {
               {/* Left Side: Title */}
               <div className="flex items-center gap-2">
                 <span className="text-zinc-600 dark:text-zinc-400 font-semibold tracking-wider">
-                  # more about me
+                  # tech stack &amp; tools
                 </span>
               </div>
 
@@ -84,7 +83,7 @@ export default function About() {
               </div>
             </header>
 
-            {/* Full Width Story Area - Centered when maximized */}
+            {/* Full Width Stack Area - Centered when maximized */}
             <div
               className={`flex-1 w-full min-h-0 overflow-hidden ${
                 isMaximized ? "flex justify-center" : ""
@@ -96,7 +95,7 @@ export default function About() {
                   isMaximized ? "max-w-5xl" : ""
                 }`}
               >
-                <AboutStory />
+                <StackContent />
               </div>
             </div>
           </motion.div>

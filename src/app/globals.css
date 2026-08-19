@@ -4,6 +4,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -224,9 +225,9 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 ::selection {
-  background-color: #d4d4d8;
+  background-color: #ffffffbd;
   /* zinc-600 */
-  color: #52525b;
+  color: black;
   /* white */
 }
 
@@ -265,4 +266,16 @@ body::-webkit-scrollbar-thumb:hover {
 .tooltip-popup {
   animation: tooltip-popup 200ms ease-out forwards;
   transform-origin: center;
+}
+
+@font-face {
+  font-family: 'Spleen';
+  src: url('/font/spleen-16x32.bdf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  font-family: 'Spleen', monospace;
 }
