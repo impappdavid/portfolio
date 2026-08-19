@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
-import Dock from "@/components/my-components/dock";
 import { ThemeProvider } from "@/components/my-components/theme-provider";
 
 export const metadata: Metadata = {
