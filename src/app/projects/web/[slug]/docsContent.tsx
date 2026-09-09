@@ -25,7 +25,8 @@ interface DocsContentProps {
 export default function DocsContent({ data }: DocsContentProps) {
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [isGalleryExpanded, setIsGalleryExpanded] = useState<boolean>(false);
-  const [selectedGalleryItem, setSelectedGalleryItem] = useState<GalleryItem | null>(null);
+  const [selectedGalleryItem, setSelectedGalleryItem] =
+    useState<GalleryItem | null>(null);
 
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const scrollPosRef = useRef<number>(0);
@@ -79,7 +80,9 @@ export default function DocsContent({ data }: DocsContentProps) {
                   <span>back</span>
                 </Link>
                 <span className="text-zinc-300 dark:text-zinc-600">/</span>
-                <span className="text-zinc-400 dark:text-zinc-500">projects</span>
+                <span className="text-zinc-400 dark:text-zinc-500">
+                  projects
+                </span>
                 <span className="text-zinc-300 dark:text-zinc-600">/</span>
                 <span className="font-semibold text-zinc-900 dark:text-white">
                   {data.title.toLowerCase()}
@@ -91,7 +94,14 @@ export default function DocsContent({ data }: DocsContentProps) {
                 <span className="text-zinc-400 dark:text-zinc-600 hidden md:inline">
                   JUMP TO:
                 </span>
-                {["meta", "stack", "setup", "features", "challenges", "gallery"].map((sec) => (
+                {[
+                  "meta",
+                  "stack",
+                  "setup",
+                  "features",
+                  "challenges",
+                  "gallery",
+                ].map((sec) => (
                   <button
                     key={sec}
                     onClick={() => scrollToSection(sec)}
@@ -119,7 +129,9 @@ export default function DocsContent({ data }: DocsContentProps) {
                 </div>
 
                 <div className="flex items-center gap-4">
-                  {Boolean(data.metadata.demoUrl && data.metadata.demoUrl.trim()) && (
+                  {Boolean(
+                    data.metadata.demoUrl && data.metadata.demoUrl.trim(),
+                  ) && (
                     <a
                       href={data.metadata.demoUrl}
                       target="_blank"
@@ -131,7 +143,9 @@ export default function DocsContent({ data }: DocsContentProps) {
                     </a>
                   )}
 
-                  {Boolean(data.metadata.sourceUrl && data.metadata.sourceUrl.trim()) && (
+                  {Boolean(
+                    data.metadata.sourceUrl && data.metadata.sourceUrl.trim(),
+                  ) && (
                     <a
                       href={data.metadata.sourceUrl}
                       target="_blank"
@@ -150,13 +164,21 @@ export default function DocsContent({ data }: DocsContentProps) {
                 <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8 text-xs py-1">
                   <div className="flex items-center gap-2">
                     <Calendar className="w-3.5 h-3.5 text-zinc-400 dark:text-zinc-500" />
-                    <span className="text-zinc-400 dark:text-zinc-500">DATE:</span>
-                    <span className="text-zinc-800 dark:text-zinc-200">{data.metadata.date}</span>
+                    <span className="text-zinc-400 dark:text-zinc-500">
+                      DATE:
+                    </span>
+                    <span className="text-zinc-800 dark:text-zinc-200">
+                      {data.metadata.date}
+                    </span>
                   </div>
                   <div className="flex items-center gap-2">
                     <User className="w-3.5 h-3.5 text-zinc-400 dark:text-zinc-500" />
-                    <span className="text-zinc-400 dark:text-zinc-500">ROLE:</span>
-                    <span className="text-zinc-800 dark:text-zinc-200">{data.metadata.role}</span>
+                    <span className="text-zinc-400 dark:text-zinc-500">
+                      ROLE:
+                    </span>
+                    <span className="text-zinc-800 dark:text-zinc-200">
+                      {data.metadata.role}
+                    </span>
                   </div>
                 </div>
 
@@ -165,7 +187,10 @@ export default function DocsContent({ data }: DocsContentProps) {
                     # DESCRIPTION
                   </div>
                   {data.description.map((p, idx) => (
-                    <p key={idx} className="leading-relaxed pl-3 text-zinc-600 dark:text-zinc-400">
+                    <p
+                      key={idx}
+                      className="leading-relaxed pl-3 text-zinc-600 dark:text-zinc-400"
+                    >
                       {p}
                     </p>
                   ))}
@@ -173,13 +198,19 @@ export default function DocsContent({ data }: DocsContentProps) {
               </section>
 
               {/* Section 2: Tech Stack */}
-              <section id="stack" className="scroll-mt-4 flex flex-col gap-3 border-t border-zinc-200 dark:border-zinc-900 pt-6">
+              <section
+                id="stack"
+                className="scroll-mt-4 flex flex-col gap-3 border-t border-zinc-200 dark:border-zinc-900 pt-6"
+              >
                 <div className="font-medium text-xs text-zinc-900 dark:text-white">
                   # TECH STACK
                 </div>
                 <div className="flex flex-wrap gap-x-1 gap-y-1 pl-3">
                   {data.stack.map((item, idx) => (
-                    <span key={idx} className="flex items-center text-zinc-700 dark:text-zinc-300">
+                    <span
+                      key={idx}
+                      className="flex items-center text-zinc-700 dark:text-zinc-300"
+                    >
                       <ChevronLeft className="w-3.5 h-3.5 text-zinc-400 dark:text-zinc-500" />
                       {item}
                       <ChevronRight className="w-3.5 h-3.5 text-zinc-400 dark:text-zinc-500" />
@@ -189,7 +220,10 @@ export default function DocsContent({ data }: DocsContentProps) {
               </section>
 
               {/* Section 3: How to Start */}
-              <section id="setup" className="scroll-mt-4 flex flex-col gap-3 border-t border-zinc-200 dark:border-zinc-900 pt-6">
+              <section
+                id="setup"
+                className="scroll-mt-4 flex flex-col gap-3 border-t border-zinc-200 dark:border-zinc-900 pt-6"
+              >
                 <div className="font-medium text-xs text-zinc-900 dark:text-white">
                   # HOW TO START
                 </div>
@@ -204,9 +238,13 @@ export default function DocsContent({ data }: DocsContentProps) {
                   </ul>
 
                   <div className="flex items-center justify-between text-[11px] mt-2">
-                    <span className="text-zinc-400 dark:text-zinc-500">Commands:</span>
+                    <span className="text-zinc-400 dark:text-zinc-500">
+                      Commands:
+                    </span>
                     <button
-                      onClick={() => handleCopyCode(data.howToStart.commands, "setup-cmd")}
+                      onClick={() =>
+                        handleCopyCode(data.howToStart.commands, "setup-cmd")
+                      }
                       className="flex items-center gap-1.5 text-zinc-500 dark:text-zinc-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors py-0.5 px-1"
                     >
                       {copiedId === "setup-cmd" ? (
@@ -230,7 +268,10 @@ export default function DocsContent({ data }: DocsContentProps) {
               </section>
 
               {/* Section 4: Features */}
-              <section id="features" className="scroll-mt-4 flex flex-col gap-4 border-t border-zinc-200 dark:border-zinc-900 pt-6">
+              <section
+                id="features"
+                className="scroll-mt-4 flex flex-col gap-4 border-t border-zinc-200 dark:border-zinc-900 pt-6"
+              >
                 <div className="font-medium text-xs text-zinc-900 dark:text-white">
                   # FEATURES
                 </div>
@@ -246,7 +287,9 @@ export default function DocsContent({ data }: DocsContentProps) {
                             : ""
                         }`}
                       >
-                        <div className={`flex flex-col gap-2 ${doc.image ? "md:w-1/2" : "w-full"}`}>
+                        <div
+                          className={`flex flex-col gap-2 ${doc.image ? "md:w-1/2" : "w-full"}`}
+                        >
                           <div className="font-semibold text-zinc-800 dark:text-zinc-200">
                             {doc.title}
                           </div>
@@ -258,13 +301,17 @@ export default function DocsContent({ data }: DocsContentProps) {
                             <div className="flex flex-col gap-1 mt-1">
                               <div className="flex justify-end">
                                 <button
-                                  onClick={() => handleCopyCode(doc.codeSnippet!, snippetId)}
+                                  onClick={() =>
+                                    handleCopyCode(doc.codeSnippet!, snippetId)
+                                  }
                                   className="flex items-center gap-1.5 text-[10px] text-zinc-400 dark:text-zinc-500 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors py-0.5 px-1"
                                 >
                                   {copiedId === snippetId ? (
                                     <>
                                       <Check className="w-3 h-3 text-emerald-500" />
-                                      <span className="text-emerald-500">COPIED</span>
+                                      <span className="text-emerald-500">
+                                        COPIED
+                                      </span>
                                     </>
                                   ) : (
                                     <>
@@ -302,7 +349,10 @@ export default function DocsContent({ data }: DocsContentProps) {
               </section>
 
               {/* Section 5: Challenges & Solutions */}
-              <section id="challenges" className="scroll-mt-4 flex flex-col gap-4 border-t border-zinc-200 dark:border-zinc-900 pt-6">
+              <section
+                id="challenges"
+                className="scroll-mt-4 flex flex-col gap-4 border-t border-zinc-200 dark:border-zinc-900 pt-6"
+              >
                 <div className="font-medium text-xs text-zinc-900 dark:text-white">
                   # CHALLENGES & SOLUTIONS
                 </div>
@@ -312,23 +362,33 @@ export default function DocsContent({ data }: DocsContentProps) {
                     return (
                       <div key={idx} className="flex flex-col gap-2">
                         <div className="font-medium">
-                          <span className="text-red-600 dark:text-red-400">[ISSUE]</span>: {c.issue}
+                          <span className="text-red-600 dark:text-red-400">
+                            [ISSUE]
+                          </span>
+                          : {c.issue}
                         </div>
                         <div className="leading-relaxed text-zinc-700 dark:text-zinc-300">
-                          <span className="text-emerald-600 dark:text-emerald-400">[SOLUTION]</span>: {c.solution}
+                          <span className="text-emerald-600 dark:text-emerald-400">
+                            [SOLUTION]
+                          </span>
+                          : {c.solution}
                         </div>
 
                         {c.codeSnippet && (
                           <div className="flex flex-col gap-1 mt-1">
                             <div className="flex justify-end">
                               <button
-                                onClick={() => handleCopyCode(c.codeSnippet!, snippetId)}
+                                onClick={() =>
+                                  handleCopyCode(c.codeSnippet!, snippetId)
+                                }
                                 className="flex items-center gap-1.5 text-[10px] text-zinc-400 dark:text-zinc-500 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors py-0.5 px-1"
                               >
                                 {copiedId === snippetId ? (
                                   <>
                                     <Check className="w-3 h-3 text-emerald-500" />
-                                    <span className="text-emerald-500">COPIED</span>
+                                    <span className="text-emerald-500">
+                                      COPIED
+                                    </span>
                                   </>
                                 ) : (
                                   <>
@@ -350,7 +410,10 @@ export default function DocsContent({ data }: DocsContentProps) {
               </section>
 
               {/* Section 6: Gallery Trigger */}
-              <section id="gallery" className="scroll-mt-4 flex flex-col gap-4 border-t border-zinc-200 dark:border-zinc-900 pt-6 pb-6">
+              <section
+                id="gallery"
+                className="scroll-mt-4 flex flex-col gap-4 border-t border-zinc-200 dark:border-zinc-900 pt-6 pb-6"
+              >
                 <div className="font-medium text-xs flex items-center gap-2 text-zinc-900 dark:text-white">
                   <span># GALLERY</span>
                   <span className="text-[10px] text-zinc-400 dark:text-zinc-600">
@@ -408,7 +471,7 @@ export default function DocsContent({ data }: DocsContentProps) {
                     <X className="w-5 h-5" />
                   </button>
                 </div>
-                <div className="flex-1 min-h-0 overflow-y-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 p-2">
+                <div className=" min-h-0 overflow-y-hidden grid grid-cols-1 sm:grid-cols-2 gap-2 p-2">
                   {data.gallery.map((img) => (
                     <div
                       key={img.id}
@@ -418,7 +481,7 @@ export default function DocsContent({ data }: DocsContentProps) {
                       <img
                         src={img.src}
                         alt={img.alt}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 border border-zinc-300 dark:border-transparent"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 border border-zinc-400 dark:border-zinc-800"
                       />
                       <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
                         <ZoomIn className="w-6 h-6" />
@@ -437,22 +500,22 @@ export default function DocsContent({ data }: DocsContentProps) {
                   <X className="w-5 h-5" />
                 </button>
 
-                <div className="relative max-w-full max-h-full flex items-center justify-center overflow-hidden rounded">
-                  <img
-                    src={selectedGalleryItem.src}
-                    alt={selectedGalleryItem.alt}
-                    className="max-w-full max-h-[82vh] object-contain border border-zinc-300 dark:border-transparent"
-                  />
-
-                  <div className="absolute bottom-0 inset-x-0 p-3 bg-black/75 backdrop-blur-sm text-zinc-100 flex flex-col gap-0.5">
-                    <span className="font-semibold text-emerald-400 text-xs">
-                      {selectedGalleryItem.caption}
-                    </span>
+                <div className="relative max-w-full max-h-full flex flex-col  justify-center overflow-hidden rounded">
+                  <div className="mb-2">
+                    <div className="text-lg">{selectedGalleryItem.caption}</div>
                     {selectedGalleryItem.description && (
                       <p className="text-[11px] text-zinc-300 leading-snug">
                         {selectedGalleryItem.description}
                       </p>
                     )}
+                  </div>
+                  <div className="w-full h-full flex items-center justify-center">
+                    <img
+                      src={selectedGalleryItem.src}
+                      alt={selectedGalleryItem.alt}
+                      loading="lazy"
+                      className="max-w-full max-h-[82vh] object-contain border border-zinc-300 dark:border-transparent"
+                    />
                   </div>
                 </div>
               </div>
