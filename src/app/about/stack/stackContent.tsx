@@ -163,7 +163,7 @@ export default function StackContent() {
             href="https://github.com/impappdavid"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-[#16a34a] dark:hover:text-[#22C55E] transition-colors duration-200"
+            className="hover:text-[#16a34a] flex dark:hover:text-[#22C55E] transition-colors duration-200"
           >
             github/<span className="text-zinc-800 dark:text-zinc-200 lg:flex hidden">impappdavid</span>
           </a>
@@ -172,13 +172,13 @@ export default function StackContent() {
             href="https://linkedin.com/in/impappdavid"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-[#16a34a] dark:hover:text-[#22C55E] transition-colors duration-200"
+            className="hover:text-[#16a34a] flex dark:hover:text-[#22C55E] transition-colors duration-200"
           >
             linkedin/<span className="text-zinc-800 dark:text-zinc-200 lg:flex hidden">impappdavid</span>
           </a>
           <a
             href="mailto:impappdavid@gmail.com"
-            className="hover:text-[#16a34a] dark:hover:text-[#22C55E] transition-colors duration-200"
+            className="hover:text-[#16a34a] flex dark:hover:text-[#22C55E] transition-colors duration-200"
           >
             <span className="text-zinc-800 dark:text-zinc-200 lg:flex hidden">impappdavid</span>@gmail.com
           </a>
