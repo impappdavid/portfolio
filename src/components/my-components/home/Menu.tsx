@@ -38,6 +38,7 @@ const DIRECTORIES: Record<string, DirectoryData> = {
     targets: {},
     info: [
       "Freelance Frontend Developer (Fiverr) | May 2025 – Aug 2025",
+      "Independent Software Development | May 2023 – May 2025",
       "Software Developer Intern (Webváltó Kft.) | Jan 2023 – Apr 2023",
     ],
   },
@@ -406,7 +407,9 @@ export default function MainMenu() {
                 >
                   {item.type === "input" && (
                     <div className="flex items-center gap-2 text-cyan-600 dark:text-cyan-400">
-                      <span className="text-zinc-800 dark:text-zinc-200">{item.text}</span>
+                      <span className="text-zinc-800 dark:text-zinc-200">
+                        {item.text}
+                      </span>
                     </div>
                   )}
 
@@ -523,7 +526,6 @@ export default function MainMenu() {
               className="text-zinc-900 dark:text-zinc-300 font-medium text-sm flex gap-2 items-center"
             >
               # Experience
-              <div className="text-xs text-zinc-500 dark:text-zinc-400">(6 months)</div>
             </motion.div>
 
             <motion.div
@@ -536,6 +538,15 @@ export default function MainMenu() {
               </span>
             </motion.div>
 
+            <motion.div
+              variants={menuItemVariants}
+              className="flex items-center gap-2 hover:text-[#16a34a] dark:hover:text-[#22C55E] transition-colors text-xs text-zinc-600 dark:text-zinc-500 pl-2"
+            >
+              <span>#</span>
+              <span>
+                Independent Software Development | May 2023 – May 2025
+              </span>
+            </motion.div>
             <motion.div
               variants={menuItemVariants}
               className="flex items-center gap-2 text-xs hover:text-[#16a34a] dark:hover:text-[#22C55E] transition-colors text-zinc-600 dark:text-zinc-500 pl-2"
