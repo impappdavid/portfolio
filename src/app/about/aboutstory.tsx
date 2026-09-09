@@ -118,7 +118,7 @@ export default function AboutStory() {
             After finishing the 1-year software development school, I wasn't entirely sure if standard full-stack development was where my heart truly lay, so I stepped away for a year to gain clarity. Coming back, my love for frontend craftsmanship remained intact, but I now had a much clearer ultimate target: becoming a developer in the aerospace and space sector.
           </p>
           <p className="text-zinc-600 dark:text-zinc-400">
-            Knowing how rigorous the space industry is, I researched the requirements: formal degree credentials and deep proficiency in high-performance system languages like **C++**. Having missed this year's university admission cycle, I am treating this gap year as an intense personal incubator. 
+            Knowing how rigorous the space industry is, I researched the requirements: formal degree credentials and deep proficiency in high-performance system languages like C++. Having missed this year's university admission cycle, I am treating this gap year as an intense personal incubator. 
           </p>
           <p className="text-zinc-700 dark:text-zinc-300">
             Over the next 12 months, I am diving headfirst into C++, building custom physics-based simulations, and sharpening my math foundations before starting university next year. If you're interested in following this journey, check back on this portfolio as new simulations and builds go live.
@@ -139,7 +139,7 @@ export default function AboutStory() {
             href="https://github.com/impappdavid"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-[#16a34a] dark:hover:text-[#22C55E] transition-colors duration-200"
+            className="hover:text-[#16a34a] flex dark:hover:text-[#22C55E] transition-colors duration-200"
           >
             github/<span className="text-zinc-800 dark:text-zinc-200 lg:flex hidden">impappdavid</span>
           </a>
@@ -148,13 +148,13 @@ export default function AboutStory() {
             href="https://linkedin.com/in/impappdavid"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-[#16a34a] dark:hover:text-[#22C55E] transition-colors duration-200"
+            className="hover:text-[#16a34a] flex dark:hover:text-[#22C55E] transition-colors duration-200"
           >
             linkedin/<span className="text-zinc-800 dark:text-zinc-200 lg:flex hidden">impappdavid</span>
           </a>
           <a
             href="mailto:impappdavid@gmail.com"
-            className="hover:text-[#16a34a] dark:hover:text-[#22C55E] transition-colors duration-200"
+            className="hover:text-[#16a34a] flex dark:hover:text-[#22C55E] transition-colors duration-200"
           >
             <span className="text-zinc-800 dark:text-zinc-200 lg:flex hidden">impappdavid</span>@gmail.com
           </a>
