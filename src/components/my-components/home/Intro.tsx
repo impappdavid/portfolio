@@ -332,7 +332,7 @@ function Intro() {
           className="flex items-center justify-between pt-3 text-xs text-zinc-500 dark:text-zinc-400 shrink-0 border-t border-zinc-200 dark:border-zinc-900"
         >
           <a
-            href="https://github.com/yourusername"
+            href="https://github.com/impappdavid"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-[#22C55E] transition-colors duration-200"
@@ -341,7 +341,7 @@ function Intro() {
           </a>
 
           <a
-            href="https://linkedin.com/in/yourusername"
+            href="https://linkedin.com/in/impappdavid"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-[#22C55E] transition-colors duration-200"
