@@ -1,37 +1,38 @@
 "use client";
 
-import HungaryWidget from "@/components/my-components/home/Info";
-import Intro from "@/components/my-components/home/Intro";
-import MainMenu from "@/components/my-components/home/Menu";
-import ReactLenis from "@studio-freight/react-lenis";
-import localFont from "next/font/local";
-import { motion } from "framer-motion";
-
-const spleen = localFont({
-  src: "./fonts/spleen.otf",
-  variable: "--font-spleen",
-});
+import AboutMe from "@/components/my-components/home/about";
+import CaseStudiesSection from "@/components/my-components/home/caseStudies";
+import Footer from "@/components/my-components/home/footer";
+import LocationStats from "@/components/my-components/home/locationStats";
+import ProfileAndControl from "@/components/my-components/home/profileAndControl";
+import WorkSection from "@/components/my-components/home/work";
 
 export default function Home() {
   return (
-    <>
-      <ReactLenis root>
-        <div
-          className={`flex flex-col items-center bg-[#F5F5F5] dark:bg-[#0d0d0f] w-full text-white min-h-screen lg:h-screen p-4 sm:p-6 lg:p-14 ${spleen.variable}`}
-        >
-          {/* Animated Retro Window Container */}
-          <motion.div
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="w-full max-w-6xl border border-zinc-300 dark:border-zinc-800 flex flex-col lg:flex-row flex-1 overflow-y-auto lg:overflow-hidden bg-zinc-300/20 dark:bg-zinc-950/40"
-          >
-            <Intro />
-            <HungaryWidget />
-            <MainMenu />
-          </motion.div>
+    <div className="w-full min-h-screen flex flex-col justify-between items-center pt-24">
+      {/* Main content wrapper containing everything above the footer */}
+      <div className="w-full flex flex-col items-center pb-48">
+        {/* Narrow wrapper for top components */}
+        <div className="w-full max-w-lg flex flex-col gap-4 px-4 sm:px-0">
+          <LocationStats />
+          <ProfileAndControl />
+          <AboutMe />
         </div>
-      </ReactLenis>
-    </>
+
+        {/* Work section placed outside the max-w-lg container so it can expand full-screen */}
+        <div className="w-full mt-6">
+          <WorkSection />
+        </div>
+
+        <div className="w-full max-w-lg flex flex-col gap-4 px-4 sm:px-0">
+          <CaseStudiesSection />
+        </div>
+      </div>
+
+      {/* Footer pinned to the absolute bottom of the screen */}
+      <div className="w-full">
+        <Footer />
+      </div>
+    </div>
   );
 }
