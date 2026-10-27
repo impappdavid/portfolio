@@ -33,6 +33,38 @@ const hoverItems = {
 
 type HoverKey = keyof typeof hoverItems;
 
+type HoverWordProps = {
+  id: HoverKey;
+  children: React.ReactNode;
+  onActivate: (id: HoverKey, e: React.PointerEvent<HTMLSpanElement>) => void;
+  onTrack: (e: React.PointerEvent<HTMLSpanElement>) => void;
+  onDeactivate: () => void;
+};
+
+function HoverWord({
+  id,
+  children,
+  onActivate,
+  onTrack,
+  onDeactivate,
+}: HoverWordProps) {
+  return (
+    <span
+      data-cursor-merge
+      className="select-none cursor-pointer rounded bg-sky-500/40 px-1 py-0.5 text-zinc-600 transition-colors hover:bg-sky-400/70 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-white"
+      onPointerEnter={(e) => {
+        if (e.pointerType === "mouse") onActivate(id, e);
+      }}
+      onPointerMove={(e) => {
+        if (e.pointerType === "mouse") onTrack(e);
+      }}
+      onPointerLeave={onDeactivate}
+    >
+      {children}
+    </span>
+  );
+}
+
 export default function AboutMe() {
   const [active, setActive] = useState<HoverKey | null>(null);
 
@@ -48,68 +80,57 @@ export default function AboutMe() {
   const cursorX = useSpring(mouseX, springConfig);
   const cursorY = useSpring(mouseY, springConfig);
 
-  const handlePointerMove = (e: React.PointerEvent) => {
+  const track = (e: React.PointerEvent) => {
     mouseX.set(e.clientX);
     mouseY.set(e.clientY - 160);
   };
 
-  function HoverWord({
-    id,
-    children,
-  }: {
-    id: HoverKey;
-    children: React.ReactNode;
-  }) {
-    return (
-      <span
-        className="select-none cursor-pointer rounded bg-sky-500/40 px-1 py-0.5 text-zinc-600 dark:text-zinc-300 transition-colors hover:bg-sky-500/60"
-        onPointerEnter={(e) => {
-          if (e.pointerType === "mouse") {
-            mouseX.set(e.clientX);
-            mouseY.set(e.clientY - 160);
-            setActive(id);
-          }
-        }}
-        onPointerMove={(e) => {
-          if (e.pointerType === "mouse") {
-            handlePointerMove(e);
-          }
-        }}
-        onPointerLeave={() => setActive(null)}
-      >
-        {children}
-      </span>
-    );
-  }
+  const bind = {
+    onActivate: (id: HoverKey, e: React.PointerEvent<HTMLSpanElement>) => {
+      track(e);
+      setActive(id);
+    },
+    onTrack: track,
+    onDeactivate: () => setActive(null),
+  };
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, delay: 0.2, ease: "easeOut" }}
-      className="relative text-zinc-500 dark:text-zinc-400 mt-2"
+      className="relative mt-2 text-zinc-500 dark:text-zinc-400"
       onPointerLeave={() => setActive(null)}
     >
       <p className="text-sm leading-relaxed">
         I'm a developer driven by curiosity and a desire to understand how
         things work. From{" "}
-        <HoverWord id="cpp">C++ programming</HoverWord> to{" "}
-        <HoverWord id="physics">physics</HoverWord>, I enjoy turning complex
-        ideas into something tangible.
+        <HoverWord id="cpp" {...bind}>
+          C++ programming
+        </HoverWord>{" "}
+        to{" "}
+        <HoverWord id="physics" {...bind}>
+          physics
+        </HoverWord>
+        , I enjoy turning complex ideas into something tangible.
       </p>
 
       <p className="mt-2 text-sm leading-relaxed">
         I'm currently building my fundamentals, experimenting with new
         concepts, and exploring{" "}
-        <HoverWord id="simulations">
+        <HoverWord id="simulations" {...bind}>
           simulations & embedded systems
-        </HoverWord>.
+        </HoverWord>
+        .
       </p>
 
       <p className="mt-2 text-sm leading-relaxed">
         My long-term ambition is to contribute to something bigger, from
         engineering systems to{" "}
-        <HoverWord id="space">space exploration</HoverWord>.
+        <HoverWord id="space" {...bind}>
+          space exploration
+        </HoverWord>
+        .
       </p>
 
       <AnimatePresence>

@@ -21,7 +21,7 @@ export default function Footer() {
           href="https://x.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="hover:text-black transition-colors duration-200"
+          className="hover:text-black dark:hover:text-white transition-colors duration-200"
           aria-label="X (Twitter)"
         >
           <svg
@@ -70,12 +70,12 @@ export default function Footer() {
         {/* Email Copy */}
         <button
           onClick={handleCopyEmail}
-          className="relative hover:text-black transition-colors duration-200 cursor-pointer flex items-center focus:outline-none"
+          className="relative hover:text-black dark:hover:text-white transition-colors duration-200 cursor-pointer flex items-center focus:outline-none"
           aria-label="Copy Email"
         >
           {copied ? (
             <svg
-              className="w-4 h-4 stroke-black fill-none"
+              className="w-4 h-4 stroke-black dark:stroke-white fill-none"
               viewBox="0 0 24 24"
               strokeWidth="2"
               strokeLinecap="round"

@@ -258,3 +258,8 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
+
+html.custom-cursor,
+html.custom-cursor * {
+  cursor: none !important;
+}

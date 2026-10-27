@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import { CustomCursor } from "@/components/custom-cursor";
 
 export const metadata: Metadata = {
   title: "Your Portfolio",
@@ -21,6 +22,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <CustomCursor />
           {children}
         </ThemeProvider>
       </body>
