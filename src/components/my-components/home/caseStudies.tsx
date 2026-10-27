@@ -52,7 +52,7 @@ export default function CaseStudiesSection() {
     >
       {/* Header */}
       <div className="mb-4">
-        <span className="text-xs font-medium tracking-wider text-zinc-500">
+        <span className="text-xs font-medium tracking-wider text-zinc-400">
           /writings
         </span>
       </div>
@@ -87,7 +87,7 @@ export default function CaseStudiesSection() {
                     stiffness: 400,
                     damping: 30,
                   }}
-                  className="absolute inset-0 rounded-md bg-zinc-300/60"
+                  className="absolute inset-0 rounded-md bg-zinc-300/60 dark:bg-zinc-800/60"
                 />
               )}
 
@@ -101,7 +101,7 @@ export default function CaseStudiesSection() {
                 {/* Title */}
                 <span
                   className={`text-sm transition-colors duration-150 ${
-                    isHovered ? "text-zinc-900" : "text-zinc-900"
+                    isHovered ? "text-zinc-900 dark:text-white" : "text-zinc-900 dark:text-zinc-400"
                   }`}
                 >
                   {study.title}

@@ -62,7 +62,7 @@ export default function AboutMe() {
   }) {
     return (
       <span
-        className="select-none cursor-pointer rounded bg-sky-500/40 px-1 py-0.5 text-zinc-500 transition-colors hover:bg-sky-500/60"
+        className="select-none cursor-pointer rounded bg-sky-500/40 px-1 py-0.5 text-zinc-600 dark:text-zinc-300 transition-colors hover:bg-sky-500/60"
         onPointerEnter={(e) => {
           if (e.pointerType === "mouse") {
             mouseX.set(e.clientX);
@@ -87,7 +87,7 @@ export default function AboutMe() {
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, delay: 0.2, ease: "easeOut" }}
-      className="relative text-zinc-400 mt-2"
+      className="relative text-zinc-500 dark:text-zinc-400 mt-2"
       onPointerLeave={() => setActive(null)}
     >
       <p className="text-sm leading-relaxed">

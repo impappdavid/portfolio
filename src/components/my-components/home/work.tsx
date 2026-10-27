@@ -73,7 +73,7 @@ export default function WorkSection() {
               opacity: { duration: 0.2 },
               layout: resizeTransition,
             }}
-            className="group relative aspect-[4/3] cursor-pointer overflow-hidden rounded-xl border border-zinc-300"
+            className="group relative aspect-[4/3] cursor-pointer overflow-hidden rounded-xl border border-zinc-300 dark:border-zinc-800"
           >
             <img
               src={work.image}

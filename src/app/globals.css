@@ -251,3 +251,10 @@ body::-webkit-scrollbar-thumb:hover {
   transform-origin: center;
 }
 
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+@custom-variant dark (&:where(.dark, .dark *));

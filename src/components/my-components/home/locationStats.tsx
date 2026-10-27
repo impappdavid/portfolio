@@ -51,7 +51,7 @@ export default function LocationStats() {
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, ease: "easeOut" }}
-      className="w-full grid grid-cols-2 text-sm text-zinc-500"
+      className="w-full grid grid-cols-2 text-sm text-zinc-500 dark:text-zinc-400"
     >
       <div className="flex items-center">
         {temperature !== "--" ? `${temperature}°C` : "Loading..."} (Hungary)

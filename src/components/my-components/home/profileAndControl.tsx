@@ -2,6 +2,7 @@
 
 import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { ThemeToggle } from "@/components/theme-toggle"; // import your toggle
 
 export default function ProfileAndControl() {
   const [showOne, setShowOne] = useState(false);
@@ -45,7 +46,6 @@ export default function ProfileAndControl() {
           />
         </motion.button>
 
-        {/* AnimatePresence enables exit animations when components unmount */}
         <AnimatePresence>
           {showOne && (
             <motion.div
@@ -61,9 +61,9 @@ export default function ProfileAndControl() {
         </AnimatePresence>
       </div>
 
-      {/* Right Side: Controls Placeholder */}
+      {/* Right Side: Theme Toggle Control */}
       <div>
-        {/* Controls container for global items */}
+        <ThemeToggle />
       </div>
     </motion.div>
   );
